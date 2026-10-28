@@ -1,0 +1,77 @@
+{
+  "name": "prompt-operations-receipt",
+  "gatewayVersion": "0.8.1",
+  "capturedAt": "{{TS_0}}",
+  "steps": [
+    {
+      "method": "POST",
+      "path": "/api/operations?id=recorder-op-0123456789abcdef",
+      "requestHeaders": {
+        "authorization": "Bearer {{TOKEN}}",
+        "content-length": "150",
+        "content-type": "application/json",
+        "host": "127.0.0.1:{{PORT}}",
+        "x-dsh-remote-client": "app"
+      },
+      "status": 202,
+      "responseHeaders": {
+        "access-control-allow-headers": "authorization, content-type, x-dsh-remote-client, x-dsh-remote-client-id, x-dsh-remote-inbox-key",
+        "access-control-allow-methods": "GET, POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "600",
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "125",
+        "content-type": "application/json; charset=utf-8",
+        "date": "{{TS_19}}",
+        "keep-alive": "timeout=65",
+        "vary": "Origin, Accept-Encoding"
+      },
+      "response": {
+        "completedAt": null,
+        "createdAt": "{{TS_20}}",
+        "id": "{{ID_2}}",
+        "method": "session.prompt",
+        "phase": "running"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/operations?id=recorder-op-0123456789abcdef",
+      "requestHeaders": {
+        "authorization": "Bearer {{TOKEN}}",
+        "host": "127.0.0.1:{{PORT}}",
+        "x-dsh-remote-client": "app"
+      },
+      "status": 200,
+      "responseHeaders": {
+        "access-control-allow-headers": "authorization, content-type, x-dsh-remote-client, x-dsh-remote-client-id, x-dsh-remote-inbox-key",
+        "access-control-allow-methods": "GET, POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "600",
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "242",
+        "content-type": "application/json; charset=utf-8",
+        "date": "{{TS_21}}",
+        "keep-alive": "timeout=65",
+        "vary": "Origin, Accept-Encoding"
+      },
+      "response": {
+        "completedAt": "{{TS_22}}",
+        "createdAt": "{{TS_23}}",
+        "id": "{{ID_2}}",
+        "method": "session.prompt",
+        "phase": "complete",
+        "result": {
+          "result": {
+            "ok": true,
+            "value": {
+              "accepted": true
+            }
+          }
+        }
+      }
+    }
+  ]
+}

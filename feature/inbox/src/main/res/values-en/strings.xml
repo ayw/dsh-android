@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="inbox_title">Inbox</string>
+    <string name="inbox_subtitle">Pending requests from all sessions</string>
+
+    <string name="inbox_session_untitled">Untitled session</string>
+    <string name="inbox_session_unavailable">This session is currently unavailable. Requests are still shown and can be dismissed locally.</string>
+    <string name="inbox_session_archived">This session is archived. Requests are still shown and can be dismissed locally.</string>
+    <string name="inbox_open_session">Open session</string>
+
+    <string name="inbox_undecodable_notice">Content could not be parsed</string>
+    <string name="inbox_undecodable_detail">The payload of this request could not be decoded, so only its identity and status are shown. Open the session for details.</string>
+    <string name="inbox_approval_title">Tool %1$s requests approval</string>
+    <string name="inbox_approval_title_generic">A tool requests approval</string>
+    <string name="inbox_question_title">A question needs your answer</string>
+    <string name="inbox_question_field_label">%1$s: %2$s</string>
+
+    <string name="inbox_dismissed_title">Dismissed</string>
+    <string name="inbox_dismissed_summary">Dismissing only moves a request out of the count; it is still unsettled.</string>
+    <string name="inbox_dismissed_count">Dismissed: %1$d</string>
+    <string name="inbox_dismissed_empty">No dismissed requests are cached on this device.</string>
+    <string name="inbox_undismiss">Restore to list</string>
+
+    <string name="inbox_empty_title">Nothing is waiting for you</string>
+    <string name="inbox_empty_subtitle">The completeness sweep passed, so an empty inbox is trustworthy.</string>
+    <string name="inbox_unknown_title">Pending count cannot be confirmed</string>
+    <string name="inbox_unknown_subtitle">The completeness sweep did not finish on this device, so requests may be missing here.</string>
+
+    <string name="inbox_counts_error_title">Pending counts are temporarily unavailable</string>
+    <string name="inbox_rows_error_title">The pending list did not update</string>
+    <string name="inbox_rows_error_detail">The list did not update; cached rows are still shown.</string>
+    <string name="inbox_action_error_title">The action did not take effect</string>
+    <string name="inbox_volume_notice">This device has more pending items than the completeness sweep threshold, so the list may be incomplete.</string>
+
+    <string name="inbox_error_unreachable">Cannot reach the server.</string>
+    <string name="inbox_error_timeout">Timed out waiting for the server.</string>
+    <string name="inbox_error_auth">Credentials expired; pair again.</string>
+    <string name="inbox_error_forbidden">The server rejected the request.</string>
+    <string name="inbox_error_generic">Something went wrong.</string>
+
+</resources>

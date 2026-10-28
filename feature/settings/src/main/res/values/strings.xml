@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  默认语言 = 简体中文。values-en/strings.xml 的键集与占位符必须逐键相等（G14）。
+  服务器文案只描述标签、地址、认证状态与能力；不得出现 token、ticket 或查询串。
+-->
+<resources>
+    <string name="settings_section_servers">服务器</string>
+    <string name="settings_section_background_sync">后台同步</string>
+    <string name="settings_section_diagnostics">诊断</string>
+    <string name="settings_section_about">关于</string>
+
+    <string name="settings_servers_empty">还没有配对任何服务器</string>
+    <string name="settings_servers_empty_detail">配对完成后，这里会显示标签、地址与能力。</string>
+    <string name="settings_servers_unavailable">无法读取服务器列表。</string>
+    <string name="settings_server_unnamed">未命名服务器</string>
+    <string name="settings_server_capabilities">能力：%1$s</string>
+    <string name="settings_list_separator">、</string>
+    <string name="settings_add_server">添加服务器</string>
+    <string name="settings_add_server_unavailable">扫码配对将在后续版本提供</string>
+    <string name="settings_badge_unavailable">暂不可用</string>
+
+    <string name="settings_probe">探活</string>
+    <string name="settings_probe_running">正在检查…</string>
+    <string name="settings_probe_ok">服务器可达</string>
+    <string name="settings_probe_failed">探活失败</string>
+    <string name="settings_probe_failed_timeout">等待服务器响应超时。</string>
+    <string name="settings_probe_failed_unreachable">无法连接到服务器。</string>
+    <string name="settings_probe_failed_auth">凭据已失效，需要重新配对。</string>
+    <string name="settings_probe_failed_forbidden">服务器拒绝了这次请求。</string>
+    <string name="settings_probe_failed_rejected">服务器没有接受这次检查。</string>
+    <string name="settings_probe_failed_generic">探活没有完成，原因未知。</string>
+
+    <string name="settings_auth_connected">已连接</string>
+    <string name="settings_auth_forbidden">资源被拒绝</string>
+    <string name="settings_auth_expired">凭据失效</string>
+    <string name="settings_auth_unreachable">无法连接</string>
+    <string name="settings_auth_unknown">状态未知</string>
+
+    <string name="settings_cap_websocket">实时通道</string>
+    <string name="settings_cap_background_sync">事件轮询</string>
+    <string name="settings_cap_epoch">事件纪元</string>
+    <string name="settings_cap_receipts">操作回执</string>
+    <string name="settings_cap_files">工作区文件</string>
+    <string name="settings_cap_image_prompt">图片输入</string>
+
+    <string name="settings_background_sync_loading">正在读取后台同步设置</string>
+    <string name="settings_background_sync_unavailable">无法读取后台同步设置。</string>
+    <string name="settings_background_sync_enabled">后台同步已开启</string>
+    <string name="settings_background_sync_disabled">后台同步已关闭</string>
+    <string name="settings_background_sync_enabled_detail">新事件会按周期在后台同步。</string>
+    <string name="settings_background_sync_disabled_detail">关闭期间只有你手动操作时才会更新。</string>
+    <string name="settings_background_sync_cadence_note">周期任务的最小间隔 15 分钟由 WorkManager 平台限制决定。</string>
+    <string name="settings_background_sync_state_on">已开启</string>
+    <string name="settings_background_sync_state_off">已关闭</string>
+
+    <string name="settings_diagnostics_title">诊断信息</string>
+    <string name="settings_diagnostics_summary">查看本机计数</string>
+    <string name="settings_diagnostics_empty">尚无诊断数据</string>
+    <string name="settings_diagnostics_empty_detail">本机还没有可展示的计数。</string>
+    <string name="settings_diagnostics_local_only">诊断数据仅保存在本机，不会自动上传</string>
+    <string name="settings_diagnostics_degraded">当前处于降级状态</string>
+    <string name="settings_diagnostics_section_transport">传输</string>
+    <string name="settings_diagnostics_section_history">历史</string>
+    <string name="settings_diagnostics_section_pending">待处理</string>
+    <string name="settings_diagnostics_section_storage">存储</string>
+    <string name="settings_diagnostics_section_capabilities">能力</string>
+    <string name="settings_diagnostics_cursors">通道游标数</string>
+    <string name="settings_diagnostics_cursor">通道 %1$s：游标 %2$d</string>
+    <string name="settings_diagnostics_channel_mux">会话</string>
+    <string name="settings_diagnostics_channel_host">主机</string>
+    <string name="settings_diagnostics_channel_other">其它</string>
+    <string name="settings_diagnostics_lagging_sessions">连续序号落后的会话</string>
+    <string name="settings_diagnostics_max_lag">最大落后</string>
+    <string name="settings_diagnostics_needs_resync">需要重新同步的会话</string>
+    <string name="settings_diagnostics_history_incomplete">历史不完整的会话</string>
+    <string name="settings_diagnostics_history_unsafe">历史不可重建的会话</string>
+    <string name="settings_diagnostics_pending_completeness">待处理完整性</string>
+    <string name="settings_diagnostics_completeness_complete">完整</string>
+    <string name="settings_diagnostics_completeness_stale">已过期</string>
+    <string name="settings_diagnostics_completeness_unknown">未知</string>
+    <string name="settings_diagnostics_completeness_by_server">由服务器给出</string>
+    <string name="settings_diagnostics_baseline_skipped">跳过基线核对</string>
+    <string name="settings_diagnostics_auth_state">认证状态</string>
+    <string name="settings_diagnostics_poll_wait">最近一次长轮询可用</string>
+    <string name="settings_diagnostics_yes">是</string>
+    <string name="settings_diagnostics_no">否</string>
+    <string name="settings_diagnostics_unknown">未知</string>
+    <string name="settings_diagnostics_retention_trimmed">因保留上限裁剪</string>
+    <string name="settings_diagnostics_bad_json">坏 JSON 次数</string>
+    <string name="settings_diagnostics_ws_downgrade">降级为轮询的次数</string>
+    <string name="settings_diagnostics_retired_purge">待清理的退役身份</string>
+    <string name="settings_diagnostics_roster_age">会话名单年龄</string>
+    <string name="settings_diagnostics_roster_age_just_now">不到 1 分钟</string>
+    <string name="settings_diagnostics_roster_age_minutes">约 %1$d 分钟</string>
+    <string name="settings_diagnostics_roster_age_hours">约 %1$d 小时</string>
+    <string name="settings_diagnostics_capabilities">可用能力：%1$s</string>
+    <string name="settings_diagnostics_capabilities_none">尚未读取到能力表</string>
+    <string name="settings_diagnostics_capabilities_empty">没有已启用的能力</string>
+
+    <string name="settings_app_name">DeepSeek Harness</string>
+    <string name="settings_about_version">版本 %1$s</string>
+    <string name="settings_about_summary">连接远程 DeepSeek Harness 网关的本机客户端。</string>
+
+</resources>

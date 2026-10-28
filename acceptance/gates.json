@@ -1,0 +1,682 @@
+{
+  "schemaVersion": 1,
+  "comment": "Machine-readable gate registry for ACCEPTANCE.md G01..G20. Each gate carries the exact command ACCEPTANCE.md names, corrected for the real module type: pure-JVM modules (:core:model,:core:domain,:core:protocol,:core:testing -> :test) vs Android modules (:core:database,:core:network,:core:data,:core:designsystem,feature/*,:app -> :testDebugUnitTest). Every deviation from the doc is recorded in that gate's notes for reconciliation. 'units' is the ordered list of executable commands the harness runs for the gate; the top-level command/args/kind mirror units[0] for schema compatibility. kind: gradle|node|shell|internal.",
+  "junitResultGlob": "**/build/test-results/**/*.xml",
+  "gates": [
+    {
+      "id": "G01",
+      "title": "toolchain-sanity",
+      "blocking": true,
+      "scope": "in-scope",
+      "degradedAllowed": false,
+      "kind": "internal",
+      "command": "run-gates.sh ::precheck",
+      "args": [],
+      "cwdRelative": true,
+      "artifacts": [],
+      "notes": "Builtin precondition check in run-gates.sh. Verifies JAVA_HOME java -version, ANDROID_HOME platform (ACCEPTANCE names platforms/android-37; this machine ships platforms/android-37.0 -> the check accepts an android-37* dir, recorded as an environment deviation), build-tools/36.0.0, cmdline-tools/latest/bin/apkanalyzer, Gradle wrapper distribution version 9.6.1 (read from gradle/wrapper/gradle-wrapper.properties rather than invoking ./gradlew, so the precheck itself stays build-free), and org.gradle.java.installations.paths in gradle.properties.",
+      "units": [
+        {
+          "kind": "internal",
+          "title": "precheck",
+          "unit": "precheck"
+        }
+      ]
+    },
+    {
+      "id": "G02",
+      "title": "module-build",
+      "blocking": true,
+      "scope": "in-scope",
+      "degradedAllowed": false,
+      "kind": "gradle",
+      "command": "./gradlew build -x lint",
+      "args": [
+        "./gradlew",
+        "build",
+        "-x",
+        "lint"
+      ],
+      "cwdRelative": true,
+      "artifacts": [
+        "**/build/**/*.jar",
+        "app/build/outputs/apk/debug/*.apk"
+      ],
+      "notes": "No deviation: whole-project assemble+test minus lint. Gradle units execute only when DSH_ALLOW_GRADLE=1 (see run-gates.sh header); otherwise the harness classifies the gate BLOCKED so an unbuilt tree never reads as PASS.",
+      "units": [
+        {
+          "kind": "gradle",
+          "title": "build",
+          "argv": [
+            "./gradlew",
+            "build",
+            "-x",
+            "lint"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G03",
+      "title": "contract-drift",
+      "blocking": true,
+      "scope": "in-scope",
+      "degradedAllowed": false,
+      "kind": "node",
+      "command": "node tools/contract/record.mjs --check",
+      "args": [
+        "node",
+        "tools/contract/record.mjs",
+        "--check"
+      ],
+      "cwdRelative": true,
+      "artifacts": [
+        "contract/gateway/v0/*.json",
+        "contract/gateway/v0/SHA256SUMS",
+        "contract/gateway/v0/manifest.json"
+      ],
+      "notes": "Recorder at tools/contract/record.mjs is owned by another engineer; when the file is absent the harness reports BLOCKED (prerequisite missing). Exit-code map: 0=PASS, 3=BLOCKED (DSH_REMOTE_HOME unset / fixture missing per D18), other=FAIL.",
+      "units": [
+        {
+          "kind": "node",
+          "title": "record --check",
+          "argv": [
+            "node",
+            "tools/contract/record.mjs",
+            "--check"
+          ],
+          "prereq": "tools/contract/record.mjs"
+        }
+      ]
+    },
+    {
+      "id": "G04",
+      "title": "contract-replay",
+      "blocking": true,
+      "scope": "in-scope",
+      "degradedAllowed": false,
+      "kind": "gradle",
+      "command": "./gradlew :core:protocol:test --tests '*ContractReplay*'",
+      "args": [
+        "./gradlew",
+        ":core:protocol:test",
+        "--tests",
+        "*ContractReplay*"
+      ],
+      "cwdRelative": true,
+      "artifacts": [
+        "core/protocol/build/test-results/**/*.xml",
+        "core/network/build/test-results/**/*.xml"
+      ],
+      "notes": "DEVIATION: ACCEPTANCE names :core:protocol:testDebugUnitTest, but :core:protocol applies the kotlin.jvm plugin (pure JVM) and has no debug variant. Correct task is :core:protocol:test. Reconcile the doc. The gate runs both replay suites: the protocol DTO decoder and the network-level recordings against contract/gateway/v0 (GatewayV0ContractReplayTest, GatewayV0FullContractReplayTest).",
+      "units": [
+        {
+          "kind": "gradle",
+          "title": "protocol replay",
+          "argv": [
+            "./gradlew",
+            ":core:protocol:test",
+            "--tests",
+            "*ContractReplay*"
+          ]
+        },
+        {
+          "kind": "gradle",
+          "title": "gateway recording replay",
+          "argv": [
+            "./gradlew",
+            ":core:network:testDebugUnitTest",
+            "--tests",
+            "*ContractReplay*"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G05",
+      "title": "projector-goldens",
+      "blocking": true,
+      "scope": "in-scope",
+      "degradedAllowed": false,
+      "kind": "gradle",
+      "command": "./gradlew :core:domain:test",
+      "args": [
+        "./gradlew",
+        ":core:domain:test"
+      ],
+      "cwdRelative": true,
+      "artifacts": [
+        "core/domain/build/test-results/**/*.xml",
+        "acceptance/golden-cases-*.json"
+      ],
+      "notes": "DEVIATION: ACCEPTANCE names :core:domain:testDebugUnitTest; :core:domain is kotlin.jvm (pure JVM) so the task is :core:domain:test. Golden-case existence/direction check is corroborated by tools/acceptance/check-golden-cases.sh (also wired under G13).",
+      "units": [
+        {
+          "kind": "gradle",
+          "title": "domain goldens",
+          "argv": [
+            "./gradlew",
+            ":core:domain:test"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G06",
+      "title": "cursor-and-reset",
+      "blocking": true,
+      "scope": "in-scope",
+      "degradedAllowed": false,
+      "kind": "gradle",
+      "command": "./gradlew :core:domain:test --tests '*Cursor*' --tests '*Reset*'",
+      "args": [
+        "./gradlew",
+        ":core:domain:test",
+        "--tests",
+        "*Cursor*",
+        "--tests",
+        "*Reset*"
+      ],
+      "cwdRelative": true,
+      "artifacts": [
+        "core/domain/build/test-results/**/*.xml"
+      ],
+      "notes": "DEVIATION: :core:domain:testDebugUnitTest -> :core:domain:test (pure JVM module).",
+      "units": [
+        {
+          "kind": "gradle",
+          "title": "cursor/reset",
+          "argv": [
+            "./gradlew",
+            ":core:domain:test",
+            "--tests",
+            "*Cursor*",
+            "--tests",
+            "*Reset*"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G07",
+      "title": "pending-state-machine",
+      "blocking": true,
+      "scope": "in-scope",
+      "degradedAllowed": false,
+      "kind": "gradle",
+      "command": "./gradlew :core:domain:test --tests '*Pending*'",
+      "args": [
+        "./gradlew",
+        ":core:domain:test",
+        "--tests",
+        "*Pending*"
+      ],
+      "cwdRelative": true,
+      "artifacts": [
+        "core/domain/build/test-results/**/*.xml",
+        "acceptance/pending-transitions.txt"
+      ],
+      "notes": "DEVIATION: :core:domain:testDebugUnitTest -> :core:domain:test (pure JVM module). pending-transitions.txt is a snapshot artifact the domain tests must emit.",
+      "units": [
+        {
+          "kind": "gradle",
+          "title": "pending sm",
+          "argv": [
+            "./gradlew",
+            ":core:domain:test",
+            "--tests",
+            "*Pending*"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G08",
+      "title": "capability-matrix",
+      "blocking": true,
+      "scope": "in-scope",
+      "degradedAllowed": false,
+      "kind": "gradle",
+      "command": "./gradlew :core:domain:test --tests '*Capability*'",
+      "args": [
+        "./gradlew",
+        ":core:domain:test",
+        "--tests",
+        "*Capability*"
+      ],
+      "cwdRelative": true,
+      "artifacts": [
+        "core/domain/build/test-results/**/*.xml"
+      ],
+      "notes": "DEVIATION: :core:domain:testDebugUnitTest -> :core:domain:test (pure JVM module).",
+      "units": [
+        {
+          "kind": "gradle",
+          "title": "capability matrix",
+          "argv": [
+            "./gradlew",
+            ":core:domain:test",
+            "--tests",
+            "*Capability*"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G09",
+      "title": "security-invariants",
+      "blocking": true,
+      "scope": "in-scope",
+      "degradedAllowed": false,
+      "kind": "shell",
+      "command": "bash tools/acceptance/check-source.sh",
+      "args": [
+        "bash",
+        "tools/acceptance/check-source.sh"
+      ],
+      "cwdRelative": true,
+      "artifacts": [
+        "core/domain/build/test-results/**/*.xml",
+        "core/data/build/test-results/**/*.xml"
+      ],
+      "notes": "G09 is segmented; the harness runs every segment and combines them (any FAIL->FAIL, else any BLOCKED->BLOCKED, else PASS). Segment 3 (this shell gate) is tools/acceptance/check-source.sh. Segments 1/2/4 are gradle unit tests: G09.1 :core:domain:test (pure JVM; doc said testDebugUnitTest - DEVIATION) '*IdentityDigest*', G09.2 :core:data:testDebugUnitTest '*Redaction*' (Android module - correct), G09.4 :core:data:testDebugUnitTest '*SecretStore*'. G09.5 closes the other half of D12: G09.3(e) only forbids literals OUTSIDE SyncTuning.kt, so a field silently absent from docs/TUNING.md, or documented with a stale default, would still pass. check-tuning.sh requires the two to agree name-by-name and value-by-value (it evaluates expressions such as 8L * 1024 * 1024 rather than string-comparing), and refuses to guess on a shape it cannot parse. Negative-tested: stale value, deleted row, renamed row, unparseable default each produce exit 1.",
+      "units": [
+        {
+          "kind": "gradle",
+          "title": "G09.1 IdentityDigest",
+          "argv": [
+            "./gradlew",
+            ":core:domain:test",
+            "--tests",
+            "*IdentityDigest*"
+          ]
+        },
+        {
+          "kind": "gradle",
+          "title": "G09.2 Redaction",
+          "argv": [
+            "./gradlew",
+            ":core:data:testDebugUnitTest",
+            "--tests",
+            "*Redaction*"
+          ]
+        },
+        {
+          "kind": "shell",
+          "title": "G09.3 check-source",
+          "argv": [
+            "bash",
+            "tools/acceptance/check-source.sh"
+          ],
+          "prereq": "tools/acceptance/check-source.sh"
+        },
+        {
+          "kind": "gradle",
+          "title": "G09.4 SecretStore",
+          "argv": [
+            "./gradlew",
+            ":core:data:testDebugUnitTest",
+            "--tests",
+            "*SecretStore*"
+          ]
+        },
+        {
+          "kind": "shell",
+          "title": "G09.5 check-tuning",
+          "argv": [
+            "bash",
+            "tools/acceptance/check-tuning.sh"
+          ],
+          "prereq": "tools/acceptance/check-tuning.sh"
+        }
+      ]
+    },
+    {
+      "id": "G10",
+      "title": "diagnostics-schema",
+      "blocking": true,
+      "scope": "in-scope",
+      "degradedAllowed": false,
+      "kind": "gradle",
+      "command": "./gradlew :core:domain:test --tests '*Diagnostics*'",
+      "args": [
+        "./gradlew",
+        ":core:domain:test",
+        "--tests",
+        "*Diagnostics*"
+      ],
+      "cwdRelative": true,
+      "artifacts": [
+        "core/domain/build/test-results/**/*.xml"
+      ],
+      "notes": "DEVIATION: :core:domain:testDebugUnitTest -> :core:domain:test (pure JVM module). Second segment is tools/acceptance/check-diagnostics.sh, owned by another engineer; when absent the harness reports BLOCKED for that segment.",
+      "units": [
+        {
+          "kind": "gradle",
+          "title": "Diagnostics tests",
+          "argv": [
+            "./gradlew",
+            ":core:domain:test",
+            "--tests",
+            "*Diagnostics*"
+          ]
+        },
+        {
+          "kind": "shell",
+          "title": "check-diagnostics",
+          "argv": [
+            "bash",
+            "tools/acceptance/check-diagnostics.sh"
+          ],
+          "prereq": "tools/acceptance/check-diagnostics.sh"
+        }
+      ]
+    },
+    {
+      "id": "G11",
+      "title": "release-artifact",
+      "blocking": true,
+      "scope": "in-scope",
+      "degradedAllowed": false,
+      "kind": "shell",
+      "command": "bash tools/acceptance/check-release-artifact.sh",
+      "args": [
+        "bash",
+        "tools/acceptance/check-release-artifact.sh"
+      ],
+      "cwdRelative": true,
+      "artifacts": [
+        "app/build/outputs/bundle/release/*.aab",
+        "app/build/outputs/apk/release/*.apk",
+        "app/build/outputs/mapping/release/mapping.txt"
+      ],
+      "notes": "tools/acceptance/check-release-artifact.sh runs the R8/assemble gradle steps only under DSH_ALLOW_GRADLE=1, then drives apkanalyzer (manifest print + apk summary) and diffs exported components against acceptance/manifest-baseline.txt, enforces the TUNING.md size budgets (AAB <= 12 MiB, APK <= 20 MiB) and the canary-absent check. It prints BLOCKED (exit 3) when the release artifacts are not assembled yet.",
+      "units": [
+        {
+          "kind": "shell",
+          "title": "release artifact",
+          "argv": [
+            "bash",
+            "tools/acceptance/check-release-artifact.sh"
+          ],
+          "prereq": "tools/acceptance/check-release-artifact.sh"
+        }
+      ]
+    },
+    {
+      "id": "G12",
+      "title": "paging-and-large-data",
+      "blocking": true,
+      "scope": "in-scope",
+      "degradedAllowed": false,
+      "kind": "gradle",
+      "command": "./gradlew :core:data:testDebugUnitTest --tests '*PagingSource*' --tests '*Retention*'",
+      "args": [
+        "./gradlew",
+        ":core:data:testDebugUnitTest",
+        "--tests",
+        "*PagingSource*",
+        "--tests",
+        "*Retention*"
+      ],
+      "cwdRelative": true,
+      "artifacts": [
+        "core/data/build/test-results/**/*.xml"
+      ],
+      "notes": "No deviation: :core:data is an android.library module so testDebugUnitTest is correct. Per D31 the client does not use androidx.paging, so '*PagingSource*' resolves to RosterKeysetPagingSource (the keyset page source over SessionStore) and '*Retention*' to EventRetention; no PagingSource ever lives in :core:database.",
+      "units": [
+        {
+          "kind": "gradle",
+          "title": "paging/retention",
+          "argv": [
+            "./gradlew",
+            ":core:data:testDebugUnitTest",
+            "--tests",
+            "*PagingSource*",
+            "--tests",
+            "*Retention*"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G13",
+      "title": "coverage-floor",
+      "blocking": true,
+      "scope": "in-scope",
+      "degradedAllowed": true,
+      "kind": "shell",
+      "command": "bash tools/acceptance/check-golden-cases.sh",
+      "args": [
+        "bash",
+        "tools/acceptance/check-golden-cases.sh"
+      ],
+      "cwdRelative": true,
+      "artifacts": [
+        "acceptance/golden-cases-*.json",
+        "acceptance/coverage-floor.json"
+      ],
+      "notes": "Primary intent is ./gradlew koverVerify, but the Kover plugin is not applied in any build.gradle.kts and is unavailable on the mirror, so ACCEPTANCE's documented DEGRADED fallback is used as the registered command: check-golden-cases.sh case existence + per-gate JUnit floor in acceptance/coverage-floor.json. degradedAllowed=true; must carry a DECISIONS reference. References: D03 (mirror repo limits) + D21 (JVM-only test degrade path). Recovery condition: apply Kover and register ./gradlew koverVerify.",
+      "units": [
+        {
+          "kind": "shell",
+          "title": "coverage floor (degraded)",
+          "argv": [
+            "bash",
+            "tools/acceptance/check-golden-cases.sh"
+          ],
+          "prereq": "tools/acceptance/check-golden-cases.sh"
+        }
+      ]
+    },
+    {
+      "id": "G14",
+      "title": "i18n-parity",
+      "blocking": true,
+      "scope": "in-scope",
+      "degradedAllowed": false,
+      "kind": "shell",
+      "command": "bash tools/acceptance/check-i18n.sh",
+      "args": [
+        "bash",
+        "tools/acceptance/check-i18n.sh"
+      ],
+      "cwdRelative": true,
+      "artifacts": [],
+      "notes": "No deviation: pure source/resource scan.",
+      "units": [
+        {
+          "kind": "shell",
+          "title": "i18n parity",
+          "argv": [
+            "bash",
+            "tools/acceptance/check-i18n.sh"
+          ],
+          "prereq": "tools/acceptance/check-i18n.sh"
+        }
+      ]
+    },
+    {
+      "id": "G15",
+      "title": "v0-v1-projection-parity",
+      "blocking": true,
+      "scope": "in-scope",
+      "degradedAllowed": false,
+      "kind": "gradle",
+      "command": "./gradlew :core:network:testDebugUnitTest --tests '*Parity*'",
+      "args": [
+        "./gradlew",
+        ":core:network:testDebugUnitTest",
+        "--tests",
+        "*Parity*"
+      ],
+      "cwdRelative": true,
+      "artifacts": [
+        "core/network/build/test-results/**/*.xml"
+      ],
+      "notes": "DEVIATION: the v0/v1 parity suite compares the two network projections (V0V1ProjectionParityTest), so the gate points at :core:network:testDebugUnitTest instead of :core:domain:test. The subject of the gate is unchanged; only the module that owns the real test moved.",
+      "units": [
+        {
+          "kind": "gradle",
+          "title": "v0/v1 parity",
+          "argv": [
+            "./gradlew",
+            ":core:network:testDebugUnitTest",
+            "--tests",
+            "*Parity*"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G16",
+      "title": "database-schema-migration",
+      "blocking": true,
+      "scope": "in-scope",
+      "degradedAllowed": true,
+      "kind": "gradle",
+      "command": "./gradlew :core:database:testDebugUnitTest --tests '*Retirement*'",
+      "args": [
+        "./gradlew",
+        ":core:database:testDebugUnitTest",
+        "--tests",
+        "*Retirement*"
+      ],
+      "cwdRelative": true,
+      "artifacts": [
+        "core/database/build/test-results/**/*.xml",
+        "core/database/schemas/*.json"
+      ],
+      "notes": "DEVIATION: ACCEPTANCE names ./gradlew :core:database:exportSchema, but exportSchema is a KSP/Room argument (room.schemaLocation), not a standalone Gradle task; running it as a task would be an unknown-task FAIL. The registered command is the JVM Retirement test (A->B->A idempotency + 7-day boundary) that lives in the same module; schema JSON is emitted by KSP during compilation and diffed via 'git diff --exit-code' in check-release/CI. Robolectric Room migration measurement is subject to D21 -> degradedAllowed=true; recovery condition is a working Robolectric to add real migration runs.",
+      "units": [
+        {
+          "kind": "gradle",
+          "title": "retirement",
+          "argv": [
+            "./gradlew",
+            ":core:database:testDebugUnitTest",
+            "--tests",
+            "*Retirement*"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G17",
+      "title": "dependency-fence",
+      "blocking": true,
+      "scope": "in-scope",
+      "degradedAllowed": false,
+      "kind": "shell",
+      "command": "bash tools/acceptance/check-modules.sh",
+      "args": [
+        "bash",
+        "tools/acceptance/check-modules.sh"
+      ],
+      "cwdRelative": true,
+      "artifacts": [],
+      "notes": "No deviation to the command. check-modules.sh implements the task-refined fence: feature/* gradle project deps restricted to :core:model/:core:domain/:core:designsystem; :app is the composition root and MAY declare impl project deps, so the :app fence is enforced at the import level (protocol/database/network imports only under app/**/di/** or DshApplication.kt/AppScope.kt). This differs from ACCEPTANCE's literal ':app 不出现 :core:protocol/network/database 的 project 依赖' wording, which the composition root necessarily violates; reconcile the doc.",
+      "units": [
+        {
+          "kind": "shell",
+          "title": "module fence",
+          "argv": [
+            "bash",
+            "tools/acceptance/check-modules.sh"
+          ],
+          "prereq": "tools/acceptance/check-modules.sh"
+        }
+      ]
+    },
+    {
+      "id": "G18",
+      "title": "worker-handoff-semantics",
+      "blocking": true,
+      "scope": "in-scope",
+      "degradedAllowed": false,
+      "kind": "gradle",
+      "command": "./gradlew :core:data:testDebugUnitTest --tests '*SyncOwner*' --tests '*WorkerResult*'",
+      "args": [
+        "./gradlew",
+        ":core:data:testDebugUnitTest",
+        "--tests",
+        "*SyncOwner*",
+        "--tests",
+        "*WorkerResult*"
+      ],
+      "cwdRelative": true,
+      "artifacts": [
+        "core/data/build/test-results/**/*.xml"
+      ],
+      "notes": "No deviation: :core:data is android.library so testDebugUnitTest is correct. Subject is worker-handoff SEMANTICS (D10 CAS arbitration + SyncAttemptResult -> Success/Retry/Cancel). The WorkManager scheduler itself is not installed this round and the gate does not claim it: see D34, and the device checklist (G20) for real periodic runs.",
+      "units": [
+        {
+          "kind": "gradle",
+          "title": "worker handoff",
+          "argv": [
+            "./gradlew",
+            ":core:data:testDebugUnitTest",
+            "--tests",
+            "*SyncOwner*",
+            "--tests",
+            "*WorkerResult*"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G19",
+      "title": "pairing-flow-invariants",
+      "blocking": true,
+      "scope": "in-scope",
+      "degradedAllowed": false,
+      "kind": "gradle",
+      "command": "./gradlew :core:data:testDebugUnitTest --tests '*Pairing*'",
+      "args": [
+        "./gradlew",
+        ":core:data:testDebugUnitTest",
+        "--tests",
+        "*Pairing*"
+      ],
+      "cwdRelative": true,
+      "artifacts": [
+        "core/data/build/test-results/**/*.xml"
+      ],
+      "notes": "No deviation: :core:data is android.library so testDebugUnitTest is correct.",
+      "units": [
+        {
+          "kind": "gradle",
+          "title": "pairing",
+          "argv": [
+            "./gradlew",
+            ":core:data:testDebugUnitTest",
+            "--tests",
+            "*Pairing*"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G20",
+      "title": "device-checklist-evidence",
+      "blocking": false,
+      "scope": "advisory",
+      "degradedAllowed": false,
+      "kind": "internal",
+      "command": "run-gates.sh ::device-checklist",
+      "args": [],
+      "cwdRelative": true,
+      "artifacts": [
+        "docs/DEVICE_CHECKLIST.md"
+      ],
+      "notes": "Builtin advisory gate. Verifies docs/DEVICE_CHECKLIST.md exists and every item carries a 状态 field; all items are NOT_RUN this round, so the gate is ADVISORY (never PASS). Instrumented/Compose-UI device automation is NOT_IN_SCOPE per DECISIONS D20 (no emulator, no system images, adb devices empty); this checklist is the human stand-in.",
+      "units": [
+        {
+          "kind": "internal",
+          "title": "device checklist",
+          "unit": "device-checklist"
+        }
+      ]
+    }
+  ]
+}

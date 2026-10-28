@@ -1,0 +1,70 @@
+# DSH Android CI。当前 dsh-android 目录还不是独立仓库，本文件放在工程内待发布；
+# 独立成仓后复制到 `.github/workflows/ci.yml` 即生效（D01 已决定使用新 applicationId、
+# 不与 com.dshremote.app 共用签名或升级链，因此 CI 不能假设 keystore 存在）。
+#
+# 关键约定：
+# - 门禁缺失 = 失败。run-ci.sh 在 run-gates.sh 不存在时 exit 1，不允许“构建成功即绿”。
+# - release 门禁（G11）在 PR 上只跑 debug + 静态安全门；bundleRelease 只在 `release-*` 分支/tag 上跑，
+#   因为签名材料不在仓库里。
+# - 契约漂移（G03）需要 dsh-Remote 源码；self-hosted runner 通过 DSH_REMOTE_HOME 提供，
+#   GitHub-hosted runner 上没有 → G03 记 BLOCKED，门禁脚本必须把它显式写进 manifest，不得静默跳过。
+
+name: ci
+
+on:
+  push:
+    branches: [main, "release-*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: android-actions/setup-android@v3
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ hashFiles('**/*.gradle.kts', 'gradle/libs.versions.toml', 'gradle/wrapper/gradle-wrapper.properties') }}
+
+      - name: CI (build + acceptance gates)
+        env:
+          DSH_REMOTE_HOME: ${{ secrets.DSH_REMOTE_HOME }}
+        run: tools/ci/run-ci.sh
+
+      - name: Release gates (only on release branches)
+        if: startsWith(github.ref, 'refs/heads/release-') || startsWith(github.ref, 'refs/tags/')
+        run: tools/ci/run-ci.sh --release
+
+      - name: Upload acceptance evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: acceptance-evidence
+          path: |
+            acceptance/manifest.json
+            acceptance/REPORT.md
+          if-no-files-found: error

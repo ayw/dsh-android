@@ -1,0 +1,25 @@
+{
+  "epoch": "e-empty",
+  "since": 10,
+  "latestSeq": 12,
+  "reset": false,
+  "truncated": false,
+  "waitSupported": true,
+  "ok": true,
+  "kind": "mux",
+  "baseline": [],
+  "events": [
+    {
+      "seq": 12,
+      "ts": 1700000000012,
+      "event": {
+        "rpcId": "r-1",
+        "payload": {
+          "sessionId": "s-1",
+          "type": "session/event",
+          "event": { "type": "step/end", "seq": 12, "data": { "turn": 1, "step": 2 } }
+        }
+      }
+    }
+  ]
+}

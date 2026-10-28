@@ -1,0 +1,29 @@
+{
+  "epoch": "e-2",
+  "since": 0,
+  "latestSeq": 7,
+  "reset": false,
+  "truncated": false,
+  "waitSupported": false,
+  "ok": true,
+  "kind": "mux",
+  "someFutureFieldTheClientDoesNotKnow": { "nested": "ignored" },
+  "anotherUnknown": 12345,
+  "events": [
+    {
+      "seq": 7,
+      "ts": 1700000000007,
+      "replay": false,
+      "unknownFrameAttribute": "still-ignored",
+      "event": {
+        "rpcId": "r-unk",
+        "payload": {
+          "sessionId": "s-1",
+          "type": "session/event",
+          "unknownEventAttribute": "ignored",
+          "event": { "type": "brand/new-event-kind", "seq": 7, "data": { "whatever": true } }
+        }
+      }
+    }
+  ]
+}

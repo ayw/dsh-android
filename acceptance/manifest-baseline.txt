@@ -1,0 +1,9 @@
+# acceptance/manifest-baseline.txt - exported-component allowlist for G11.
+# Generated from the SOURCE app/src/main/AndroidManifest.xml.
+# source-manifest-sha256: 7c326d08e843fec46857659de860288ba218d156ade1762aa121b9aad5e2ddca
+# REGENERATE whenever app/src/main/AndroidManifest.xml changes:
+#   bash tools/acceptance/check-release-artifact.sh --regen-baseline
+# check-release-artifact.sh diffs apkanalyzer's release-APK exported set against the
+# '<tag> <class-leaf>' lines below. Any release exported component not listed here FAILs.
+#
+activity MainActivity

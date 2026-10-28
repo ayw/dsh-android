@@ -1,0 +1,957 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "8533fb04f2df265fa49e8d9590d5a74b",
+    "entities": [
+      {
+        "tableName": "server",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`serverId` TEXT NOT NULL, `label` TEXT NOT NULL, `baseUrl` TEXT NOT NULL, `identityHash` TEXT NOT NULL, `addedAtMs` INTEGER NOT NULL, `lastSeenAtMs` INTEGER NOT NULL, PRIMARY KEY(`serverId`))",
+        "fields": [
+          {
+            "fieldPath": "serverId",
+            "columnName": "serverId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "label",
+            "columnName": "label",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseUrl",
+            "columnName": "baseUrl",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "identityHash",
+            "columnName": "identityHash",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "addedAtMs",
+            "columnName": "addedAtMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastSeenAtMs",
+            "columnName": "lastSeenAtMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "serverId"
+          ]
+        }
+      },
+      {
+        "tableName": "server_credential",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`identityHash` TEXT NOT NULL, `serverId` TEXT NOT NULL, `iv` BLOB NOT NULL, `ciphertext` BLOB NOT NULL, `createdAtMs` INTEGER NOT NULL, `updatedAtMs` INTEGER NOT NULL, PRIMARY KEY(`identityHash`))",
+        "fields": [
+          {
+            "fieldPath": "identityHash",
+            "columnName": "identityHash",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "serverId",
+            "columnName": "serverId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "iv",
+            "columnName": "iv",
+            "affinity": "BLOB",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ciphertext",
+            "columnName": "ciphertext",
+            "affinity": "BLOB",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAtMs",
+            "columnName": "createdAtMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAtMs",
+            "columnName": "updatedAtMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "identityHash"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_server_credential_serverId",
+            "unique": false,
+            "columnNames": [
+              "serverId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_server_credential_serverId` ON `${TABLE_NAME}` (`serverId`)"
+          }
+        ]
+      },
+      {
+        "tableName": "session",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`serverId` TEXT NOT NULL, `sessionId` TEXT NOT NULL, `title` TEXT NOT NULL, `updatedAtMs` INTEGER NOT NULL, `running` INTEGER NOT NULL, `archived` INTEGER NOT NULL, `workspaceId` TEXT, `rosterRank` INTEGER NOT NULL, `lastSeenRank` INTEGER NOT NULL, `tombstonedAtMs` INTEGER, PRIMARY KEY(`serverId`, `sessionId`))",
+        "fields": [
+          {
+            "fieldPath": "serverId",
+            "columnName": "serverId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sessionId",
+            "columnName": "sessionId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAtMs",
+            "columnName": "updatedAtMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "running",
+            "columnName": "running",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "archived",
+            "columnName": "archived",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "workspaceId",
+            "columnName": "workspaceId",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "rosterRank",
+            "columnName": "rosterRank",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastSeenRank",
+            "columnName": "lastSeenRank",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tombstonedAtMs",
+            "columnName": "tombstonedAtMs",
+            "affinity": "INTEGER"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "serverId",
+            "sessionId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_session_serverId_rosterRank_sessionId",
+            "unique": false,
+            "columnNames": [
+              "serverId",
+              "rosterRank",
+              "sessionId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_session_serverId_rosterRank_sessionId` ON `${TABLE_NAME}` (`serverId`, `rosterRank`, `sessionId`)"
+          },
+          {
+            "name": "index_session_serverId_updatedAtMs_sessionId",
+            "unique": false,
+            "columnNames": [
+              "serverId",
+              "updatedAtMs",
+              "sessionId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_session_serverId_updatedAtMs_sessionId` ON `${TABLE_NAME}` (`serverId`, `updatedAtMs`, `sessionId`)"
+          },
+          {
+            "name": "index_session_serverId_lastSeenRank",
+            "unique": false,
+            "columnNames": [
+              "serverId",
+              "lastSeenRank"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_session_serverId_lastSeenRank` ON `${TABLE_NAME}` (`serverId`, `lastSeenRank`)"
+          }
+        ]
+      },
+      {
+        "tableName": "session_head",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`serverId` TEXT NOT NULL, `sessionId` TEXT NOT NULL, `contiguousSeq` INTEGER, `appliedMaxSeq` INTEGER, `historyUnsafe` INTEGER NOT NULL, `historyIncomplete` INTEGER NOT NULL, `prunedBelowSeq` INTEGER, `lastAppliedAtMs` INTEGER NOT NULL, PRIMARY KEY(`serverId`, `sessionId`))",
+        "fields": [
+          {
+            "fieldPath": "serverId",
+            "columnName": "serverId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sessionId",
+            "columnName": "sessionId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "contiguousSeq",
+            "columnName": "contiguousSeq",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "appliedMaxSeq",
+            "columnName": "appliedMaxSeq",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "historyUnsafe",
+            "columnName": "historyUnsafe",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "historyIncomplete",
+            "columnName": "historyIncomplete",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "prunedBelowSeq",
+            "columnName": "prunedBelowSeq",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "lastAppliedAtMs",
+            "columnName": "lastAppliedAtMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "serverId",
+            "sessionId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_session_head_serverId_sessionId_appliedMaxSeq",
+            "unique": false,
+            "columnNames": [
+              "serverId",
+              "sessionId",
+              "appliedMaxSeq"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_session_head_serverId_sessionId_appliedMaxSeq` ON `${TABLE_NAME}` (`serverId`, `sessionId`, `appliedMaxSeq`)"
+          }
+        ]
+      },
+      {
+        "tableName": "session_event",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`rowId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `serverId` TEXT NOT NULL, `sessionId` TEXT NOT NULL, `seq` INTEGER NOT NULL, `type` TEXT NOT NULL, `ignorable` INTEGER NOT NULL, `payloadJson` TEXT NOT NULL, `origin` TEXT NOT NULL, `wallClockMs` INTEGER NOT NULL, `receivedAtMs` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "rowId",
+            "columnName": "rowId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "serverId",
+            "columnName": "serverId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sessionId",
+            "columnName": "sessionId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "seq",
+            "columnName": "seq",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ignorable",
+            "columnName": "ignorable",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "payloadJson",
+            "columnName": "payloadJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "origin",
+            "columnName": "origin",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "wallClockMs",
+            "columnName": "wallClockMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "receivedAtMs",
+            "columnName": "receivedAtMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "rowId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_session_event_serverId_sessionId_seq",
+            "unique": true,
+            "columnNames": [
+              "serverId",
+              "sessionId",
+              "seq"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_session_event_serverId_sessionId_seq` ON `${TABLE_NAME}` (`serverId`, `sessionId`, `seq`)"
+          },
+          {
+            "name": "index_session_event_serverId_sessionId_type",
+            "unique": false,
+            "columnNames": [
+              "serverId",
+              "sessionId",
+              "type"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_session_event_serverId_sessionId_type` ON `${TABLE_NAME}` (`serverId`, `sessionId`, `type`)"
+          },
+          {
+            "name": "index_session_event_serverId_receivedAtMs",
+            "unique": false,
+            "columnNames": [
+              "serverId",
+              "receivedAtMs"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_session_event_serverId_receivedAtMs` ON `${TABLE_NAME}` (`serverId`, `receivedAtMs`)"
+          }
+        ]
+      },
+      {
+        "tableName": "applied_island",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`serverId` TEXT NOT NULL, `sessionId` TEXT NOT NULL, `startSeq` INTEGER NOT NULL, `endSeq` INTEGER NOT NULL, PRIMARY KEY(`serverId`, `sessionId`, `startSeq`))",
+        "fields": [
+          {
+            "fieldPath": "serverId",
+            "columnName": "serverId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sessionId",
+            "columnName": "sessionId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startSeq",
+            "columnName": "startSeq",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "endSeq",
+            "columnName": "endSeq",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "serverId",
+            "sessionId",
+            "startSeq"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_applied_island_serverId_sessionId_endSeq",
+            "unique": false,
+            "columnNames": [
+              "serverId",
+              "sessionId",
+              "endSeq"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_applied_island_serverId_sessionId_endSeq` ON `${TABLE_NAME}` (`serverId`, `sessionId`, `endSeq`)"
+          }
+        ]
+      },
+      {
+        "tableName": "pending_request",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`serverId` TEXT NOT NULL, `kind` TEXT NOT NULL, `requestId` TEXT NOT NULL, `sessionId` TEXT NOT NULL, `status` TEXT NOT NULL, `completeness` TEXT NOT NULL, `payloadJson` TEXT NOT NULL, `firstSeenAtMs` INTEGER NOT NULL, `createdAtMs` INTEGER NOT NULL, `asOfSeq` INTEGER NOT NULL, `anchorSeq` INTEGER, `callId` TEXT, `toolName` TEXT, `dismissedAtMs` INTEGER, `resolvedAtMs` INTEGER, `tombstonedAtMs` INTEGER, `sweptAtMs` INTEGER, PRIMARY KEY(`serverId`, `kind`, `requestId`))",
+        "fields": [
+          {
+            "fieldPath": "serverId",
+            "columnName": "serverId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kind",
+            "columnName": "kind",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "requestId",
+            "columnName": "requestId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sessionId",
+            "columnName": "sessionId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "completeness",
+            "columnName": "completeness",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "payloadJson",
+            "columnName": "payloadJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "firstSeenAtMs",
+            "columnName": "firstSeenAtMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAtMs",
+            "columnName": "createdAtMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "asOfSeq",
+            "columnName": "asOfSeq",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "anchorSeq",
+            "columnName": "anchorSeq",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "callId",
+            "columnName": "callId",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "toolName",
+            "columnName": "toolName",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "dismissedAtMs",
+            "columnName": "dismissedAtMs",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "resolvedAtMs",
+            "columnName": "resolvedAtMs",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "tombstonedAtMs",
+            "columnName": "tombstonedAtMs",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "sweptAtMs",
+            "columnName": "sweptAtMs",
+            "affinity": "INTEGER"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "serverId",
+            "kind",
+            "requestId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_pending_request_serverId_status",
+            "unique": false,
+            "columnNames": [
+              "serverId",
+              "status"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_pending_request_serverId_status` ON `${TABLE_NAME}` (`serverId`, `status`)"
+          },
+          {
+            "name": "index_pending_request_serverId_sessionId",
+            "unique": false,
+            "columnNames": [
+              "serverId",
+              "sessionId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_pending_request_serverId_sessionId` ON `${TABLE_NAME}` (`serverId`, `sessionId`)"
+          },
+          {
+            "name": "index_pending_request_serverId_tombstonedAtMs",
+            "unique": false,
+            "columnNames": [
+              "serverId",
+              "tombstonedAtMs"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_pending_request_serverId_tombstonedAtMs` ON `${TABLE_NAME}` (`serverId`, `tombstonedAtMs`)"
+          }
+        ]
+      },
+      {
+        "tableName": "notification_outbox",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`identityHash` TEXT NOT NULL, `kind` TEXT NOT NULL, `requestId` TEXT NOT NULL, `notificationTag` TEXT NOT NULL, `state` TEXT NOT NULL, `createdAtMs` INTEGER NOT NULL, `updatedAtMs` INTEGER NOT NULL, PRIMARY KEY(`identityHash`, `kind`, `requestId`))",
+        "fields": [
+          {
+            "fieldPath": "identityHash",
+            "columnName": "identityHash",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kind",
+            "columnName": "kind",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "requestId",
+            "columnName": "requestId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "notificationTag",
+            "columnName": "notificationTag",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "state",
+            "columnName": "state",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAtMs",
+            "columnName": "createdAtMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAtMs",
+            "columnName": "updatedAtMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "identityHash",
+            "kind",
+            "requestId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_notification_outbox_identityHash_state",
+            "unique": false,
+            "columnNames": [
+              "identityHash",
+              "state"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_notification_outbox_identityHash_state` ON `${TABLE_NAME}` (`identityHash`, `state`)"
+          },
+          {
+            "name": "index_notification_outbox_notificationTag",
+            "unique": false,
+            "columnNames": [
+              "notificationTag"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_notification_outbox_notificationTag` ON `${TABLE_NAME}` (`notificationTag`)"
+          }
+        ]
+      },
+      {
+        "tableName": "sync_state",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`identityHash` TEXT NOT NULL, `kind` TEXT NOT NULL, `seq` INTEGER NOT NULL, `epoch` TEXT, `updatedAtMs` INTEGER NOT NULL, PRIMARY KEY(`identityHash`, `kind`))",
+        "fields": [
+          {
+            "fieldPath": "identityHash",
+            "columnName": "identityHash",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kind",
+            "columnName": "kind",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "seq",
+            "columnName": "seq",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "epoch",
+            "columnName": "epoch",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "updatedAtMs",
+            "columnName": "updatedAtMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "identityHash",
+            "kind"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_sync_state_identityHash",
+            "unique": false,
+            "columnNames": [
+              "identityHash"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_sync_state_identityHash` ON `${TABLE_NAME}` (`identityHash`)"
+          }
+        ]
+      },
+      {
+        "tableName": "identity_retired",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`identityHash` TEXT NOT NULL, `serverId` TEXT NOT NULL, `retiredAtMs` INTEGER NOT NULL, PRIMARY KEY(`identityHash`))",
+        "fields": [
+          {
+            "fieldPath": "identityHash",
+            "columnName": "identityHash",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "serverId",
+            "columnName": "serverId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "retiredAtMs",
+            "columnName": "retiredAtMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "identityHash"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_identity_retired_retiredAtMs",
+            "unique": false,
+            "columnNames": [
+              "retiredAtMs"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_identity_retired_retiredAtMs` ON `${TABLE_NAME}` (`retiredAtMs`)"
+          }
+        ]
+      },
+      {
+        "tableName": "auth_scope_failures",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`identityHash` TEXT NOT NULL, `scope` TEXT NOT NULL, `failCount` INTEGER NOT NULL, `lastCode` INTEGER NOT NULL, `lastFailureAtMs` INTEGER NOT NULL, PRIMARY KEY(`identityHash`, `scope`))",
+        "fields": [
+          {
+            "fieldPath": "identityHash",
+            "columnName": "identityHash",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "scope",
+            "columnName": "scope",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "failCount",
+            "columnName": "failCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastCode",
+            "columnName": "lastCode",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastFailureAtMs",
+            "columnName": "lastFailureAtMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "identityHash",
+            "scope"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_auth_scope_failures_identityHash",
+            "unique": false,
+            "columnNames": [
+              "identityHash"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_auth_scope_failures_identityHash` ON `${TABLE_NAME}` (`identityHash`)"
+          }
+        ]
+      },
+      {
+        "tableName": "resync_request",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`serverId` TEXT NOT NULL, `sessionId` TEXT NOT NULL, `reason` TEXT NOT NULL, `expectedSeq` INTEGER NOT NULL, `attempts` INTEGER NOT NULL, `degraded` INTEGER NOT NULL, `requestedAtMs` INTEGER NOT NULL, PRIMARY KEY(`serverId`, `sessionId`))",
+        "fields": [
+          {
+            "fieldPath": "serverId",
+            "columnName": "serverId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sessionId",
+            "columnName": "sessionId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "reason",
+            "columnName": "reason",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expectedSeq",
+            "columnName": "expectedSeq",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "attempts",
+            "columnName": "attempts",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "degraded",
+            "columnName": "degraded",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "requestedAtMs",
+            "columnName": "requestedAtMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "serverId",
+            "sessionId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_resync_request_serverId_degraded",
+            "unique": false,
+            "columnNames": [
+              "serverId",
+              "degraded"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_resync_request_serverId_degraded` ON `${TABLE_NAME}` (`serverId`, `degraded`)"
+          }
+        ]
+      },
+      {
+        "tableName": "sync_owner",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`ownerKey` TEXT NOT NULL, `role` TEXT NOT NULL, `holderId` TEXT NOT NULL, `foregroundRequestedAtMs` INTEGER, `updatedAtMs` INTEGER NOT NULL, PRIMARY KEY(`ownerKey`))",
+        "fields": [
+          {
+            "fieldPath": "ownerKey",
+            "columnName": "ownerKey",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "role",
+            "columnName": "role",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "holderId",
+            "columnName": "holderId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foregroundRequestedAtMs",
+            "columnName": "foregroundRequestedAtMs",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "updatedAtMs",
+            "columnName": "updatedAtMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "ownerKey"
+          ]
+        }
+      },
+      {
+        "tableName": "diagnostics_counters",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`name` TEXT NOT NULL, `value` INTEGER NOT NULL, `updatedAtMs` INTEGER NOT NULL, PRIMARY KEY(`name`))",
+        "fields": [
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "value",
+            "columnName": "value",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAtMs",
+            "columnName": "updatedAtMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "name"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8533fb04f2df265fa49e8d9590d5a74b')"
+    ]
+  }
+}

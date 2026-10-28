@@ -1,0 +1,120 @@
+
+---- unit[0] capability matrix (gradle) ----
+
+> Configure project :
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven2' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven3' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+
+> Configure project :app
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven2' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven3' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+
+> Configure project :core
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven2' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven3' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+
+> Configure project :feature
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven2' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven3' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+
+> Configure project :core:data
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven2' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven3' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+
+> Configure project :core:database
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven2' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven3' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+
+> Configure project :core:designsystem
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven2' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven3' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+
+> Configure project :core:domain
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven2' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven3' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+
+> Configure project :core:model
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven2' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven3' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+
+> Configure project :core:network
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven2' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven3' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+
+> Configure project :core:protocol
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven2' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven3' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+
+> Configure project :core:testing
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven2' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven3' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+
+> Configure project :feature:conversation
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven2' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven3' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+
+> Configure project :feature:inbox
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven2' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven3' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+
+> Configure project :feature:sessions
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven2' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven3' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+
+> Configure project :feature:settings
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven2' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'maven3' was added by initialization script '/home/keivn/.gradle/init.d/mirrors.init.gradle'
+[mirrors.init.gradle] 已前置国内镜像(依赖:public/google/huawei 插件:gradle-plugin)、剔除 6 个被覆盖/已死仓库；mavenCentral 兜底=false；http 超时 connect=15000 socket=60000
+
+> Task :core:testing:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :core:model:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :core:domain:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :core:testing:processResources NO-SOURCE
+> Task :core:domain:processResources NO-SOURCE
+> Task :core:domain:processTestResources NO-SOURCE
+> Task :core:model:compileKotlin UP-TO-DATE
+> Task :core:model:compileJava NO-SOURCE
+> Task :core:model:processResources NO-SOURCE
+> Task :core:model:classes UP-TO-DATE
+> Task :core:model:jar UP-TO-DATE
+> Task :core:domain:compileKotlin UP-TO-DATE
+> Task :core:domain:compileJava NO-SOURCE
+> Task :core:domain:classes UP-TO-DATE
+> Task :core:domain:jar UP-TO-DATE
+> Task :core:testing:compileKotlin UP-TO-DATE
+> Task :core:testing:compileJava NO-SOURCE
+> Task :core:testing:classes UP-TO-DATE
+> Task :core:testing:jar UP-TO-DATE
+> Task :core:domain:compileTestKotlin UP-TO-DATE
+> Task :core:domain:compileTestJava NO-SOURCE
+> Task :core:domain:testClasses UP-TO-DATE
+> Task :core:domain:test FROM-CACHE
+
+[Incubating] Problems report is available at: file:///home/keivn/AndroidStudioProjects/deepseek-harness/dsh-android/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.6.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 534ms
+8 actionable tasks: 1 from cache, 7 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.6.1/userguide/configuration_cache_enabling.html
+---- exit=0  1793154244153..1793154244774 ms ----

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  默认语言 = 简体中文。values-en/strings.xml 的键集必须逐键相等（G14/D15）。
+  会话列表只描述名册事实；标题为空时用通用文案，绝不回退到会话 id。
+-->
+<resources>
+
+    <string name="sessions_title">会话</string>
+    <string name="sessions_subtitle">本机缓存的会话名册；分页只在本机进行。</string>
+    <string name="sessions_refresh">刷新</string>
+    <string name="sessions_refreshing">正在刷新</string>
+    <string name="sessions_open_inbox">打开收件箱</string>
+    <string name="sessions_open_conversation">打开会话</string>
+    <string name="sessions_untitled">未命名会话</string>
+    <string name="sessions_time_just_now">刚刚更新</string>
+    <string name="sessions_time_minutes">%1$d 分钟前更新</string>
+    <string name="sessions_time_hours">%1$d 小时前更新</string>
+    <string name="sessions_time_days">%1$d 天前更新</string>
+    <string name="sessions_row_pending">%1$d 项待处理</string>
+
+    <string name="sessions_status_running">进行中</string>
+    <string name="sessions_status_archived">已归档</string>
+    <string name="sessions_status_history_unsafe">历史不可重建</string>
+
+    <string name="sessions_empty_title">还没有会话</string>
+    <string name="sessions_empty_subtitle">完整性核对通过且计数为零，空名单是可信的。</string>
+    <string name="sessions_unknown_empty_title">无法确认会话名单</string>
+    <string name="sessions_unknown_empty_subtitle">待处理完整性核对尚未完成，本机可能还没有拿到完整名单。</string>
+
+    <string name="sessions_counts_error_title">待处理计数暂时不可用</string>
+    <string name="sessions_roster_stale_title">名单可能不是最新</string>
+    <string name="sessions_roster_stale_detail">完整名单只在过期后重新拉取；可手动刷新。</string>
+    <string name="sessions_roster_failed_title">名单同步失败</string>
+    <string name="sessions_roster_failed_detail">列表仍显示本机缓存，可能缺少新会话。</string>
+    <string name="sessions_load_error_title">会话列表没有完整更新</string>
+    <string name="sessions_load_error_detail">已显示的会话仍来自本机缓存。</string>
+    <string name="sessions_action_error_title">刷新未生效</string>
+
+    <string name="sessions_loading_more">正在加载更多会话</string>
+    <string name="sessions_load_more">加载更多</string>
+    <string name="sessions_end_of_list">已到列表末尾</string>
+
+    <string name="sessions_error_unreachable">无法连接到服务器。</string>
+    <string name="sessions_error_timeout">等待服务器响应超时。</string>
+    <string name="sessions_error_auth">凭据已失效，需要重新配对。</string>
+    <string name="sessions_error_forbidden">服务器拒绝了该请求。</string>
+    <string name="sessions_error_history_incomplete">历史可能不完整，较早的内容可能缺失。</string>
+    <string name="sessions_error_conflict">服务器报告了写冲突。</string>
+    <string name="sessions_error_rejected">服务器没有接受该请求。</string>
+    <string name="sessions_error_unavailable">这台服务器不支持该操作。</string>
+    <string name="sessions_error_generic">出了点问题。</string>
+
+</resources>

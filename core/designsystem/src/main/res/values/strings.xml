@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  DSH Android 用户可见文案的唯一来源（D15 / 验收 G14）。
+  默认语言 = 简体中文；values-en/strings.xml 必须与本文件键集与占位符数量完全一致。
+  特性模块不得硬编码文案，也不得自建第二套资源目录。
+  命名空间：states_ errors_ units_ sessions_ conversation_ pending_ inbox_
+            pairing_ settings_ diagnostics_
+  所有 plurals 在两个 locale 里都同时给出 one/other，保证键集严格相等；
+  中文两种形式同文，运行时按 other 取值。
+-->
+<resources>
+
+    <!-- ==================== states_：连接、加载、诚实降级 ==================== -->
+    <string name="states_unknown">未知</string>
+    <string name="states_none">无</string>
+    <string name="states_loading">正在加载</string>
+    <string name="states_idle">空闲</string>
+    <string name="states_live">已连接</string>
+    <string name="states_polling">正在轮询更新</string>
+    <string name="states_suspended">同步已暂停</string>
+    <string name="states_suspended_detail">后台同步已关闭，在你手动操作前不会有新内容。</string>
+    <string name="states_one_shot">后台同步进行中</string>
+    <string name="states_foreground_pending">等待回到前台后继续同步</string>
+    <string name="states_unreachable">无法连接服务器</string>
+    <string name="states_unreachable_detail">请确认本机与服务器在同一网络，且服务仍在运行。</string>
+    <string name="states_not_realtime_detail">这里不是实时推送通道：新事件要等下一次同步才会出现。</string>
+    <string name="states_poll_wait_unsupported_detail">服务器禁用了长轮询，本机改为短间隔轮询，延迟更高。</string>
+    <string name="states_repair_action">重新配对</string>
+    <string name="states_expand">展开</string>
+    <string name="states_collapse">收起</string>
+    <string name="states_view_details">查看详情</string>
+    <string name="states_hide_details">收起详情</string>
+    <string name="states_background_sync_unsupported_title">这台服务器不支持事件轮询</string>
+    <string name="states_background_sync_unsupported_detail">只有你手动操作时才会更新；审批可能长时间无人应答。</string>
+    <string name="states_history_may_be_incomplete">历史可能不完整</string>
+    <string name="states_visible_history_not_context">可见历史不等于当前上下文。</string>
+    <string name="states_large_directory_slow">目录很大时首次加载可能明显变慢。</string>
+    <string name="states_search_unavailable">暂不支持搜索</string>
+    <string name="states_unarchive_unsupported">不支持取消归档</string>
+    <string name="states_archive_unsupported">不支持归档</string>
+    <string name="states_truncated_at_cap">本地已在上限 %1$s 条处截断显示。</string>
+    <string name="states_dismissed_label">已忽略</string>
+    <string name="states_partial">部分加载</string>
+    <string name="states_local_only_note">这里显示的计数全部来自本机数据库，不会自动上传。</string>
+    <string name="states_empty_title">这里还是空的</string>
+    <string name="states_refresh_action">刷新</string>
+    <string name="states_undo_action">撤销</string>
+
+    <!-- ==================== errors_：错误态（一律走资源，不显示异常正文） ==================== -->
+    <string name="errors_generic">出了点问题</string>
+    <string name="errors_retry">重试</string>
+    <string name="errors_no_details">没有更多细节</string>
+    <string name="errors_server_summary_note">以下摘要来自服务器，未经本地化：</string>
+    <string name="errors_network_unreachable">无法连接到服务器。</string>
+    <string name="errors_timeout">等待服务器响应超时。</string>
+    <string name="errors_auth_expired">凭据已失效，需要重新配对。</string>
+    <string name="errors_auth_expired_detail">为避免误判，本机没有删除已保存的凭据；请扫码确认后重新建立连接。</string>
+    <string name="errors_forbidden_detail">这台服务器拒绝了该请求，但你保存的凭据仍然有效。</string>
+    <string name="errors_session_gone">该会话已不在服务器上。</string>
+    <string name="errors_pending_stale">这个请求已经在别处结算，你的答案没有生效。</string>
+    <string name="errors_pending_unknown">请求已提交，但结算结果未知。</string>
+    <string name="errors_repair_stopped">补齐历史连续两次失败，本机已停止自动重试。</string>
+    <string name="errors_baseline_too_large">待处理项过多，本轮跳过了完整性核对。</string>
+    <string name="errors_unknown_event_kind">未登记的事件类型：%1$s</string>
+    <string name="errors_clipboard_unavailable">本机无法写入剪贴板。</string>
+    <string name="errors_camera_denied">没有相机权限，无法扫码；可改用手动输入地址。</string>
+    <string name="errors_qr_unparsable">二维码内容无法解析。</string>
+    <string name="errors_health_check_failed">未能通过服务器健康检查，凭据没有保存。</string>
+    <string name="errors_image_transport_unsupported">这台服务器不支持图片输入。</string>
+    <string name="errors_attachment_too_large">附件超过本机上限 %1$s。</string>
+    <string name="errors_prompt_too_long">输入超过本机上限 %1$s 个字符。</string>
+    <string name="errors_operation_unsupported">这台服务器不支持该操作。</string>
+
+    <!-- ==================== units_：带单位与单复数的计数 ==================== -->
+    <string name="units_seq">#%1$d</string>
+    <string name="units_minutes_ago">%1$s 分钟前</string>
+    <string name="units_hours_ago">%1$s 小时前</string>
+    <string name="units_days_ago">%1$s 天前</string>
+    <plurals name="units_tokens">
+        <item quantity="one">%1$s 个 token</item>
+        <item quantity="other">%1$s 个 token</item>
+    </plurals>
+    <plurals name="units_minutes">
+        <item quantity="one">%1$s 分钟</item>
+        <item quantity="other">%1$s 分钟</item>
+    </plurals>
+    <plurals name="units_seconds">
+        <item quantity="one">%1$s 秒</item>
+        <item quantity="other">%1$s 秒</item>
+    </plurals>
+    <plurals name="units_items">
+        <item quantity="one">%1$d 项</item>
+        <item quantity="other">%1$d 项</item>
+    </plurals>
+    <plurals name="units_events">
+        <item quantity="one">%1$d 个事件</item>
+        <item quantity="other">%1$d 个事件</item>
+    </plurals>
+    <plurals name="units_sessions">
+        <item quantity="one">%1$d 个会话</item>
+        <item quantity="other">%1$d 个会话</item>
+    </plurals>
+    <plurals name="units_requests">
+        <item quantity="one">%1$d 个请求</item>
+        <item quantity="other">%1$d 个请求</item>
+    </plurals>
+    <plurals name="units_bytes">
+        <item quantity="one">%1$s</item>
+        <item quantity="other">%1$s</item>
+    </plurals>
+
+    <!-- ==================== sessions_：会话列表 ==================== -->
+    <string name="sessions_title">会话</string>
+    <string name="sessions_empty_title">还没有会话</string>
+    <string name="sessions_empty_subtitle">服务器上没有可显示的会话。若你刚在别处新建，请等下一次同步。</string>
+    <string name="sessions_loading">正在加载会话</string>
+    <string name="sessions_status_running">进行中</string>
+    <string name="sessions_status_needs_attention">需要处理</string>
+    <string name="sessions_status_idle">空闲</string>
+    <string name="sessions_updated_at">更新于 %1$s</string>
+    <string name="sessions_open_conversation">打开会话</string>
+    <string name="sessions_roster_stale">列表可能不是最新：完整名单只在过期后重新拉取。</string>
+    <string name="sessions_sort_label">排序</string>
+    <string name="sessions_sort_recent">最近活动</string>
+    <string name="sessions_sort_pending">待处理优先</string>
+    <string name="sessions_filter_all">全部</string>
+    <string name="sessions_filter_needs_attention">只看需要处理</string>
+    <string name="sessions_archive_action">归档</string>
+    <string name="sessions_unarchive_action">取消归档</string>
+    <string name="sessions_pending_section_title">待处理</string>
+    <string name="sessions_local_page_note">列表在本机分页；服务器不提供名单分页，首次拉取可能较慢。</string>
+
+    <!-- ==================== conversation_：会话时间线 ==================== -->
+    <string name="conversation_title">会话</string>
+    <string name="conversation_role_user">你</string>
+    <string name="conversation_role_assistant">助手</string>
+    <string name="conversation_role_system">系统</string>
+    <string name="conversation_role_developer">开发者</string>
+    <string name="conversation_interrupted">已中断</string>
+    <string name="conversation_empty_assistant">这条助手消息没有正文。</string>
+    <string name="conversation_model_label">模型 %1$s</string>
+    <string name="conversation_usage_in_out">输入 %1$s · 输出 %2$s</string>
+    <string name="conversation_finish_reason">结束原因：%1$s</string>
+    <string name="conversation_group_running">进行中</string>
+    <string name="conversation_group_complete">已完成</string>
+    <string name="conversation_group_incomplete">结果不完整</string>
+    <string name="conversation_group_failed">有操作失败</string>
+    <string name="conversation_group_open_turn">该回合仍未结束</string>
+    <plurals name="conversation_group_steps">
+        <item quantity="one">%1$d 个步骤</item>
+        <item quantity="other">%1$d 个步骤</item>
+    </plurals>
+    <string name="conversation_tool_called">已调用</string>
+    <string name="conversation_tool_succeeded">成功</string>
+    <string name="conversation_tool_failed">失败</string>
+    <string name="conversation_tool_incomplete">未收到结果</string>
+    <string name="conversation_tool_orphan_result">结果先于调用</string>
+    <string name="conversation_tool_arguments">参数</string>
+    <string name="conversation_tool_result">结果</string>
+    <string name="conversation_tool_seq_pair">调用 %1$s · 结果 %2$s</string>
+    <string name="conversation_tool_result_conflict">同一调用又收到一条结果 %1$s，本机保留较早的终态。</string>
+    <string name="conversation_reasoning_title">推理叠加层</string>
+    <string name="conversation_reasoning_disclaimer">推理只是叠加层，不是正文；提交后本机不会保留半截文本。</string>
+    <string name="conversation_attempt_title">已放弃的重试</string>
+    <string name="conversation_attempt_error_kind">错误类型 %1$s</string>
+    <string name="conversation_unsupported_entry">未登记事件 %1$s</string>
+    <plurals name="conversation_unsupported_count">
+        <item quantity="one">忽略了 %1$d 个未登记事件</item>
+        <item quantity="other">忽略了 %1$d 个未登记事件</item>
+    </plurals>
+    <string name="conversation_unsupported_hint">这些事件仍推进了序号，只是本机无法安全解释。</string>
+    <string name="conversation_compaction_marker">上下文已压缩</string>
+    <string name="conversation_compaction_hint">压缩只影响模型看到的上下文；可见历史里可能仍有被压缩掉的旧消息。</string>
+    <string name="conversation_gap_range">缺少 %1$s 到 %2$s 之间的事件</string>
+    <string name="conversation_history_unsafe_title">这段历史无法重建</string>
+    <string name="conversation_history_unsafe_detail">遇到未登记且不可忽略的事件：%1$s</string>
+    <string name="conversation_history_incomplete_hint">有空洞尚未补齐，较早的消息可能缺失。</string>
+    <string name="conversation_turn_end_completed">回合结束</string>
+    <string name="conversation_turn_end_aborted_user">已由你中断</string>
+    <string name="conversation_turn_end_aborted_parent">被上级代理中断</string>
+    <string name="conversation_turn_end_aborted_hook">被钩子阻止</string>
+    <string name="conversation_turn_end_aborted_disposed">会话已释放</string>
+    <string name="conversation_turn_end_aborted_legacy">已中止</string>
+    <string name="conversation_turn_end_interrupted">已中断</string>
+    <string name="conversation_turn_end_forked">已分支到新会话</string>
+    <string name="conversation_turn_end_blocked">回合被阻止</string>
+    <string name="conversation_turn_end_failure">回合失败</string>
+    <string name="conversation_turn_end_max_tokens">达到长度上限，回复可能被截断</string>
+    <string name="conversation_turn_end_unknown">回合结束：%1$s</string>
+    <string name="conversation_load_earlier">加载更早的消息</string>
+    <string name="conversation_loading_earlier">正在加载更早的消息</string>
+    <string name="conversation_history_start">已到达本机保存的最早一条</string>
+    <string name="conversation_history_not_loaded">本机还没读完这个会话的历史。</string>
+    <string name="conversation_jump_to_pending">跳到 %1$d 个待处理</string>
+    <string name="conversation_no_messages_title">这个会话还没有可见消息</string>
+    <string name="conversation_no_messages_subtitle">投影结果里没有可展示的条目；可能是历史尚未加载，也可能确实为空。</string>
+    <string name="conversation_readonly_hint">本轮版本只读：还不能在这里发送消息。</string>
+    <string name="conversation_composer_placeholder">输入消息</string>
+    <string name="conversation_send">发送</string>
+    <string name="conversation_steer">改向</string>
+    <string name="conversation_queue_action">排队</string>
+    <string name="conversation_cancel_turn">停止回合</string>
+    <string name="conversation_draft_saved">草稿已在本机保存</string>
+    <string name="conversation_attach_image">添加图片</string>
+    <string name="conversation_files_section">工作区文件</string>
+    <string name="conversation_files_empty">这个目录没有文件。</string>
+
+    <!-- ==================== pending_：待处理锚点与计数 ==================== -->
+    <string name="pending_badge_unknown">待处理数未知</string>
+    <string name="pending_badge_zero">无待处理</string>
+    <plurals name="pending_badge_count">
+        <item quantity="one">%1$d 个待处理</item>
+        <item quantity="other">%1$d 个待处理</item>
+    </plurals>
+    <plurals name="pending_dismissed_count">
+        <item quantity="one">已忽略 %1$d 项</item>
+        <item quantity="other">已忽略 %1$d 项</item>
+    </plurals>
+    <string name="pending_kind_approval">需要确认</string>
+    <string name="pending_kind_question">等待回答</string>
+    <string name="pending_waiting">等待处理</string>
+    <string name="pending_submitting">提交中</string>
+    <string name="pending_resolved">已处理</string>
+    <string name="pending_stale">已过期</string>
+    <string name="pending_stale_no_retry">这台服务器没有接受这次提交，本机不会自动重试。</string>
+    <string name="pending_unknown_result">结果未知</string>
+    <string name="pending_unknown_detail">提交已发出，但没有拿到结算确认；本机要等下一次同步再核对。</string>
+    <string name="pending_undecodable_title">无法解析这条请求的内容</string>
+    <string name="pending_anchored_to_tool">这条请求锚定在一次工具调用上</string>
+    <string name="pending_session_unavailable">该会话当前不可用，仍可提交，结果要等下一次同步核对。</string>
+    <string name="pending_second_confirm">这是来自全局收件箱的操作，请勾选后再确认。</string>
+    <string name="pending_allow_once">允许一次</string>
+    <string name="pending_reject">拒绝</string>
+    <string name="pending_submit">提交回答</string>
+    <string name="pending_dismiss">忽略</string>
+    <string name="pending_required">必填</string>
+    <string name="pending_free_text_label">补充说明</string>
+    <string name="pending_question_fields_unavailable">没能解析出问题选项，可在其他客户端回答。</string>
+    <string name="pending_wait_next_sync">批准或拒绝后仍要等下一次同步才会生效；这里不是实时推送。</string>
+    <string name="pending_completeness_unknown">无法确认是否还有别的待处理请求。</string>
+    <string name="pending_count_note">计数只在请求结算后减少；打开列表不会。</string>
+    <string name="pending_dismiss_note">忽略只是把它从计数里移开，请求本身仍未结算。</string>
+
+    <!-- ==================== inbox_：全局收件箱 ==================== -->
+    <string name="inbox_title">收件箱</string>
+    <string name="inbox_empty_title">没有等待你的请求</string>
+    <string name="inbox_empty_subtitle">只有在完整性核对通过时，空收件箱才可信。</string>
+    <string name="inbox_unknown_title">待处理状态未知</string>
+    <string name="inbox_unknown_subtitle">本机跳过了完整性核对，因此这里可能还漏着请求。</string>
+    <string name="inbox_open_session">打开会话</string>
+    <string name="inbox_first_seen">首次见到 %1$s</string>
+    <string name="inbox_sort_label">按首次出现时间排序</string>
+    <plurals name="inbox_session_requests">
+        <item quantity="one">这个会话有 %1$d 个请求</item>
+        <item quantity="other">这个会话有 %1$d 个请求</item>
+    </plurals>
+    <plurals name="inbox_other_sessions">
+        <item quantity="one">另有 %1$d 个请求来自其他会话</item>
+        <item quantity="other">另有 %1$d 个请求来自其他会话</item>
+    </plurals>
+
+    <!-- ==================== pairing_：配对与安全 ==================== -->
+    <string name="pairing_title">连接服务器</string>
+    <string name="pairing_scan_qr">扫描二维码</string>
+    <string name="pairing_manual_base">手动输入地址</string>
+    <string name="pairing_server_base_hint">服务器地址</string>
+    <string name="pairing_token_hint">配对令牌</string>
+    <string name="pairing_review_title">确认要连接的服务</string>
+    <string name="pairing_host_label">主机 %1$s</string>
+    <string name="pairing_port_label">端口 %1$s</string>
+    <string name="pairing_token_fingerprint">令牌指纹 %1$s</string>
+    <string name="pairing_insecure_warning">该地址走未加密的局域网 HTTP，同网段设备可能窃听或篡改内容。</string>
+    <plurals name="pairing_imported_addresses">
+        <item quantity="one">将导入 %1$d 个地址</item>
+        <item quantity="other">将导入 %1$d 个地址</item>
+    </plurals>
+    <string name="pairing_dedupe_note">重复地址已合并；第一个作为当前连接，其余作备用。</string>
+    <string name="pairing_saved_only_after_confirm">只有你确认后才会写入凭据并发起连接；本机不会自动连接。</string>
+    <string name="pairing_confirm_connect">确认并连接</string>
+    <string name="pairing_cancel_connect">先不连接</string>
+    <string name="pairing_connecting">正在检查服务器健康状态</string>
+    <string name="pairing_identity_digest">身份指纹 %1$s</string>
+    <string name="pairing_current_server">当前服务器</string>
+    <string name="pairing_switch_server">切换服务器</string>
+    <string name="pairing_clear_credentials">清除本机凭据</string>
+    <string name="pairing_clear_credentials_confirm_title">清除凭据？</string>
+    <string name="pairing_clear_credentials_confirm_message">清除后需要重新扫码才能连接。会话投影不会被删除。</string>
+
+    <!-- ==================== settings_：设置 ==================== -->
+    <string name="settings_title">设置</string>
+    <string name="settings_section_connection">连接</string>
+    <string name="settings_section_sync">后台同步</string>
+    <string name="settings_section_notifications">通知</string>
+    <string name="settings_section_appearance">外观</string>
+    <string name="settings_section_data">数据与诊断</string>
+    <string name="settings_section_about">关于</string>
+    <string name="settings_theme_title">主题</string>
+    <string name="settings_theme_system">跟随系统</string>
+    <string name="settings_theme_light">浅色</string>
+    <string name="settings_theme_dark">深色</string>
+    <string name="settings_dynamic_color">跟随系统取色</string>
+    <string name="settings_dynamic_color_summary">Android 12 及以上生效，更低版本回退内置配色。</string>
+    <string name="settings_background_sync">后台同步</string>
+    <string name="settings_background_sync_summary">周期约 %1$s；省电模式或厂商限制会推迟它。</string>
+    <string name="settings_notifications_title">新请求通知</string>
+    <string name="settings_notifications_summary">通知只写通用提示，不含问题正文、工具参数或路径。</string>
+    <string name="settings_image_prompt">图片输入</string>
+    <string name="settings_file_browser">工作区文件</string>
+    <string name="settings_max_events_per_session">每个会话保留的原始事件上限：%1$s</string>
+    <string name="settings_history_window">时间线一次投影的条目上限：%1$s</string>
+    <string name="settings_content_cap_note">超过上限时本机分页显示，并说明已截断。</string>
+    <string name="settings_diagnostics_title">诊断信息</string>
+    <string name="settings_diagnostics_summary">查看游标、空洞、待处理完整性等本机计数。</string>
+    <string name="settings_export_diagnostics">导出诊断信息</string>
+    <string name="settings_export_diagnostics_notice">导出需要你在本页面明确同意；本机不会自动上传任何内容。</string>
+    <string name="settings_version">版本 %1$s</string>
+    <string name="settings_confirm">确认</string>
+    <string name="settings_cancel">取消</string>
+
+    <!-- ==================== diagnostics_：诊断页（G10 字段的可见落点） ==================== -->
+    <string name="diagnostics_title">诊断</string>
+    <string name="diagnostics_degraded">当前处于降级状态</string>
+    <string name="diagnostics_nominal">同步状态正常</string>
+    <string name="diagnostics_transport_cursor">通道 %1$s 的游标 %2$s</string>
+    <string name="diagnostics_contiguous_seq_lag">会话 %1$s 的连续序号落后 %2$s</string>
+    <string name="diagnostics_needs_resync">需要重新同步的会话：%1$s</string>
+    <string name="diagnostics_history_incomplete_sessions">历史不完整的会话：%1$s</string>
+    <string name="diagnostics_history_unsafe_sessions">历史不可重建的会话：%1$s</string>
+    <string name="diagnostics_pending_completeness">待处理完整性：%1$s</string>
+    <string name="diagnostics_sweep_skipped">本轮跳过了基线核对，因此计数未知。</string>
+    <string name="diagnostics_auth_state">认证状态：%1$s</string>
+    <string name="diagnostics_poll_wait_supported">最近一次长轮询是否可用：%1$s</string>
+    <string name="diagnostics_retention_trimmed">因保留上限裁剪了 %1$s 条事件</string>
+    <string name="diagnostics_bad_json">坏 JSON 次数：%1$s</string>
+    <string name="diagnostics_ws_downgrade">降级为轮询的次数：%1$s</string>
+    <string name="diagnostics_retired_pending_purge">待清理的退役身份：%1$s</string>
+    <string name="diagnostics_roster_age">会话名单年龄：%1$s</string>
+    <string name="diagnostics_capabilities">能力表：%1$s</string>
+    <string name="diagnostics_capabilities_missing">尚未读取到能力表</string>
+    <string name="diagnostics_value_yes">是</string>
+    <string name="diagnostics_value_no">否</string>
+    <string name="diagnostics_value_unknown">未知</string>
+    <string name="diagnostics_completeness_complete">完整</string>
+    <string name="diagnostics_completeness_stale">已过期</string>
+    <string name="diagnostics_completeness_unknown">未知</string>
+    <string name="diagnostics_completeness_by_server">由服务器给出</string>
+    <string name="diagnostics_copy">复制到剪贴板</string>
+    <string name="diagnostics_copied">已复制</string>
+    <string name="diagnostics_auth_connected">已连接</string>
+    <string name="diagnostics_auth_forbidden">资源被拒绝</string>
+    <string name="diagnostics_auth_expired">凭据失效</string>
+    <string name="diagnostics_auth_unreachable">无法连接</string>
+    <string name="diagnostics_auth_none">尚未确认</string>
+    <string name="diagnostics_section_transport">传输</string>
+    <string name="diagnostics_section_history">历史</string>
+    <string name="diagnostics_section_pending">待处理</string>
+    <string name="diagnostics_section_storage">存储</string>
+
+</resources>

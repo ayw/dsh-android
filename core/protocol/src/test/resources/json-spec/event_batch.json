@@ -1,0 +1,64 @@
+{
+  "epoch": "e-1",
+  "since": 100,
+  "latestSeq": 142,
+  "reset": false,
+  "truncated": false,
+  "waitSupported": true,
+  "ok": true,
+  "kind": "mux",
+  "baseline": [
+    {
+      "rpcId": "r-base",
+      "payload": {
+        "sessionId": "s-1",
+        "type": "session/event",
+        "event": {
+          "type": "assistant/message",
+          "seq": 100,
+          "data": {
+            "role": "assistant",
+            "message": {
+              "role": "assistant",
+              "id": "m0",
+              "source": { "kind": "model" },
+              "content": [ { "type": "text", "text": "hello" } ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "seq": 141,
+      "ts": 1700000000141,
+      "replay": false,
+      "event": {
+        "rpcId": "r-1",
+        "payload": {
+          "sessionId": "s-1",
+          "type": "session/event",
+          "event": { "type": "turn/start", "seq": 141, "data": { "turn": 5 } }
+        }
+      }
+    },
+    {
+      "seq": 142,
+      "ts": 1700000000142,
+      "replay": true,
+      "event": {
+        "rpcId": "r-2",
+        "payload": {
+          "sessionId": "s-1",
+          "type": "session/event",
+          "event": {
+            "type": "approval/asked",
+            "seq": 142,
+            "data": { "id": "ap-9", "toolName": "bash", "reason": "rm" }
+          }
+        }
+      }
+    }
+  ]
+}

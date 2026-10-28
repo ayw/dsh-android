@@ -1,0 +1,17 @@
+
+---- unit[0] release artifact (shell) ----
+apkanalyzer apk summary: ai.deepseek.dsh.android	1	0.1.0 
+G11 release-artifact: budgets (from docs/TUNING.md) AAB=12582912B APK=20971520B; release APK(s)=1 AAB(s)=1
+PASS: AAB app-release.aab size 3837494 <= 12582912
+PASS: release APK size 1687177 <= 20971520
+PASS: mapping.txt present (app/build/outputs/mapping/release/mapping.txt)
+PASS: canary absent from app-release-unsigned.apk
+PASS: canary absent from app-release.aab
+PASS: allowBackup=false
+PASS: dataExtractionRules declared
+PASS: FileProvider grantUriPermissions=true
+PASS: FileProvider not exported
+PASS: permission-guarded framework exports: DiagnosticsReceiver <- android.permission.DUMP, ProfileInstallReceiver <- android.permission.DUMP, SystemJobService <- android.permission.BIND_JOB_SERVICE
+PASS: unprotected exported set matches baseline (1 component(s))
+RESULT: PASS
+---- exit=0  1793154248146..1793154249122 ms ----

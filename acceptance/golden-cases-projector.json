@@ -1,0 +1,291 @@
+{
+  "gate": "G05",
+  "module": ":core:domain",
+  "cases": [
+    {
+      "id": "assistantTextOnlyComesFromAssistantMessageEvents",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTest",
+      "requires": "行为1：正文气泡只来自 assistant/message；user、system、developer 事件不产出正文"
+    },
+    {
+      "id": "assistantMessageWithUsageOnlyStillEmitsEmptyBubble",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTest",
+      "requires": "行为1：正文为空但有 usage 时仍产出空正文条目，usage 不可丢"
+    },
+    {
+      "id": "emptyAssistantMessageIsSkippedAndCounted",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTest",
+      "requires": "行为1：正文为空且无 usage 的 assistant/message 不出气泡，但要被计数（skippedEmptyAssistant）"
+    },
+    {
+      "id": "duplicateAssistantMessageAtSameSeqReplacesBySeq",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTest",
+      "requires": "行为2：同一 seq 再次投递按 seq upsert 替换，绝不追加第二条"
+    },
+    {
+      "id": "replayedEventsAreIdempotent",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTest",
+      "requires": "行为2：整批事件重复投递投影结果不变（幂等，供 G15 字节比对）"
+    },
+    {
+      "id": "interruptedAssistantKeepsPrefixTextAndFlag",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTest",
+      "requires": "行为3/F11：interrupted 位于 assistant/message，中断保留已生成前缀并带标记"
+    },
+    {
+      "id": "assistantAttemptFoldsIntoActivityAttemptEntry",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTest",
+      "requires": "行为3：assistant/attempt 折叠成 ActivityEntry.Attempt 诊断行，不是正文气泡"
+    },
+    {
+      "id": "humanUserMessageStartsNewSegment",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTest",
+      "requires": "行为7：isHumanInitiated 的 user/message 开启新的可视分段"
+    },
+    {
+      "id": "injectedUserMessageDoesNotStartNewSegment",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTest",
+      "requires": "行为7：注入型 user/message 不分段，前后活动仍并进同一组"
+    },
+    {
+      "id": "turnStartSegmentsOnlyWhenSessionHasNoHumanMessage",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTest",
+      "requires": "行为7：会话内没有任何真人消息时退回 turn/start 分段"
+    },
+    {
+      "id": "turnStartDoesNotSegmentWhenSessionHasHumanMessage",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTest",
+      "requires": "行为7：已有真人消息时 turn/start 不再分段"
+    },
+    {
+      "id": "stepEventsProduceNoTimelineItems",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTest",
+      "requires": "行为8：step/start 与 step/end 不产出分隔线条目，只驱动覆盖层收口与本回合是否进行中"
+    },
+    {
+      "id": "contiguousIgnorableUnknownsCollapseIntoOneCount",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTest",
+      "requires": "行为13/D08：连续可忽略的未知事件折叠成单条 UnsupportedCount 计数"
+    },
+    {
+      "id": "nonContiguousIgnorableUnknownsStartSeparateCounts",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTest",
+      "requires": "行为13/D08：被其他事件隔断的可忽略未知事件另起一条计数，不跨越合并"
+    },
+    {
+      "id": "nonIgnorableUnknownMarksHistoryUnsafeAndStillAdvancesFrontier",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTest",
+      "requires": "行为13+16/D08：不可忽略的未知事件产出 HistoryUnsafeMarker、置 historyUnsafe，且仍推进 contiguousSeq"
+    },
+    {
+      "id": "gapMarkerRecordsExpectedAndArrivedSeq",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTest",
+      "requires": "行为14：contiguousSeq 低于首批到达 seq 时产出 GapMarker(expectedSeq, arrivedSeq)"
+    },
+    {
+      "id": "gapMarkerSplitsActivityGroups",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTest",
+      "requires": "行为14：空洞是硬边界，空洞两侧的活动条目不并成同一组"
+    },
+    {
+      "id": "snapshotPositionIsDerivedFromEvents",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTest",
+      "requires": "行为16：contiguousSeq/hasGap/historyUnsafe/runningTurn 全部由事件与位置派生"
+    },
+    {
+      "id": "runningTurnStaysOpenUntilTurnEnd",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTest",
+      "requires": "行为16：回合只由 closer 事件收口，后续消息不会自行结束 runningTurn"
+    },
+    {
+      "id": "sessionStatusEventsBecomeSystemNotices",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTest",
+      "requires": "行为1/16：system、developer、model、goal、cwd、title 状态行产出 SystemNotice，空文本不产出"
+    },
+    {
+      "id": "toolCallThenResultBecomesSucceededEntry",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorToolsTest",
+      "requires": "行为4：tool/call 到 tool/result 的状态转移为 Called 再 Succeeded"
+    },
+    {
+      "id": "failedToolBeatsOthersInGroupStatus",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorToolsTest",
+      "requires": "行为4+9：isError 的 result 转移为 Failed，组状态优先级 Failed 最高"
+    },
+    {
+      "id": "orphanResultMergesWithLateCall",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorToolsTest",
+      "requires": "行为4：result 先于 call 到达时为 OrphanResult，迟到的 call 合并身份并沿用已知的成败"
+    },
+    {
+      "id": "resultWithoutAnyCallStaysOrphanResult",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorToolsTest",
+      "requires": "行为4：三级关联键都落空时用 result 的 seq 造临时 id，保持 OrphanResult 不猜测调用方"
+    },
+    {
+      "id": "resultJoinsEmbeddedToolCallBlockById",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorToolsTest",
+      "requires": "行为4/F13：无 callId 的 result 用内嵌 tool-call 块的 block.id 关联（第二级键）"
+    },
+    {
+      "id": "resultWithoutIdsJoinsNearestCallByToolName",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorToolsTest",
+      "requires": "行为4/F13：两个身份字段都缺失时按 toolName 与 seq 邻近匹配未应答调用（第三级键）"
+    },
+    {
+      "id": "secondResultAtSameSeqIsIdempotent",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorToolsTest",
+      "requires": "行为4：同一 seq 的第二份 result 幂等，不产生第二条条目也不记冲突"
+    },
+    {
+      "id": "secondResultAtLaterSeqRecordsConflict",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorToolsTest",
+      "requires": "行为4：不同 seq 的第二份 result 保留较早终态并记录 conflictingResultSeq"
+    },
+    {
+      "id": "unansweredToolBecomesIncompleteAtTurnEnd",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorToolsTest",
+      "requires": "行为5：turn/end 时仍无结果的调用标为 Incomplete，不渲染成失败"
+    },
+    {
+      "id": "repairResultPromotesIncompleteTool",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorToolsTest",
+      "requires": "行为5：同 callId 更高 seq 的补交 result 可以把 Incomplete 提升为终态"
+    },
+    {
+      "id": "standaloneToolCallWinsOverEmbeddedBlockWithSameId",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorToolsTest",
+      "requires": "行为6：内嵌块与独立 tool/call 同 id 时只渲染独立事件的条目"
+    },
+    {
+      "id": "embeddedBlockThenStandaloneCallRendersOneEntry",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorToolsTest",
+      "requires": "行为6：内嵌块先到、独立 tool/call 后到时仍只有一条活动条目，身份取自独立事件"
+    },
+    {
+      "id": "reasoningToolAndAttemptShareOneGroup",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorToolsTest",
+      "requires": "行为9：工具、推理、attempt 归入同一活动组，条目顺序按事件 seq"
+    },
+    {
+      "id": "groupStatusRunningBeatsIncomplete",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorToolsTest",
+      "requires": "行为9：组状态优先级 Running 高于 Incomplete"
+    },
+    {
+      "id": "lastGroupShowsRunningWhileTurnOpen",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorToolsTest",
+      "requires": "行为9：本回合还开着时最后一个活动组显示 Running；closer 之后回到条目自身状态"
+    },
+    {
+      "id": "stepsInOneTurnMergeIntoSameGroup",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorToolsTest",
+      "requires": "行为10：同一 turn 内多个 step 的活动条目并进同一组"
+    },
+    {
+      "id": "turnEndBannerCarriesCompletedReasonVerbatim",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTurnTest",
+      "requires": "行为11：turn/end 的 Completed 原因原样进入 TurnEndBanner"
+    },
+    {
+      "id": "turnEndBannerCarriesAbortedUserReasonVerbatim",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTurnTest",
+      "requires": "行为11：Aborted(User) 嵌套成因原样保留，不归并成通用文案"
+    },
+    {
+      "id": "turnEndBannerCarriesAbortedParentReasonVerbatim",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTurnTest",
+      "requires": "行为11：Aborted(Parent) 嵌套成因原样保留"
+    },
+    {
+      "id": "turnEndBannerCarriesAbortedHookReasonVerbatim",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTurnTest",
+      "requires": "行为11：Aborted(Hook) 嵌套成因原样保留"
+    },
+    {
+      "id": "turnEndBannerCarriesAbortedDisposedReasonVerbatim",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTurnTest",
+      "requires": "行为11：Aborted(Disposed) 嵌套成因原样保留"
+    },
+    {
+      "id": "turnEndBannerCarriesAbortedLegacyReasonVerbatim",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTurnTest",
+      "requires": "行为11：Aborted(Legacy) 嵌套成因原样保留"
+    },
+    {
+      "id": "turnEndBannerCarriesBlockedReasonVerbatim",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTurnTest",
+      "requires": "行为11：Blocked 原因原样进入 TurnEndBanner"
+    },
+    {
+      "id": "turnEndBannerCarriesFailureReasonVerbatim",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTurnTest",
+      "requires": "行为11：Failure(summary) 的摘要原样进入 TurnEndBanner"
+    },
+    {
+      "id": "turnEndBannerCarriesMaxTokensReasonVerbatim",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTurnTest",
+      "requires": "行为11：MaxTokens 原因原样进入 TurnEndBanner"
+    },
+    {
+      "id": "turnEndBannerCarriesInterruptedReasonVerbatim",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTurnTest",
+      "requires": "行为11：Interrupted 原因原样进入 TurnEndBanner"
+    },
+    {
+      "id": "turnEndBannerCarriesForkedReasonVerbatim",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTurnTest",
+      "requires": "行为11：Forked 原因原样进入 TurnEndBanner"
+    },
+    {
+      "id": "turnEndBannerCarriesUnknownReasonVerbatim",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTurnTest",
+      "requires": "行为11：Unknown(kind) 的未知原因字符串原样保留"
+    },
+    {
+      "id": "compactionSummaryBecomesCollapsedMarkerWithHistoryNote",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTurnTest",
+      "requires": "行为12：compaction/summary 折叠成单条 CompactionMarker（绝不成为正文），并留“历史可能缺行”的提示"
+    },
+    {
+      "id": "duplicateCompactionSummaryYieldsSingleMarker",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTurnTest",
+      "requires": "行为12：同一 compactionId 的重复 summary 只留一条标记"
+    },
+    {
+      "id": "staleCompactionEndKeepsNewerOperationOpen",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTurnTest",
+      "requires": "行为12：compaction 按 id 跟踪，带旧 id 的迟到 ended 不能关掉更新的压缩操作"
+    },
+    {
+      "id": "sessionEndSeedClosesTheOpenTurnWithoutAnItem",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTurnTest",
+      "requires": "行为8+16：session/end 种子是 closer，收口回合并把未应答调用标 Incomplete，本身不产出条目"
+    },
+    {
+      "id": "pendingAnchorAttachesToToolCallItem",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTurnTest",
+      "requires": "行为15：有 callId 的 pending 锚定在对应调用所在条目之后"
+    },
+    {
+      "id": "pendingAnchorFallsBackToTurnEndOfItsSegment",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTurnTest",
+      "requires": "行为15：没有 callId 的 pending 锚定在其所属分段（turn）的最后一条产出之后"
+    },
+    {
+      "id": "questionPendingAnchorUsesAskUserQuestionCallId",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTurnTest",
+      "requires": "行为15/F9：提问身份就是 ask_user_question 的 callId，锚点按该 callId 定位"
+    },
+    {
+      "id": "questionAskedEventAnchorsByCallId",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTurnTest",
+      "requires": "F9：question/asked 由 callId 派生 PendingAnchor，resolved 用回答来源标记，不依赖 questionRpcId"
+    },
+    {
+      "id": "approvalAskedEventAnchorsByRequestId",
+      "class": "ai.deepseek.dsh.android.domain.ProjectorTurnTest",
+      "requires": "F8：审批身份是 payload 的 data.id（RequestId），decided 只显示结论"
+    }
+  ]
+}

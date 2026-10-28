@@ -1,0 +1,36 @@
+{
+  "epoch": "e-emptycontent",
+  "since": 0,
+  "latestSeq": 1,
+  "reset": false,
+  "truncated": false,
+  "waitSupported": true,
+  "ok": true,
+  "kind": "mux",
+  "events": [
+    {
+      "seq": 1,
+      "ts": 1700000000001,
+      "event": {
+        "rpcId": "r-empty",
+        "payload": {
+          "sessionId": "s-1",
+          "type": "session/event",
+          "event": {
+            "type": "assistant/message",
+            "seq": 1,
+            "data": {
+              "interrupted": true,
+              "message": {
+                "role": "assistant",
+                "id": "m-empty",
+                "source": { "kind": "model" },
+                "content": []
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

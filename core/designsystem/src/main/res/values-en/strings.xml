@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  English override. Key set and placeholder arity MUST equal values/strings.xml (gate G14,
+  enforced by StringParityTest). Do not add a key here without adding it to the default file.
+-->
+<resources>
+
+    <!-- ==================== states_ ==================== -->
+    <string name="states_unknown">Unknown</string>
+    <string name="states_none">None</string>
+    <string name="states_loading">Loading</string>
+    <string name="states_idle">Idle</string>
+    <string name="states_live">Connected</string>
+    <string name="states_polling">Polling for updates</string>
+    <string name="states_suspended">Sync paused</string>
+    <string name="states_suspended_detail">Background sync is off, so nothing new arrives until you act here.</string>
+    <string name="states_one_shot">Background sync running</string>
+    <string name="states_foreground_pending">Waiting to resume in the foreground</string>
+    <string name="states_unreachable">Cannot reach the server</string>
+    <string name="states_unreachable_detail">Check that this device and the server are on the same network and that the service is running.</string>
+    <string name="states_not_realtime_detail">This is not a realtime push channel. New events land on the next sync.</string>
+    <string name="states_poll_wait_unsupported_detail">The server disabled long polling, so this device polls on a short interval and lags more.</string>
+    <string name="states_repair_action">Re-pair</string>
+    <string name="states_expand">Expand</string>
+    <string name="states_collapse">Collapse</string>
+    <string name="states_view_details">View details</string>
+    <string name="states_hide_details">Hide details</string>
+    <string name="states_background_sync_unsupported_title">This server does not support event polling</string>
+    <string name="states_background_sync_unsupported_detail">Content only updates when you pull manually, so approvals can wait a long time.</string>
+    <string name="states_history_may_be_incomplete">History may be incomplete</string>
+    <string name="states_visible_history_not_context">Visible history is not the current context.</string>
+    <string name="states_large_directory_slow">Large directories may load noticeably slowly the first time.</string>
+    <string name="states_search_unavailable">Search is not available yet</string>
+    <string name="states_unarchive_unsupported">Unarchiving is not supported</string>
+    <string name="states_archive_unsupported">Archiving is not supported</string>
+    <string name="states_truncated_at_cap">The list was truncated at the local cap of %1$s entries.</string>
+    <string name="states_dismissed_label">Dismissed</string>
+    <string name="states_partial">Partially loaded</string>
+    <string name="states_local_only_note">Every count shown here comes from this device only and is never uploaded.</string>
+    <string name="states_empty_title">Nothing here yet</string>
+    <string name="states_refresh_action">Refresh</string>
+    <string name="states_undo_action">Undo</string>
+
+    <!-- ==================== errors_ ==================== -->
+    <string name="errors_generic">Something went wrong</string>
+    <string name="errors_retry">Retry</string>
+    <string name="errors_no_details">No further details</string>
+    <string name="errors_server_summary_note">The summary below comes from the server and is not translated:</string>
+    <string name="errors_network_unreachable">Could not reach the server.</string>
+    <string name="errors_timeout">Timed out waiting for the server.</string>
+    <string name="errors_auth_expired">Credentials expired; re-pairing is required.</string>
+    <string name="errors_auth_expired_detail">To avoid a false positive this device kept the stored credentials. Scan the code again to confirm.</string>
+    <string name="errors_forbidden_detail">This server refused the request, but your stored credentials are still valid.</string>
+    <string name="errors_session_gone">That session is no longer on the server.</string>
+    <string name="errors_pending_stale">This request was settled elsewhere, so your answer did not apply.</string>
+    <string name="errors_pending_unknown">The request was sent but its settlement is unknown.</string>
+    <string name="errors_repair_stopped">Two history repairs failed in a row, so this device stopped retrying automatically.</string>
+    <string name="errors_baseline_too_large">Too many pending keys, so the completeness sweep was skipped.</string>
+    <string name="errors_unknown_event_kind">Unregistered event type: %1$s</string>
+    <string name="errors_clipboard_unavailable">This device could not write to the clipboard.</string>
+    <string name="errors_camera_denied">No camera permission, so scanning is unavailable. Enter the address manually instead.</string>
+    <string name="errors_qr_unparsable">The QR code content could not be parsed.</string>
+    <string name="errors_health_check_failed">The server health check failed, so no credentials were saved.</string>
+    <string name="errors_image_transport_unsupported">This server does not support image input.</string>
+    <string name="errors_attachment_too_large">The attachment exceeds the local limit of %1$s.</string>
+    <string name="errors_prompt_too_long">The input exceeds the local limit of %1$s characters.</string>
+    <string name="errors_operation_unsupported">This server does not support that operation.</string>
+
+    <!-- ==================== units_ ==================== -->
+    <string name="units_seq">#%1$d</string>
+    <string name="units_minutes_ago">%1$s min ago</string>
+    <string name="units_hours_ago">%1$s h ago</string>
+    <string name="units_days_ago">%1$s d ago</string>
+    <plurals name="units_tokens">
+        <item quantity="one">%1$s token</item>
+        <item quantity="other">%1$s tokens</item>
+    </plurals>
+    <plurals name="units_minutes">
+        <item quantity="one">%1$s minute</item>
+        <item quantity="other">%1$s minutes</item>
+    </plurals>
+    <plurals name="units_seconds">
+        <item quantity="one">%1$s second</item>
+        <item quantity="other">%1$s seconds</item>
+    </plurals>
+    <plurals name="units_items">
+        <item quantity="one">%1$d item</item>
+        <item quantity="other">%1$d items</item>
+    </plurals>
+    <plurals name="units_events">
+        <item quantity="one">%1$d event</item>
+        <item quantity="other">%1$d events</item>
+    </plurals>
+    <plurals name="units_sessions">
+        <item quantity="one">%1$d session</item>
+        <item quantity="other">%1$d sessions</item>
+    </plurals>
+    <plurals name="units_requests">
+        <item quantity="one">%1$d request</item>
+        <item quantity="other">%1$d requests</item>
+    </plurals>
+    <plurals name="units_bytes">
+        <item quantity="one">%1$s byte</item>
+        <item quantity="other">%1$s bytes</item>
+    </plurals>
+
+    <!-- ==================== sessions_ ==================== -->
+    <string name="sessions_title">Sessions</string>
+    <string name="sessions_empty_title">No sessions yet</string>
+    <string name="sessions_empty_subtitle">The server has nothing to show. If you just created one elsewhere, wait for the next sync.</string>
+    <string name="sessions_loading">Loading sessions</string>
+    <string name="sessions_status_running">Running</string>
+    <string name="sessions_status_needs_attention">Needs attention</string>
+    <string name="sessions_status_idle">Idle</string>
+    <string name="sessions_updated_at">Updated %1$s</string>
+    <string name="sessions_open_conversation">Open session</string>
+    <string name="sessions_roster_stale">The list may be stale: the full roster is only refetched once it expires.</string>
+    <string name="sessions_sort_label">Sort</string>
+    <string name="sessions_sort_recent">Recent activity</string>
+    <string name="sessions_sort_pending">Pending first</string>
+    <string name="sessions_filter_all">All</string>
+    <string name="sessions_filter_needs_attention">Needs attention only</string>
+    <string name="sessions_archive_action">Archive</string>
+    <string name="sessions_unarchive_action">Unarchive</string>
+    <string name="sessions_pending_section_title">Pending</string>
+    <string name="sessions_local_page_note">This list pages locally; the server offers no roster pagination, so the first fetch can be slow.</string>
+
+    <!-- ==================== conversation_ ==================== -->
+    <string name="conversation_title">Session</string>
+    <string name="conversation_role_user">You</string>
+    <string name="conversation_role_assistant">Assistant</string>
+    <string name="conversation_role_system">System</string>
+    <string name="conversation_role_developer">Developer</string>
+    <string name="conversation_interrupted">Interrupted</string>
+    <string name="conversation_empty_assistant">This assistant message has no body.</string>
+    <string name="conversation_model_label">Model %1$s</string>
+    <string name="conversation_usage_in_out">Input %1$s / Output %2$s</string>
+    <string name="conversation_finish_reason">Finish reason: %1$s</string>
+    <string name="conversation_group_running">In progress</string>
+    <string name="conversation_group_complete">Complete</string>
+    <string name="conversation_group_incomplete">Result incomplete</string>
+    <string name="conversation_group_failed">Some actions failed</string>
+    <string name="conversation_group_open_turn">This turn is still open</string>
+    <plurals name="conversation_group_steps">
+        <item quantity="one">%1$d step</item>
+        <item quantity="other">%1$d steps</item>
+    </plurals>
+    <string name="conversation_tool_called">Called</string>
+    <string name="conversation_tool_succeeded">Succeeded</string>
+    <string name="conversation_tool_failed">Failed</string>
+    <string name="conversation_tool_incomplete">No result received</string>
+    <string name="conversation_tool_orphan_result">Result arrived before call</string>
+    <string name="conversation_tool_arguments">Arguments</string>
+    <string name="conversation_tool_result">Result</string>
+    <string name="conversation_tool_seq_pair">Call %1$s / Result %2$s</string>
+    <string name="conversation_tool_result_conflict">A second result %1$s arrived for the same call; this device kept the earlier terminal state.</string>
+    <string name="conversation_reasoning_title">Reasoning overlay</string>
+    <string name="conversation_reasoning_disclaimer">Reasoning is only an overlay, not the body. No partial text is kept after submit.</string>
+    <string name="conversation_attempt_title">Abandoned attempt</string>
+    <string name="conversation_attempt_error_kind">Error kind %1$s</string>
+    <string name="conversation_unsupported_entry">Unregistered event %1$s</string>
+    <plurals name="conversation_unsupported_count">
+        <item quantity="one">Ignored %1$d unregistered event</item>
+        <item quantity="other">Ignored %1$d unregistered events</item>
+    </plurals>
+    <string name="conversation_unsupported_hint">These events still advanced the sequence; this device just cannot interpret them safely.</string>
+    <string name="conversation_compaction_marker">Context compacted</string>
+    <string name="conversation_compaction_hint">Compaction only changes what the model sees. Visible history may still contain messages that were compacted away.</string>
+    <string name="conversation_gap_range">Events between %1$s and %2$s are missing</string>
+    <string name="conversation_history_unsafe_title">This history cannot be rebuilt</string>
+    <string name="conversation_history_unsafe_detail">An unregistered, non-ignorable event appeared: %1$s</string>
+    <string name="conversation_history_incomplete_hint">A gap was never repaired, so earlier messages may be missing.</string>
+    <string name="conversation_turn_end_completed">Turn ended</string>
+    <string name="conversation_turn_end_aborted_user">Aborted by you</string>
+    <string name="conversation_turn_end_aborted_parent">Aborted by the parent agent</string>
+    <string name="conversation_turn_end_aborted_hook">Blocked by a hook</string>
+    <string name="conversation_turn_end_aborted_disposed">Session disposed</string>
+    <string name="conversation_turn_end_aborted_legacy">Aborted</string>
+    <string name="conversation_turn_end_interrupted">Interrupted</string>
+    <string name="conversation_turn_end_forked">Forked into a new session</string>
+    <string name="conversation_turn_end_blocked">Turn blocked</string>
+    <string name="conversation_turn_end_failure">Turn failed</string>
+    <string name="conversation_turn_end_max_tokens">Reached the length limit, so the reply may be cut off</string>
+    <string name="conversation_turn_end_unknown">Turn ended: %1$s</string>
+    <string name="conversation_load_earlier">Load earlier messages</string>
+    <string name="conversation_loading_earlier">Loading earlier messages</string>
+    <string name="conversation_history_start">Reached the oldest message stored on this device</string>
+    <string name="conversation_history_not_loaded">This device has not finished reading the history of this session.</string>
+    <string name="conversation_jump_to_pending">Jump to %1$d pending</string>
+    <string name="conversation_no_messages_title">This session has no visible messages</string>
+    <string name="conversation_no_messages_subtitle">The projection produced nothing to show. History may not be loaded yet, or it may genuinely be empty.</string>
+    <string name="conversation_readonly_hint">This build is read-only: you cannot send messages from here yet.</string>
+    <string name="conversation_composer_placeholder">Write a message</string>
+    <string name="conversation_send">Send</string>
+    <string name="conversation_steer">Steer</string>
+    <string name="conversation_queue_action">Queue</string>
+    <string name="conversation_cancel_turn">Stop turn</string>
+    <string name="conversation_draft_saved">Draft saved on this device</string>
+    <string name="conversation_attach_image">Add image</string>
+    <string name="conversation_files_section">Workspace files</string>
+    <string name="conversation_files_empty">This directory has no files.</string>
+
+    <!-- ==================== pending_ ==================== -->
+    <string name="pending_badge_unknown">Pending count unknown</string>
+    <string name="pending_badge_zero">Nothing pending</string>
+    <plurals name="pending_badge_count">
+        <item quantity="one">%1$d pending</item>
+        <item quantity="other">%1$d pending</item>
+    </plurals>
+    <plurals name="pending_dismissed_count">
+        <item quantity="one">%1$d dismissed</item>
+        <item quantity="other">%1$d dismissed</item>
+    </plurals>
+    <string name="pending_kind_approval">Needs approval</string>
+    <string name="pending_kind_question">Awaiting your answer</string>
+    <string name="pending_waiting">Waiting</string>
+    <string name="pending_submitting">Submitting</string>
+    <string name="pending_resolved">Settled</string>
+    <string name="pending_stale">Stale</string>
+    <string name="pending_stale_no_retry">This server did not accept the submission, and this device will not retry automatically.</string>
+    <string name="pending_unknown_result">Result unknown</string>
+    <string name="pending_unknown_detail">The submission left but no settlement came back. This device waits for the next sync.</string>
+    <string name="pending_undecodable_title">The content of this request could not be parsed</string>
+    <string name="pending_anchored_to_tool">This request is anchored to a tool call</string>
+    <string name="pending_session_unavailable">The session is currently unavailable. You can still submit; the result is checked on the next sync.</string>
+    <string name="pending_second_confirm">This request came from the global inbox. Tick to confirm before it is sent.</string>
+    <string name="pending_allow_once">Allow once</string>
+    <string name="pending_reject">Reject</string>
+    <string name="pending_submit">Submit answer</string>
+    <string name="pending_dismiss">Dismiss</string>
+    <string name="pending_required">Required</string>
+    <string name="pending_free_text_label">Additional note</string>
+    <string name="pending_question_fields_unavailable">The question options could not be parsed. You can answer in another client.</string>
+    <string name="pending_wait_next_sync">Approvals and rejections only take effect on the next sync. This is not a realtime channel.</string>
+    <string name="pending_completeness_unknown">It is not possible to confirm whether other requests are pending.</string>
+    <string name="pending_count_note">The count only drops once a request settles. Opening the list does not change it.</string>
+    <string name="pending_dismiss_note">Dismissing only removes it from the count; the request itself is still unsettled.</string>
+
+    <!-- ==================== inbox_ ==================== -->
+    <string name="inbox_title">Inbox</string>
+    <string name="inbox_empty_title">No requests are waiting for you</string>
+    <string name="inbox_empty_subtitle">An empty inbox is only trustworthy when the completeness sweep passed.</string>
+    <string name="inbox_unknown_title">Pending state unknown</string>
+    <string name="inbox_unknown_subtitle">This device skipped the completeness sweep, so requests may be missing here.</string>
+    <string name="inbox_open_session">Open session</string>
+    <string name="inbox_first_seen">First seen %1$s</string>
+    <string name="inbox_sort_label">Sort by first seen</string>
+    <plurals name="inbox_session_requests">
+        <item quantity="one">%1$d request from this session</item>
+        <item quantity="other">%1$d requests from this session</item>
+    </plurals>
+    <plurals name="inbox_other_sessions">
+        <item quantity="one">%1$d more request from other sessions</item>
+        <item quantity="other">%1$d more requests from other sessions</item>
+    </plurals>
+
+    <!-- ==================== pairing_ ==================== -->
+    <string name="pairing_title">Connect to server</string>
+    <string name="pairing_scan_qr">Scan the QR code</string>
+    <string name="pairing_manual_base">Enter the address manually</string>
+    <string name="pairing_server_base_hint">Server address</string>
+    <string name="pairing_token_hint">Pairing token</string>
+    <string name="pairing_review_title">Confirm the service to connect</string>
+    <string name="pairing_host_label">Host %1$s</string>
+    <string name="pairing_port_label">Port %1$s</string>
+    <string name="pairing_token_fingerprint">Token fingerprint %1$s</string>
+    <string name="pairing_insecure_warning">This address uses unencrypted LAN HTTP, so devices on the same segment may read or alter traffic.</string>
+    <plurals name="pairing_imported_addresses">
+        <item quantity="one">%1$d address will be imported</item>
+        <item quantity="other">%1$d addresses will be imported</item>
+    </plurals>
+    <string name="pairing_dedupe_note">Duplicate addresses were merged. The first becomes the active connection, the rest are backups.</string>
+    <string name="pairing_saved_only_after_confirm">Credentials are written and the connection starts only after you confirm. This device never connects on its own.</string>
+    <string name="pairing_confirm_connect">Confirm and connect</string>
+    <string name="pairing_cancel_connect">Not now</string>
+    <string name="pairing_connecting">Checking server health</string>
+    <string name="pairing_identity_digest">Identity digest %1$s</string>
+    <string name="pairing_current_server">Current server</string>
+    <string name="pairing_switch_server">Switch server</string>
+    <string name="pairing_clear_credentials">Clear stored credentials</string>
+    <string name="pairing_clear_credentials_confirm_title">Clear credentials?</string>
+    <string name="pairing_clear_credentials_confirm_message">You will need to scan again before connecting. Session projections are not deleted.</string>
+
+    <!-- ==================== settings_ ==================== -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_section_connection">Connection</string>
+    <string name="settings_section_sync">Background sync</string>
+    <string name="settings_section_notifications">Notifications</string>
+    <string name="settings_section_appearance">Appearance</string>
+    <string name="settings_section_data">Data and diagnostics</string>
+    <string name="settings_section_about">About</string>
+    <string name="settings_theme_title">Theme</string>
+    <string name="settings_theme_system">Follow system</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_dynamic_color">Follow system palette</string>
+    <string name="settings_dynamic_color_summary">Applies on Android 12 and newer; older versions fall back to the built-in palette.</string>
+    <string name="settings_background_sync">Background sync</string>
+    <string name="settings_background_sync_summary">Roughly every %1$s. Battery saver or vendor limits can delay it.</string>
+    <string name="settings_notifications_title">New request notifications</string>
+    <string name="settings_notifications_summary">Notifications carry only generic wording, never the question text, tool arguments or paths.</string>
+    <string name="settings_image_prompt">Image input</string>
+    <string name="settings_file_browser">Workspace files</string>
+    <string name="settings_max_events_per_session">Raw events kept per session: %1$s</string>
+    <string name="settings_history_window">Timeline projection item window: %1$s</string>
+    <string name="settings_content_cap_note">Above the cap this device pages locally and says so in the UI.</string>
+    <string name="settings_diagnostics_title">Diagnostics</string>
+    <string name="settings_diagnostics_summary">Inspect cursors, gaps, pending completeness and other local counts.</string>
+    <string name="settings_export_diagnostics">Export diagnostics</string>
+    <string name="settings_export_diagnostics_notice">Export needs your explicit consent on this screen. Nothing is uploaded automatically.</string>
+    <string name="settings_version">Version %1$s</string>
+    <string name="settings_confirm">Confirm</string>
+    <string name="settings_cancel">Cancel</string>
+
+    <!-- ==================== diagnostics_ ==================== -->
+    <string name="diagnostics_title">Diagnostics</string>
+    <string name="diagnostics_degraded">Running in a degraded state</string>
+    <string name="diagnostics_nominal">Sync looks healthy</string>
+    <string name="diagnostics_transport_cursor">Cursor on channel %1$s: %2$s</string>
+    <string name="diagnostics_contiguous_seq_lag">Contiguous sequence lag for session %1$s: %2$s</string>
+    <string name="diagnostics_needs_resync">Sessions needing resync: %1$s</string>
+    <string name="diagnostics_history_incomplete_sessions">Sessions with incomplete history: %1$s</string>
+    <string name="diagnostics_history_unsafe_sessions">Sessions whose history cannot be rebuilt: %1$s</string>
+    <string name="diagnostics_pending_completeness">Pending completeness: %1$s</string>
+    <string name="diagnostics_sweep_skipped">The baseline sweep was skipped, so counts are unknown.</string>
+    <string name="diagnostics_auth_state">Auth state: %1$s</string>
+    <string name="diagnostics_poll_wait_supported">Long polling supported on last poll: %1$s</string>
+    <string name="diagnostics_retention_trimmed">%1$s events trimmed by the retention cap</string>
+    <string name="diagnostics_bad_json">Bad JSON count: %1$s</string>
+    <string name="diagnostics_ws_downgrade">Downgrades to polling: %1$s</string>
+    <string name="diagnostics_retired_pending_purge">Retired identities pending purge: %1$s</string>
+    <string name="diagnostics_roster_age">Roster age: %1$s</string>
+    <string name="diagnostics_capabilities">Capability table: %1$s</string>
+    <string name="diagnostics_capabilities_missing">No capability table read yet</string>
+    <string name="diagnostics_value_yes">Yes</string>
+    <string name="diagnostics_value_no">No</string>
+    <string name="diagnostics_value_unknown">Unknown</string>
+    <string name="diagnostics_completeness_complete">Complete</string>
+    <string name="diagnostics_completeness_stale">Stale</string>
+    <string name="diagnostics_completeness_unknown">Unknown</string>
+    <string name="diagnostics_completeness_by_server">Provided by server</string>
+    <string name="diagnostics_copy">Copy to clipboard</string>
+    <string name="diagnostics_copied">Copied</string>
+    <string name="diagnostics_auth_connected">Connected</string>
+    <string name="diagnostics_auth_forbidden">Resource forbidden</string>
+    <string name="diagnostics_auth_expired">Credentials expired</string>
+    <string name="diagnostics_auth_unreachable">Unreachable</string>
+    <string name="diagnostics_auth_none">Not confirmed yet</string>
+    <string name="diagnostics_section_transport">Transport</string>
+    <string name="diagnostics_section_history">History</string>
+    <string name="diagnostics_section_pending">Pending</string>
+    <string name="diagnostics_section_storage">Storage</string>
+
+</resources>

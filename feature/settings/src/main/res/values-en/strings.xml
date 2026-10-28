@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  English override. Key set and placeholder arity MUST equal values/strings.xml (G14).
+  Server copy describes labels, addresses, auth state and capabilities only.
+-->
+<resources>
+    <string name="settings_section_servers">Servers</string>
+    <string name="settings_section_background_sync">Background sync</string>
+    <string name="settings_section_diagnostics">Diagnostics</string>
+    <string name="settings_section_about">About</string>
+
+    <string name="settings_servers_empty">No servers paired yet</string>
+    <string name="settings_servers_empty_detail">Once paired, each server shows its label, address and capabilities here.</string>
+    <string name="settings_servers_unavailable">Could not read the server list.</string>
+    <string name="settings_server_unnamed">Unnamed server</string>
+    <string name="settings_server_capabilities">Capabilities: %1$s</string>
+    <string name="settings_list_separator">" / "</string>
+    <string name="settings_add_server">Add server</string>
+    <string name="settings_add_server_unavailable">QR pairing arrives in a later version</string>
+    <string name="settings_badge_unavailable">Not available yet</string>
+
+    <string name="settings_probe">Check health</string>
+    <string name="settings_probe_running">Checking…</string>
+    <string name="settings_probe_ok">Server reachable</string>
+    <string name="settings_probe_failed">Health check failed</string>
+    <string name="settings_probe_failed_timeout">Timed out waiting for the server.</string>
+    <string name="settings_probe_failed_unreachable">Could not reach the server.</string>
+    <string name="settings_probe_failed_auth">Credentials expired; re-pairing is required.</string>
+    <string name="settings_probe_failed_forbidden">This server refused the request.</string>
+    <string name="settings_probe_failed_rejected">This server did not accept the check.</string>
+    <string name="settings_probe_failed_generic">The health check did not complete for an unknown reason.</string>
+
+    <string name="settings_auth_connected">Connected</string>
+    <string name="settings_auth_forbidden">Resource forbidden</string>
+    <string name="settings_auth_expired">Credentials expired</string>
+    <string name="settings_auth_unreachable">Unreachable</string>
+    <string name="settings_auth_unknown">Unknown</string>
+
+    <string name="settings_cap_websocket">Realtime channel</string>
+    <string name="settings_cap_background_sync">Event polling</string>
+    <string name="settings_cap_epoch">Event epoch</string>
+    <string name="settings_cap_receipts">Operation receipts</string>
+    <string name="settings_cap_files">Workspace files</string>
+    <string name="settings_cap_image_prompt">Image input</string>
+
+    <string name="settings_background_sync_loading">Reading the background sync setting</string>
+    <string name="settings_background_sync_unavailable">Could not read the background sync setting.</string>
+    <string name="settings_background_sync_enabled">Background sync is on</string>
+    <string name="settings_background_sync_disabled">Background sync is off</string>
+    <string name="settings_background_sync_enabled_detail">New events sync in the background on a periodic schedule.</string>
+    <string name="settings_background_sync_disabled_detail">While off, content updates only when you act here.</string>
+    <string name="settings_background_sync_cadence_note">The 15-minute minimum for periodic work is a WorkManager platform limit.</string>
+    <string name="settings_background_sync_state_on">On</string>
+    <string name="settings_background_sync_state_off">Off</string>
+
+    <string name="settings_diagnostics_title">Diagnostics</string>
+    <string name="settings_diagnostics_summary">Local counters</string>
+    <string name="settings_diagnostics_empty">No diagnostics yet</string>
+    <string name="settings_diagnostics_empty_detail">This device has no counters to show yet.</string>
+    <string name="settings_diagnostics_local_only">Diagnostics stay on this device and are never uploaded automatically</string>
+    <string name="settings_diagnostics_degraded">Running in a degraded state</string>
+    <string name="settings_diagnostics_section_transport">Transport</string>
+    <string name="settings_diagnostics_section_history">History</string>
+    <string name="settings_diagnostics_section_pending">Pending</string>
+    <string name="settings_diagnostics_section_storage">Storage</string>
+    <string name="settings_diagnostics_section_capabilities">Capabilities</string>
+    <string name="settings_diagnostics_cursors">Channel cursors</string>
+    <string name="settings_diagnostics_cursor">Cursor on %1$s: %2$d</string>
+    <string name="settings_diagnostics_channel_mux">Sessions</string>
+    <string name="settings_diagnostics_channel_host">Host</string>
+    <string name="settings_diagnostics_channel_other">Other</string>
+    <string name="settings_diagnostics_lagging_sessions">Sessions with contiguous lag</string>
+    <string name="settings_diagnostics_max_lag">Max lag</string>
+    <string name="settings_diagnostics_needs_resync">Sessions needing resync</string>
+    <string name="settings_diagnostics_history_incomplete">Sessions with incomplete history</string>
+    <string name="settings_diagnostics_history_unsafe">Sessions whose history cannot be rebuilt</string>
+    <string name="settings_diagnostics_pending_completeness">Pending completeness</string>
+    <string name="settings_diagnostics_completeness_complete">Complete</string>
+    <string name="settings_diagnostics_completeness_stale">Stale</string>
+    <string name="settings_diagnostics_completeness_unknown">Unknown</string>
+    <string name="settings_diagnostics_completeness_by_server">Reported by server</string>
+    <string name="settings_diagnostics_baseline_skipped">Baseline sweep skipped</string>
+    <string name="settings_diagnostics_auth_state">Auth state</string>
+    <string name="settings_diagnostics_poll_wait">Long polling available on last poll</string>
+    <string name="settings_diagnostics_yes">Yes</string>
+    <string name="settings_diagnostics_no">No</string>
+    <string name="settings_diagnostics_unknown">Unknown</string>
+    <string name="settings_diagnostics_retention_trimmed">Events trimmed by retention</string>
+    <string name="settings_diagnostics_bad_json">Bad JSON count</string>
+    <string name="settings_diagnostics_ws_downgrade">Downgrades to polling</string>
+    <string name="settings_diagnostics_retired_purge">Retired identities pending purge</string>
+    <string name="settings_diagnostics_roster_age">Roster age</string>
+    <string name="settings_diagnostics_roster_age_just_now">Under a minute</string>
+    <string name="settings_diagnostics_roster_age_minutes">About %1$d min</string>
+    <string name="settings_diagnostics_roster_age_hours">About %1$d hr</string>
+    <string name="settings_diagnostics_capabilities">Available capabilities: %1$s</string>
+    <string name="settings_diagnostics_capabilities_none">No capability table read yet</string>
+    <string name="settings_diagnostics_capabilities_empty">No enabled capabilities</string>
+
+    <string name="settings_app_name">DeepSeek Harness</string>
+    <string name="settings_about_version">Version %1$s</string>
+    <string name="settings_about_summary">A native client for a remote DeepSeek Harness gateway.</string>
+
+</resources>

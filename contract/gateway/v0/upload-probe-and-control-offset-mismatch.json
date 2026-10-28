@@ -1,0 +1,133 @@
+{
+  "name": "upload-probe-and-control-offset-mismatch",
+  "gatewayVersion": "0.8.1",
+  "capturedAt": "{{TS_0}}",
+  "steps": [
+    {
+      "method": "POST",
+      "path": "/fs/upload?path={{TMP}}&name=recorder-upload.bin&session=recorder-upload-1&offset=0",
+      "requestHeaders": {
+        "authorization": "Bearer {{TOKEN}}",
+        "content-length": "8",
+        "content-type": "application/octet-stream",
+        "host": "127.0.0.1:{{PORT}}",
+        "x-dsh-remote-client": "app"
+      },
+      "status": 200,
+      "responseHeaders": {
+        "access-control-allow-headers": "authorization, content-type, x-dsh-remote-client, x-dsh-remote-client-id, x-dsh-remote-inbox-key",
+        "access-control-allow-methods": "GET, POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "600",
+        "connection": "keep-alive",
+        "content-type": "application/json; charset=utf-8",
+        "date": "{{TS_160}}",
+        "keep-alive": "timeout=65",
+        "transfer-encoding": "chunked",
+        "upload-expires": "{{TS_161}}",
+        "upload-offset": "8",
+        "vary": "Origin"
+      },
+      "response": {
+        "name": "recorder-upload.bin",
+        "offset": 8,
+        "ok": true,
+        "partial": true,
+        "session": "{{ID_116}}",
+        "size": 8,
+        "uploadLength": null
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/fs/upload-probe?path={{TMP}}&name=recorder-upload.bin&session=recorder-upload-1",
+      "requestHeaders": {
+        "authorization": "Bearer {{TOKEN}}",
+        "host": "127.0.0.1:{{PORT}}",
+        "x-dsh-remote-client": "app"
+      },
+      "status": 200,
+      "responseHeaders": {
+        "access-control-allow-headers": "authorization, content-type, x-dsh-remote-client, x-dsh-remote-client-id, x-dsh-remote-inbox-key",
+        "access-control-allow-methods": "GET, POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "600",
+        "connection": "keep-alive",
+        "content-type": "application/json; charset=utf-8",
+        "date": "{{TS_162}}",
+        "keep-alive": "timeout=65",
+        "transfer-encoding": "chunked",
+        "upload-expires": "{{TS_163}}",
+        "upload-offset": "8",
+        "vary": "Origin"
+      },
+      "response": {
+        "expiresAt": "{{TS_164}}",
+        "name": "recorder-upload.bin",
+        "ok": true,
+        "partExists": true,
+        "partialSize": 8,
+        "targetExists": false,
+        "targetSize": 0,
+        "uploadLength": null
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/fs/upload?path={{TMP}}&name=recorder-upload.bin&session=recorder-upload-1&offset=99",
+      "requestHeaders": {
+        "authorization": "Bearer {{TOKEN}}",
+        "content-length": "8",
+        "content-type": "application/octet-stream",
+        "host": "127.0.0.1:{{PORT}}",
+        "x-dsh-remote-client": "app"
+      },
+      "status": 409,
+      "responseHeaders": {
+        "access-control-allow-headers": "authorization, content-type, x-dsh-remote-client, x-dsh-remote-client-id, x-dsh-remote-inbox-key",
+        "access-control-allow-methods": "GET, POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "600",
+        "connection": "keep-alive",
+        "content-type": "application/json; charset=utf-8",
+        "date": "{{TS_165}}",
+        "keep-alive": "timeout=65",
+        "transfer-encoding": "chunked",
+        "vary": "Origin"
+      },
+      "response": {
+        "detail": "offset 超过已有分片大小, 请先 probe",
+        "error": "offset-mismatch",
+        "partialSize": 8
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/fs/upload-control?path={{TMP}}&name=recorder-upload.bin&session=recorder-upload-1&action=cancel",
+      "requestHeaders": {
+        "authorization": "Bearer {{TOKEN}}",
+        "host": "127.0.0.1:{{PORT}}",
+        "x-dsh-remote-client": "app"
+      },
+      "status": 200,
+      "responseHeaders": {
+        "access-control-allow-headers": "authorization, content-type, x-dsh-remote-client, x-dsh-remote-client-id, x-dsh-remote-inbox-key",
+        "access-control-allow-methods": "GET, POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "600",
+        "connection": "keep-alive",
+        "content-type": "application/json; charset=utf-8",
+        "date": "{{TS_166}}",
+        "keep-alive": "timeout=65",
+        "transfer-encoding": "chunked",
+        "vary": "Origin"
+      },
+      "response": {
+        "cancelled": true,
+        "ok": true,
+        "removed": true,
+        "session": "{{ID_116}}"
+      }
+    }
+  ]
+}

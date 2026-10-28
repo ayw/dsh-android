@@ -1,0 +1,67 @@
+{
+  "name": "poll-incremental",
+  "gatewayVersion": "0.8.1",
+  "capturedAt": "{{TS_0}}",
+  "steps": [
+    {
+      "method": "GET",
+      "path": "/api/events.poll?kind=mux&wait=0&since=8&epoch={{EPOCH}}",
+      "requestHeaders": {
+        "authorization": "Bearer {{TOKEN}}",
+        "host": "127.0.0.1:{{PORT}}",
+        "x-dsh-remote-client": "app"
+      },
+      "status": 200,
+      "responseHeaders": {
+        "access-control-allow-headers": "authorization, content-type, x-dsh-remote-client, x-dsh-remote-client-id, x-dsh-remote-inbox-key",
+        "access-control-allow-methods": "GET, POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "600",
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "742",
+        "content-type": "application/json; charset=utf-8",
+        "date": "{{TS_47}}",
+        "keep-alive": "timeout=65",
+        "vary": "Origin, Accept-Encoding"
+      },
+      "response": {
+        "baseline": [],
+        "epoch": "{{EPOCH}}",
+        "events": [
+          {
+            "event": {
+              "payload": {
+                "event": {
+                  "data": {
+                    "content": [
+                      {
+                        "text": "recorder incremental push",
+                        "type": "text"
+                      }
+                    ],
+                    "role": "assistant"
+                  },
+                  "seq": 601,
+                  "type": "assistant/message"
+                },
+                "sessionId": "{{SESSION_1}}",
+                "type": "session/event"
+              },
+              "rpcId": "{{ID_15}}"
+            },
+            "seq": 9,
+            "ts": "{{TS_48}}"
+          }
+        ],
+        "kind": "mux",
+        "latestSeq": 9,
+        "ok": true,
+        "reset": false,
+        "since": 8,
+        "truncated": false,
+        "waitSupported": false
+      }
+    }
+  ]
+}

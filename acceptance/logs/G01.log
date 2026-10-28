@@ -1,0 +1,1 @@
+G01 toolchain precheck: JDK 17 ok; android-37* present; build-tools/36.0.0 present; apkanalyzer present; wrapper=9.6.1; installations.paths declared

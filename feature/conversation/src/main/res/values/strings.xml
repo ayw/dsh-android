@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="conversation_back">返回</string>
+
+    <string name="conversation_pending_approval_title">工具请求确认</string>
+    <string name="conversation_pending_question_title">需要你回答的问题</string>
+
+    <string name="conversation_read_error_title">会话时间线没有更新</string>
+    <string name="conversation_read_error_detail">仍显示本机已缓存的条目；更早的消息可能不在列表里。</string>
+    <string name="conversation_older_error_title">更早的消息没有加载</string>
+    <string name="conversation_action_error_title">操作未生效</string>
+
+</resources>

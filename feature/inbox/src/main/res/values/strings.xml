@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="inbox_title">收件箱</string>
+    <string name="inbox_subtitle">来自所有会话的待处理请求</string>
+
+    <string name="inbox_session_untitled">未命名会话</string>
+    <string name="inbox_session_unavailable">该会话当前不可用；请求仍会显示，也可以在本机划掉。</string>
+    <string name="inbox_session_archived">该会话已归档；请求仍会显示，也可以在本机划掉。</string>
+    <string name="inbox_open_session">打开会话</string>
+
+    <string name="inbox_undecodable_notice">内容无法解析</string>
+    <string name="inbox_undecodable_detail">这条请求的载荷无法解码，只能显示身份与状态；请到对应会话里查看。</string>
+    <string name="inbox_approval_title">工具 %1$s 请求确认</string>
+    <string name="inbox_approval_title_generic">有一个工具请求确认</string>
+    <string name="inbox_question_title">需要你回答的问题</string>
+    <string name="inbox_question_field_label">%1$s：%2$s</string>
+
+    <string name="inbox_dismissed_title">已划掉</string>
+    <string name="inbox_dismissed_summary">划掉只是从计数移开，请求仍未结算。</string>
+    <string name="inbox_dismissed_count">已划掉 %1$d 项</string>
+    <string name="inbox_dismissed_empty">本机没有缓存的已划掉请求。</string>
+    <string name="inbox_undismiss">恢复到列表</string>
+
+    <string name="inbox_empty_title">没有等待你的请求</string>
+    <string name="inbox_empty_subtitle">完整性核对通过，空收件箱是可信的。</string>
+    <string name="inbox_unknown_title">无法确认待处理数量</string>
+    <string name="inbox_unknown_subtitle">本机没有完成完整性核对，列表可能缺少请求。</string>
+
+    <string name="inbox_counts_error_title">待处理计数暂时不可用</string>
+    <string name="inbox_rows_error_title">待处理列表没有更新</string>
+    <string name="inbox_rows_error_detail">列表没有更新，仍显示本机缓存。</string>
+    <string name="inbox_action_error_title">操作未生效</string>
+    <string name="inbox_volume_notice">本机待处理项已超过完整性核对阈值，列表可能不完整。</string>
+
+    <string name="inbox_error_unreachable">无法连接到服务器。</string>
+    <string name="inbox_error_timeout">等待服务器响应超时。</string>
+    <string name="inbox_error_auth">凭据已失效，需要重新配对。</string>
+    <string name="inbox_error_forbidden">服务器拒绝了该请求。</string>
+    <string name="inbox_error_generic">出了点问题。</string>
+
+</resources>

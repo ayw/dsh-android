@@ -1,0 +1,35 @@
+{
+  "epoch": "e-replay",
+  "since": 0,
+  "latestSeq": 3,
+  "reset": false,
+  "truncated": false,
+  "waitSupported": true,
+  "ok": true,
+  "kind": "mux",
+  "events": [
+    {
+      "seq": 3,
+      "ts": 1700000000003,
+      "replay": true,
+      "event": {
+        "rpcId": "r-replay",
+        "payload": {
+          "sessionId": "s-1",
+          "type": "session/event",
+          "event": {
+            "type": "tool/call",
+            "seq": 3,
+            "data": {
+              "turn": 2,
+              "step": 1,
+              "callId": "c-77",
+              "name": "read_file",
+              "arguments": "{\"path\":\"a.txt\"}"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "name": "health-and-capabilities",
+  "gatewayVersion": "0.8.1",
+  "capturedAt": "{{TS_0}}",
+  "steps": [
+    {
+      "method": "GET",
+      "path": "/health",
+      "requestHeaders": {
+        "host": "127.0.0.1:{{PORT}}"
+      },
+      "status": 200,
+      "responseHeaders": {
+        "access-control-allow-headers": "authorization, content-type, x-dsh-remote-client, x-dsh-remote-client-id, x-dsh-remote-inbox-key",
+        "access-control-allow-methods": "GET, POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "600",
+        "connection": "keep-alive",
+        "content-type": "application/json; charset=utf-8",
+        "date": "{{TS_1}}",
+        "keep-alive": "timeout=65",
+        "transfer-encoding": "chunked",
+        "vary": "Origin"
+      },
+      "response": {
+        "capabilities": {
+          "centralAnnouncements": 2,
+          "cloudRelay": 1,
+          "compatibilityAdapter": 2,
+          "deviceKeys": 1,
+          "diagnostics": 1,
+          "dshLifecycle": 2,
+          "eventEpoch": 1,
+          "eventPolling": 1,
+          "feedback": 1,
+          "fileInbox": 1,
+          "healthProbes": 1,
+          "imagePromptTransport": 1,
+          "operations": 1,
+          "resumableUploads": 2,
+          "workspaceFiles": 2,
+          "wsTicket": 1
+        },
+        "dshControl": {
+          "manager": "systemd",
+          "supported": true
+        },
+        "events": {
+          "host": {
+            "attempt": 0,
+            "clients": 0,
+            "connected": true,
+            "eventLagMs": "{{TS_2}}",
+            "lastConnectAt": "{{TS_3}}",
+            "lastError": "",
+            "lastEventAt": "{{TS_4}}",
+            "reconnects": 0
+          },
+          "mux": {
+            "attempt": 0,
+            "clients": 0,
+            "connected": true,
+            "eventLagMs": "{{TS_5}}",
+            "lastConnectAt": "{{TS_6}}",
+            "lastError": "",
+            "lastEventAt": "{{TS_7}}",
+            "reconnects": 0
+          }
+        },
+        "liveness": {
+          "ok": true,
+          "pid": "{{PID}}",
+          "runtime": {
+            "lastError": "",
+            "lastErrorAt": "{{TS_8}}",
+            "recovery": {
+              "enabled": true,
+              "supervised": false,
+              "supervisorPid": 0
+            },
+            "uncaughtExceptions": 0,
+            "unhandledRejections": 0
+          },
+          "uptimeMs": "{{TS_9}}"
+        },
+        "ok": true,
+        "pid": "{{PID}}",
+        "protocol": {
+          "version": 1
+        },
+        "readiness": {
+          "eventsOk": true,
+          "ok": true,
+          "upstreamOk": true
+        },
+        "runtime": {
+          "lastError": "",
+          "lastErrorAt": "{{TS_10}}",
+          "recovery": {
+            "enabled": true,
+            "supervised": false,
+            "supervisorPid": 0
+          },
+          "uncaughtExceptions": 0,
+          "unhandledRejections": 0
+        },
+        "service": "dsh-remote",
+        "status": "ready",
+        "upstream": "http://127.0.0.1:{{PORT}}",
+        "upstreamCheckedAt": "{{TS_11}}",
+        "upstreamChecking": false,
+        "upstreamOk": true,
+        "upstreamProbe": "/",
+        "upstreamReachable": true,
+        "upstreamStatus": 200,
+        "version": "0.8.1"
+      }
+    }
+  ]
+}

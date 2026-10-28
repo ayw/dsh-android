@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  启动器主题（D15）：真正的配色由 Compose `DshTheme` 提供（Material 3 + 动态取色，深色跟随系统）。
+  这里的 XML 主题只负责两件事：
+  1. NoActionBar——标题栏由 Compose Scaffold 画，不能出现双ActionBar；
+  2. 系统栏透明 + 冷启动底色随光暗（values-night/ 覆盖），配合 enableEdgeToEdge() 的边到边。
+-->
+<resources>
+    <style name="Theme.Dsh" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+</resources>

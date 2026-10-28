@@ -1,0 +1,209 @@
+{
+  "name": "approval-asked-and-respond-accepted",
+  "gatewayVersion": "0.8.1",
+  "capturedAt": "{{TS_0}}",
+  "steps": [
+    {
+      "method": "GET",
+      "path": "/api/events.poll?kind=mux&wait=0&since=0",
+      "requestHeaders": {
+        "authorization": "Bearer {{TOKEN}}",
+        "host": "127.0.0.1:{{PORT}}",
+        "x-dsh-remote-client": "app"
+      },
+      "status": 200,
+      "responseHeaders": {
+        "access-control-allow-headers": "authorization, content-type, x-dsh-remote-client, x-dsh-remote-client-id, x-dsh-remote-inbox-key",
+        "access-control-allow-methods": "GET, POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "600",
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "3310",
+        "content-type": "application/json; charset=utf-8",
+        "date": "{{TS_24}}",
+        "keep-alive": "timeout=65",
+        "vary": "Origin, Accept-Encoding"
+      },
+      "response": {
+        "baseline": [
+          {
+            "payload": {
+              "sessionId": "{{SESSION_1}}",
+              "type": "session/subscribed"
+            },
+            "rpcId": "{{ID_3}}"
+          },
+          {
+            "payload": {
+              "approvalId": "{{ID_4}}",
+              "reason": "执行测试命令",
+              "sessionId": "{{SESSION_1}}",
+              "toolName": "shell",
+              "type": "approval/requested"
+            },
+            "rpcId": "{{ID_5}}"
+          }
+        ],
+        "epoch": "{{EPOCH}}",
+        "events": [
+          {
+            "event": {
+              "payload": {
+                "sessionId": "{{SESSION_1}}",
+                "type": "session/subscribed"
+              },
+              "rpcId": "{{ID_3}}"
+            },
+            "seq": 1,
+            "ts": "{{TS_25}}"
+          },
+          {
+            "event": {
+              "payload": {
+                "event": {
+                  "data": {
+                    "content": [
+                      {
+                        "text": "recorder prompt message one",
+                        "type": "text"
+                      }
+                    ],
+                    "role": "user"
+                  },
+                  "seq": 11,
+                  "type": "user/message"
+                },
+                "sessionId": "{{SESSION_1}}",
+                "type": "session/event"
+              },
+              "rpcId": "{{ID_6}}"
+            },
+            "seq": 2,
+            "ts": "{{TS_26}}"
+          },
+          {
+            "event": {
+              "payload": {
+                "event": {
+                  "data": {
+                    "content": [
+                      {
+                        "text": "已收到第 1 条消息",
+                        "type": "text"
+                      }
+                    ],
+                    "role": "assistant"
+                  },
+                  "seq": 12,
+                  "type": "assistant/message"
+                },
+                "sessionId": "{{SESSION_1}}",
+                "type": "session/event"
+              },
+              "rpcId": "{{ID_7}}"
+            },
+            "seq": 3,
+            "ts": "{{TS_27}}"
+          },
+          {
+            "event": {
+              "payload": {
+                "event": {
+                  "data": {
+                    "content": [
+                      {
+                        "text": "recorder operation receipt message",
+                        "type": "text"
+                      }
+                    ],
+                    "role": "user"
+                  },
+                  "seq": 13,
+                  "type": "user/message"
+                },
+                "sessionId": "{{SESSION_1}}",
+                "type": "session/event"
+              },
+              "rpcId": "{{ID_8}}"
+            },
+            "seq": 4,
+            "ts": "{{TS_28}}"
+          },
+          {
+            "event": {
+              "payload": {
+                "event": {
+                  "data": {
+                    "content": [
+                      {
+                        "text": "已收到第 2 条消息",
+                        "type": "text"
+                      }
+                    ],
+                    "role": "assistant"
+                  },
+                  "seq": 14,
+                  "type": "assistant/message"
+                },
+                "sessionId": "{{SESSION_1}}",
+                "type": "session/event"
+              },
+              "rpcId": "{{ID_9}}"
+            },
+            "seq": 5,
+            "ts": "{{TS_29}}"
+          },
+          {
+            "event": {
+              "payload": {
+                "approvalId": "{{ID_4}}",
+                "reason": "执行测试命令",
+                "sessionId": "{{SESSION_1}}",
+                "toolName": "shell",
+                "type": "approval/requested"
+              },
+              "rpcId": "{{ID_5}}"
+            },
+            "seq": 6,
+            "ts": "{{TS_30}}"
+          }
+        ],
+        "kind": "mux",
+        "latestSeq": 6,
+        "ok": true,
+        "reset": false,
+        "since": 0,
+        "truncated": false,
+        "waitSupported": false
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/respond",
+      "requestHeaders": {
+        "authorization": "Bearer {{TOKEN}}",
+        "content-length": "157",
+        "content-type": "application/json",
+        "host": "127.0.0.1:{{PORT}}",
+        "x-dsh-remote-client": "app"
+      },
+      "status": 200,
+      "responseHeaders": {
+        "access-control-allow-headers": "authorization, content-type, x-dsh-remote-client, x-dsh-remote-client-id, x-dsh-remote-inbox-key",
+        "access-control-allow-methods": "GET, POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "600",
+        "connection": "keep-alive",
+        "content-type": "application/json; charset=utf-8",
+        "date": "{{TS_31}}",
+        "keep-alive": "timeout=65",
+        "transfer-encoding": "chunked",
+        "vary": "Origin"
+      },
+      "response": {
+        "accepted": true
+      }
+    }
+  ]
+}

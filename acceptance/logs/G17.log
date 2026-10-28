@@ -1,0 +1,21 @@
+
+---- unit[0] module fence (shell) ----
+RESOLVED DEPENDENCY GRAPH (project() deps per build file):
+  ./app/build.gradle.kts: :core:data, :core:database, :core:designsystem, :core:domain, :core:model, :core:network, :core:protocol, :core:testing, :feature:conversation, :feature:inbox, :feature:sessions, :feature:settings
+  ./build.gradle.kts: (none)
+  ./core/data/build.gradle.kts: :core:database, :core:domain, :core:model, :core:network, :core:protocol, :core:testing
+  ./core/database/build.gradle.kts: :core:model, :core:testing
+  ./core/designsystem/build.gradle.kts: :core:model
+  ./core/domain/build.gradle.kts: :core:model, :core:testing
+  ./core/model/build.gradle.kts: (none)
+  ./core/network/build.gradle.kts: :core:domain, :core:model, :core:protocol, :core:testing
+  ./core/protocol/build.gradle.kts: :core:model, :core:testing
+  ./core/testing/build.gradle.kts: :core:domain, :core:model
+  ./feature/conversation/build.gradle.kts: :core:designsystem, :core:domain, :core:model, :core:testing
+  ./feature/inbox/build.gradle.kts: :core:designsystem, :core:domain, :core:model, :core:testing
+  ./feature/sessions/build.gradle.kts: :core:designsystem, :core:domain, :core:model, :core:testing
+  ./feature/settings/build.gradle.kts: :core:designsystem, :core:domain, :core:model, :core:testing
+(:app Kotlin sources scanned: 5)
+(feature build files scanned: 4)
+check-modules: ALL CHECKS PASS
+---- exit=0  1793154251917..1793154252000 ms ----

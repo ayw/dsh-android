@@ -1,0 +1,34 @@
+{
+  "name": "fs-preview-too-large",
+  "gatewayVersion": "0.8.1",
+  "capturedAt": "{{TS_0}}",
+  "steps": [
+    {
+      "method": "GET",
+      "path": "/fs/preview?path={{TMP}}%2Flarge-preview.md",
+      "requestHeaders": {
+        "authorization": "Bearer {{TOKEN}}",
+        "host": "127.0.0.1:{{PORT}}",
+        "x-dsh-remote-client": "app"
+      },
+      "status": 413,
+      "responseHeaders": {
+        "access-control-allow-headers": "authorization, content-type, x-dsh-remote-client, x-dsh-remote-client-id, x-dsh-remote-inbox-key",
+        "access-control-allow-methods": "GET, POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "600",
+        "connection": "keep-alive",
+        "content-type": "application/json; charset=utf-8",
+        "date": "{{TS_159}}",
+        "keep-alive": "timeout=65",
+        "transfer-encoding": "chunked",
+        "vary": "Origin"
+      },
+      "response": {
+        "error": "preview-too-large",
+        "limit": 1048576,
+        "size": 1048605
+      }
+    }
+  ]
+}

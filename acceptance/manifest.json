@@ -1,0 +1,1176 @@
+{
+  "schemaVersion": 1,
+  "runId": "20261028T022352Z-4043562",
+  "startedAt": "2026-10-28T02:23:52Z",
+  "finishedAt": "2026-10-28T02:24:13Z",
+  "durationSeconds": 21,
+  "toolchain": {
+    "jdk": "openjdk version \"17.0.20\" 2026-07-21",
+    "gradle": "9.6.1",
+    "agp": "9.4.1",
+    "compileSdk": 37
+  },
+  "gates": [
+    {
+      "id": "G01",
+      "title": "toolchain-sanity",
+      "blocking": true,
+      "status": "PASS",
+      "command": "run-gates.sh ::precheck",
+      "assertions": {
+        "tests": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "artifacts": [
+        {
+          "path": "acceptance/logs/G01.log",
+          "sha256": "c3093d0413c29e14841b59b9779d7c934cabdfd6d33131f47114a63bc32ab079"
+        },
+        {
+          "path": "app/build.gradle.kts",
+          "sha256": "90ec61fb73022a0cca63691a690ecb94fcb18ba940a3705714a49966fd1492e9"
+        },
+        {
+          "path": "gradle.properties",
+          "sha256": "d2eb57a224222a8f2dd2ba90df995bb115fd98b13ff4e3b717c3827206ab730e"
+        },
+        {
+          "path": "gradle/wrapper/gradle-wrapper.properties",
+          "sha256": "1d126b2f29d1a87825e57ae7a7a1b1cc06f8dcbc89dd614dc6a5b493244ba2cc"
+        }
+      ],
+      "notes": "precondition: JDK 17 ok; android-37* present; build-tools/36.0.0 present; apkanalyzer present; wrapper=9.6.1; installations.paths declared"
+    },
+    {
+      "id": "G02",
+      "title": "module-build",
+      "blocking": true,
+      "status": "PASS",
+      "command": "./gradlew build -x lint",
+      "assertions": {
+        "tests": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "artifacts": [
+        {
+          "path": "acceptance/logs/G02.log",
+          "sha256": "dbd1fa256b9ae2a3f42927b59659789c737891e955314f537814221a35238b24"
+        },
+        {
+          "path": "app/build/intermediates/compile_and_runtime_r_class_jar/debug/processDebugResources/R.jar",
+          "sha256": "3eb8cc1f3899d68dddc30bd2473a5264eec260d3f61fc087719a58df5705efec"
+        },
+        {
+          "path": "app/build/intermediates/compile_and_runtime_r_class_jar/release/processReleaseResources/R.jar",
+          "sha256": "1c1d250059f24afb8a816af2617ab413d788d74d872d3857dd8aa6376cbe1137"
+        },
+        {
+          "path": "app/build/intermediates/compile_app_classes_jar/debug/bundleDebugClassesToCompileJar/classes.jar",
+          "sha256": "590dde899b7dfd428faf96772e2aa32e585f22ed91f71dea76808af97db64591"
+        },
+        {
+          "path": "app/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar",
+          "sha256": "192839226fc07a796a68c070d6c33c14bae27eb9f8eafbf4599ac25611a4b826"
+        },
+        {
+          "path": "app/build/intermediates/compile_r_class_jar/release/generateReleaseRFile/R.jar",
+          "sha256": "192839226fc07a796a68c070d6c33c14bae27eb9f8eafbf4599ac25611a4b826"
+        },
+        {
+          "path": "app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/PublicSuffixDatabase.list.jar",
+          "sha256": "cc684f059716f40f77ff25a3f4cb2d1fadd0b7af6adea39f0467ae3c4240c610"
+        },
+        {
+          "path": "app/build/intermediates/compressed_assets/release/compressReleaseAssets/out/assets/PublicSuffixDatabase.list.jar",
+          "sha256": "42374d51b4c58173dc730493d5ff7dfeae73e27b12d2a3c0bcc654bf60bfdabf"
+        },
+        {
+          "path": "app/build/intermediates/merged_java_res/debug/mergeDebugJavaResource/base.jar",
+          "sha256": "7bcafdc6f05454579c7588d2b845c1a36e5bd42146528a5991161fea6b70c7e4"
+        },
+        {
+          "path": "app/build/intermediates/merged_java_res/release/mergeReleaseJavaResource/base.jar",
+          "sha256": "cf1158f72ee90c5cdeea58273f1b60335329be4c4370b4763b592be17c7959e4"
+        },
+        {
+          "path": "app/build/intermediates/merged_java_res/release/minifyReleaseWithR8/base.jar",
+          "sha256": "921fb377147be38751234cc6aac7cccb123ec4e0a09b63d2b81bb8e4461446f1"
+        },
+        {
+          "path": "app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/3eb8cc1f3899d68dddc30bd2473a5264eec260d3f61fc087719a58df5705efec_0.jar",
+          "sha256": "583beee4e65686910fbbc0aec71a717b6b03d98164e9c905c44412d40f37f390"
+        },
+        {
+          "path": "app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/3eb8cc1f3899d68dddc30bd2473a5264eec260d3f61fc087719a58df5705efec_1.jar",
+          "sha256": "5a95ab7e3ce5abd0a1cdff91ecde937eb3cba315a2a9d486dd447a19640573db"
+        },
+        {
+          "path": "app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/3eb8cc1f3899d68dddc30bd2473a5264eec260d3f61fc087719a58df5705efec_2.jar",
+          "sha256": "5b473bb78cde8639d230a3ff179e9b053f27c9e41442d7037dd3a4562f102087"
+        },
+        {
+          "path": "app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/3eb8cc1f3899d68dddc30bd2473a5264eec260d3f61fc087719a58df5705efec_3.jar",
+          "sha256": "1a8336bf4621e20e829eb1e39ca00496d346370c04b2e0a8c2a5794496bb5eec"
+        },
+        {
+          "path": "app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/3eb8cc1f3899d68dddc30bd2473a5264eec260d3f61fc087719a58df5705efec_4.jar",
+          "sha256": "aa33cfddfa285c0758b7f372e4a7e53b4a73ae1279a3bb7379b2d82863d9b1b3"
+        },
+        {
+          "path": "app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/3eb8cc1f3899d68dddc30bd2473a5264eec260d3f61fc087719a58df5705efec_5.jar",
+          "sha256": "a22036c9f10abd2593ea3b58498ec03b0428365e5ff852874698672bdbf602ae"
+        },
+        {
+          "path": "app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/3eb8cc1f3899d68dddc30bd2473a5264eec260d3f61fc087719a58df5705efec_6.jar",
+          "sha256": "1657856630db0b9f68115e11f0b0d4c86845a7f2a5a0524eba88872615d32cba"
+        },
+        {
+          "path": "app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/3eb8cc1f3899d68dddc30bd2473a5264eec260d3f61fc087719a58df5705efec_7.jar",
+          "sha256": "cdced9ce2c12eb2fc1fe456043fb0d2e4ad6a3be39192a7e7282e1fc66071ea7"
+        },
+        {
+          "path": "app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/3eb8cc1f3899d68dddc30bd2473a5264eec260d3f61fc087719a58df5705efec_8.jar",
+          "sha256": "773a9a405140618d00cfe165046c0c6561fcdc438d2d983bd61b7563cdc6efae"
+        },
+        {
+          "path": "app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/3eb8cc1f3899d68dddc30bd2473a5264eec260d3f61fc087719a58df5705efec_9.jar",
+          "sha256": "31e8b94cf1e8f94c2bd2f4b0b1d3200ef1e7ae5d694a06a15f7ec1bc56d17924"
+        },
+        {
+          "path": "app/build/intermediates/runtime_app_classes_jar/debug/bundleDebugClassesToRuntimeJar/classes.jar",
+          "sha256": "590dde899b7dfd428faf96772e2aa32e585f22ed91f71dea76808af97db64591"
+        },
+        {
+          "path": "app/build/outputs/apk/debug/app-debug.apk",
+          "sha256": "c0b80d30ea5063e0733e1f62771e99f9f8dca317bac2631008a13efb62b58368"
+        },
+        {
+          "path": "core/database/build/intermediates/aar_main_jar/debug/syncDebugLibJars/classes.jar",
+          "sha256": "596e250da8fcf96facc7697f89532f09d6e2f6096bc134424d10cc31f13b233b"
+        },
+        {
+          "path": "core/database/build/intermediates/aar_main_jar/release/syncReleaseLibJars/classes.jar",
+          "sha256": "c49852b90f386444bb9698f63574d1e7e6e14fec212351f42fb6ae92a0727641"
+        },
+        {
+          "path": "core/database/build/intermediates/compile_and_runtime_r_class_jar/debugUnitTest/generateDebugUnitTestStubRFile/R.jar",
+          "sha256": "3e771da5600001f5961b7fc586d2b459f85aa41af8b9b9932618193d513c578e"
+        },
+        {
+          "path": "core/database/build/intermediates/compile_library_classes_jar/debug/bundleLibCompileToJarDebug/classes.jar",
+          "sha256": "ad43a69d9a4c694b9a6a8e4fd1ef7dba7272def55cad526e934d101e1410b71b"
+        },
+        {
+          "path": "core/database/build/intermediates/compile_library_classes_jar/release/bundleLibCompileToJarRelease/classes.jar",
+          "sha256": "ad43a69d9a4c694b9a6a8e4fd1ef7dba7272def55cad526e934d101e1410b71b"
+        },
+        {
+          "path": "core/database/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar",
+          "sha256": "ce493adf410dffc2cd0a2bc095d38f40ec6c1858c59e08f6880d9a70a80ad0ca"
+        },
+        {
+          "path": "core/database/build/intermediates/compile_r_class_jar/release/generateReleaseRFile/R.jar",
+          "sha256": "ce493adf410dffc2cd0a2bc095d38f40ec6c1858c59e08f6880d9a70a80ad0ca"
+        },
+        {
+          "path": "core/database/build/intermediates/full_jar/release/createFullJarRelease/full.jar",
+          "sha256": "d46b34f5abbdbc9279a619894fa621b5d402fea8037e99a0225218501030cc7b"
+        },
+        {
+          "path": "core/database/build/intermediates/merged_java_res/debug/mergeDebugJavaResource/feature-database.jar",
+          "sha256": "571b750eaa5b29b0cac8c5452af6d234c5c2251b115852bb1b0b7c6f4ca5ced2"
+        },
+        {
+          "path": "core/database/build/intermediates/merged_java_res/release/mergeReleaseJavaResource/feature-database.jar",
+          "sha256": "571b750eaa5b29b0cac8c5452af6d234c5c2251b115852bb1b0b7c6f4ca5ced2"
+        },
+        {
+          "path": "core/database/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar",
+          "sha256": "ffc2d8ae4911a35559c68337752d8fb0824b9cacb0b59e799dc30a53c7c5c3e9"
+        },
+        {
+          "path": "core/database/build/intermediates/runtime_library_classes_jar/release/bundleLibRuntimeToJarRelease/classes.jar",
+          "sha256": "ffc2d8ae4911a35559c68337752d8fb0824b9cacb0b59e799dc30a53c7c5c3e9"
+        },
+        {
+          "path": "core/data/build/intermediates/aar_main_jar/debug/syncDebugLibJars/classes.jar",
+          "sha256": "0a4d537583b32c2ef640d8bd70fe78b7b3cd706b2e9a7c917cdf50e3c24d81bc"
+        },
+        {
+          "path": "core/data/build/intermediates/aar_main_jar/release/syncReleaseLibJars/classes.jar",
+          "sha256": "65bd1d02aab9b491b3f8edf860dc6201033c60c18e33710cc114f5e31ba77cd8"
+        },
+        {
+          "path": "core/data/build/intermediates/compile_and_runtime_r_class_jar/debugUnitTest/processDebugUnitTestResources/R.jar",
+          "sha256": "b5ede577c73c9d987b30807f58fd1322fd79d972b5aea310377bacf4ca198b9c"
+        },
+        {
+          "path": "core/data/build/intermediates/compile_library_classes_jar/debug/bundleLibCompileToJarDebug/classes.jar",
+          "sha256": "88f51fea010049d128d85e7ac20033e0b8215c29b9698ce3e4ab2e37c3463c66"
+        },
+        {
+          "path": "core/data/build/intermediates/compile_library_classes_jar/release/bundleLibCompileToJarRelease/classes.jar",
+          "sha256": "88f51fea010049d128d85e7ac20033e0b8215c29b9698ce3e4ab2e37c3463c66"
+        },
+        {
+          "path": "core/data/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar",
+          "sha256": "9aefae7d4a1ad4e9b44cbfede16a5e615653b39ef7454fb5afa61afa53ef325f"
+        },
+        {
+          "path": "core/data/build/intermediates/compile_r_class_jar/release/generateReleaseRFile/R.jar",
+          "sha256": "9aefae7d4a1ad4e9b44cbfede16a5e615653b39ef7454fb5afa61afa53ef325f"
+        },
+        {
+          "path": "core/data/build/intermediates/full_jar/release/createFullJarRelease/full.jar",
+          "sha256": "946574ef57901517f0530349e16afefcff238ddd84398310f0b66c53c89675c6"
+        },
+        {
+          "path": "core/data/build/intermediates/merged_java_res/debug/mergeDebugJavaResource/feature-data.jar",
+          "sha256": "f19f33d376349b280f9c515dda81f43a375234f0a8f5da4e3c3796eb55cc3e27"
+        },
+        {
+          "path": "core/data/build/intermediates/merged_java_res/release/mergeReleaseJavaResource/feature-data.jar",
+          "sha256": "f19f33d376349b280f9c515dda81f43a375234f0a8f5da4e3c3796eb55cc3e27"
+        },
+        {
+          "path": "core/data/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar",
+          "sha256": "57051ca96a215ab5618aa35ffae2e9c498e7b5a4e72bf075861bcbb84e6b549e"
+        },
+        {
+          "path": "core/data/build/intermediates/runtime_library_classes_jar/release/bundleLibRuntimeToJarRelease/classes.jar",
+          "sha256": "57051ca96a215ab5618aa35ffae2e9c498e7b5a4e72bf075861bcbb84e6b549e"
+        },
+        {
+          "path": "core/designsystem/build/intermediates/aar_main_jar/debug/syncDebugLibJars/classes.jar",
+          "sha256": "6c50acf1dac9c4d15cf29e9f42bf978b6625a7cfac0437e5ed81620424c23c9b"
+        },
+        {
+          "path": "core/designsystem/build/intermediates/aar_main_jar/release/syncReleaseLibJars/classes.jar",
+          "sha256": "93ea4f7c512724d951e21301c7d54910ef72cb92d7367c81b0005b0f4559eb55"
+        },
+        {
+          "path": "core/designsystem/build/intermediates/compile_and_runtime_r_class_jar/debugUnitTest/generateDebugUnitTestStubRFile/R.jar",
+          "sha256": "41bd6c7bcec3eade6c212b76ce44c0f5e478460139cc733e8173a6318b3e129a"
+        },
+        {
+          "path": "core/designsystem/build/intermediates/compile_library_classes_jar/debug/bundleLibCompileToJarDebug/classes.jar",
+          "sha256": "d3b436626dfbef4367edf6daecd86ad19e730fe94bd438567e5dc0afc17f21e6"
+        },
+        {
+          "path": "core/designsystem/build/intermediates/compile_library_classes_jar/release/bundleLibCompileToJarRelease/classes.jar",
+          "sha256": "d3b436626dfbef4367edf6daecd86ad19e730fe94bd438567e5dc0afc17f21e6"
+        },
+        {
+          "path": "core/designsystem/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar",
+          "sha256": "dffc43515caa0836fd713cffca554c16fffeb8116f7030c5a646b11be2525943"
+        },
+        {
+          "path": "core/designsystem/build/intermediates/compile_r_class_jar/release/generateReleaseRFile/R.jar",
+          "sha256": "dffc43515caa0836fd713cffca554c16fffeb8116f7030c5a646b11be2525943"
+        },
+        {
+          "path": "core/designsystem/build/intermediates/full_jar/release/createFullJarRelease/full.jar",
+          "sha256": "81ea68e398c6edebb6f2372ca1268ab2aed0114a70dec195d5607c58d66e8dfb"
+        },
+        {
+          "path": "core/designsystem/build/intermediates/merged_java_res/debug/mergeDebugJavaResource/feature-designsystem.jar",
+          "sha256": "2fcb3c596149c00f4c6af5d977744e49332f45f3765b98777c65396b47858c12"
+        },
+        {
+          "path": "core/designsystem/build/intermediates/merged_java_res/release/mergeReleaseJavaResource/feature-designsystem.jar",
+          "sha256": "2fcb3c596149c00f4c6af5d977744e49332f45f3765b98777c65396b47858c12"
+        },
+        {
+          "path": "core/designsystem/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar",
+          "sha256": "785bb7a3c7b3fcddacafadf98cc6d3aa123efd4accd9ae156d2ca16fc2b31e2c"
+        },
+        {
+          "path": "core/designsystem/build/intermediates/runtime_library_classes_jar/release/bundleLibRuntimeToJarRelease/classes.jar",
+          "sha256": "785bb7a3c7b3fcddacafadf98cc6d3aa123efd4accd9ae156d2ca16fc2b31e2c"
+        },
+        {
+          "path": "core/domain/build/libs/domain.jar",
+          "sha256": "965fb2e3cc3da040385cb20bea1dff163116d33c2d1eb677aad966478af8082d"
+        },
+        {
+          "path": "core/model/build/libs/model.jar",
+          "sha256": "8b05fa75db6d1b466c5c7d71ed3f4b941a7d032a7061fcb42bc0be8ee47f7797"
+        },
+        {
+          "path": "core/network/build/intermediates/aar_main_jar/debug/syncDebugLibJars/classes.jar",
+          "sha256": "630d42ed4cb6b1d4011b43a89682ea654b317f802a43193f8c3c24b5f2e3325b"
+        },
+        {
+          "path": "core/network/build/intermediates/aar_main_jar/release/syncReleaseLibJars/classes.jar",
+          "sha256": "8f9e767261fcf6767de922c59492c6bd5c7ac53b0b3ccb1e280f3bd99225a532"
+        },
+        {
+          "path": "core/network/build/intermediates/compile_and_runtime_r_class_jar/debugUnitTest/generateDebugUnitTestStubRFile/R.jar",
+          "sha256": "12281c78d1ad04eaf6bf19a92e63af7081f9fd094b054684bab815c18bc9ac92"
+        },
+        {
+          "path": "core/network/build/intermediates/compile_library_classes_jar/debug/bundleLibCompileToJarDebug/classes.jar",
+          "sha256": "3072f1309259fe2983114009410a6f021ece123581678b98d78ade399e11cfcc"
+        },
+        {
+          "path": "core/network/build/intermediates/compile_library_classes_jar/release/bundleLibCompileToJarRelease/classes.jar",
+          "sha256": "3072f1309259fe2983114009410a6f021ece123581678b98d78ade399e11cfcc"
+        },
+        {
+          "path": "core/network/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar",
+          "sha256": "2637129c8fb76b6fb072d48f19be2aa298c5a4797393ce0f23fb3ddc654ac275"
+        },
+        {
+          "path": "core/network/build/intermediates/compile_r_class_jar/release/generateReleaseRFile/R.jar",
+          "sha256": "2637129c8fb76b6fb072d48f19be2aa298c5a4797393ce0f23fb3ddc654ac275"
+        },
+        {
+          "path": "core/network/build/intermediates/full_jar/release/createFullJarRelease/full.jar",
+          "sha256": "18d16eb46038cbdd04a1ab3dfe07ea8fa5cb22216c0b1649cef708c06509dfb5"
+        },
+        {
+          "path": "core/network/build/intermediates/merged_java_res/debug/mergeDebugJavaResource/feature-network.jar",
+          "sha256": "f8cde92e4a18f70632ede5d2be703f3a04ce61cfc3b89a3a6c96367db10d1b40"
+        },
+        {
+          "path": "core/network/build/intermediates/merged_java_res/release/mergeReleaseJavaResource/feature-network.jar",
+          "sha256": "f8cde92e4a18f70632ede5d2be703f3a04ce61cfc3b89a3a6c96367db10d1b40"
+        },
+        {
+          "path": "core/network/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar",
+          "sha256": "a1c45391745e72d675a1570bc84a4bbdd8c93fa627e37ef88e03aff09ddc3cf4"
+        },
+        {
+          "path": "core/network/build/intermediates/runtime_library_classes_jar/release/bundleLibRuntimeToJarRelease/classes.jar",
+          "sha256": "a1c45391745e72d675a1570bc84a4bbdd8c93fa627e37ef88e03aff09ddc3cf4"
+        },
+        {
+          "path": "core/protocol/build/libs/protocol.jar",
+          "sha256": "65d83589f1e0f61165f8cce1fabf2ddad43d2e1882da5af1c4c74b3d9a3ad4c6"
+        },
+        {
+          "path": "core/testing/build/libs/testing.jar",
+          "sha256": "09a6c14d0bdb3d5e2eec8830edc4d36970a7d7a53cdbeffcbcb8930d7c4ecf97"
+        },
+        {
+          "path": "feature/conversation/build/intermediates/aar_main_jar/debug/syncDebugLibJars/classes.jar",
+          "sha256": "44fe946472b0654c2e3789c786aeb211ef28c7e00b5c559ea2ffba68c251339b"
+        },
+        {
+          "path": "feature/conversation/build/intermediates/aar_main_jar/release/syncReleaseLibJars/classes.jar",
+          "sha256": "d3def673794ed31f3b462d699b7b2213c785b1b58400381cda6506ded208ead1"
+        },
+        {
+          "path": "feature/conversation/build/intermediates/compile_and_runtime_r_class_jar/debugUnitTest/generateDebugUnitTestStubRFile/R.jar",
+          "sha256": "c6b302aefaa4874f2d6772496f74ab38a083ffba14909e9c64297838befce99f"
+        },
+        {
+          "path": "feature/conversation/build/intermediates/compile_library_classes_jar/debug/bundleLibCompileToJarDebug/classes.jar",
+          "sha256": "dc16ea29ab321f3760cb1222690f1f0c84d7a80ae19a699ea4046a26189cba42"
+        },
+        {
+          "path": "feature/conversation/build/intermediates/compile_library_classes_jar/release/bundleLibCompileToJarRelease/classes.jar",
+          "sha256": "dc16ea29ab321f3760cb1222690f1f0c84d7a80ae19a699ea4046a26189cba42"
+        },
+        {
+          "path": "feature/conversation/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar",
+          "sha256": "494c2b70cce8fe0a8f6fd685ee8bf9d4eef2c4d630e7b533942d660c5ebf52bb"
+        },
+        {
+          "path": "feature/conversation/build/intermediates/compile_r_class_jar/release/generateReleaseRFile/R.jar",
+          "sha256": "494c2b70cce8fe0a8f6fd685ee8bf9d4eef2c4d630e7b533942d660c5ebf52bb"
+        },
+        {
+          "path": "feature/conversation/build/intermediates/full_jar/release/createFullJarRelease/full.jar",
+          "sha256": "96c89ccc716dd0ee350f9b54793898713723fb7cb6e56d536651f83bac757d3d"
+        },
+        {
+          "path": "feature/conversation/build/intermediates/merged_java_res/debug/mergeDebugJavaResource/feature-conversation.jar",
+          "sha256": "7ab03e9d56039f230c432a79ba25693c683f83d18b45c6ff06c4a2784bcd26b2"
+        },
+        {
+          "path": "feature/conversation/build/intermediates/merged_java_res/release/mergeReleaseJavaResource/feature-conversation.jar",
+          "sha256": "7ab03e9d56039f230c432a79ba25693c683f83d18b45c6ff06c4a2784bcd26b2"
+        },
+        {
+          "path": "feature/conversation/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar",
+          "sha256": "122c95e94e696f1f7f4657cefd904ad90ff7114049994f36d7a9e0c43501fb59"
+        },
+        {
+          "path": "feature/conversation/build/intermediates/runtime_library_classes_jar/release/bundleLibRuntimeToJarRelease/classes.jar",
+          "sha256": "122c95e94e696f1f7f4657cefd904ad90ff7114049994f36d7a9e0c43501fb59"
+        },
+        {
+          "path": "feature/inbox/build/intermediates/aar_main_jar/debug/syncDebugLibJars/classes.jar",
+          "sha256": "0f84cef927a5686af2a3f775a2f81a99f29ea6bfcb6c7863219beccaf4a1aaf1"
+        },
+        {
+          "path": "feature/inbox/build/intermediates/aar_main_jar/release/syncReleaseLibJars/classes.jar",
+          "sha256": "44cec15f19d5bfd195010faafbeb2655691696aa6a1dd86ba159cc3c768e6657"
+        },
+        {
+          "path": "feature/inbox/build/intermediates/compile_and_runtime_r_class_jar/debugUnitTest/generateDebugUnitTestStubRFile/R.jar",
+          "sha256": "b0d8b78b30ec025db0f4ab96ab81fbf5a8954f17186c6dc04afebd193d4e9990"
+        },
+        {
+          "path": "feature/inbox/build/intermediates/compile_library_classes_jar/debug/bundleLibCompileToJarDebug/classes.jar",
+          "sha256": "5e370a5aa91e8ab46078924af240769ef4f9b75500e323f330a762a2f39d2c98"
+        },
+        {
+          "path": "feature/inbox/build/intermediates/compile_library_classes_jar/release/bundleLibCompileToJarRelease/classes.jar",
+          "sha256": "5e370a5aa91e8ab46078924af240769ef4f9b75500e323f330a762a2f39d2c98"
+        },
+        {
+          "path": "feature/inbox/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar",
+          "sha256": "8863fad2e665fbe2fef55700c578a61de9a102f2f3c035ebdafdc2ac24834001"
+        },
+        {
+          "path": "feature/inbox/build/intermediates/compile_r_class_jar/release/generateReleaseRFile/R.jar",
+          "sha256": "8863fad2e665fbe2fef55700c578a61de9a102f2f3c035ebdafdc2ac24834001"
+        },
+        {
+          "path": "feature/inbox/build/intermediates/full_jar/release/createFullJarRelease/full.jar",
+          "sha256": "0642f12948ffcd35c99e755a586706f48347f490f3fd7e7162febb83551abfa0"
+        },
+        {
+          "path": "feature/inbox/build/intermediates/merged_java_res/debug/mergeDebugJavaResource/feature-inbox.jar",
+          "sha256": "6e3ff392606bb6c037974615e9bcc21d6dfbc396fea370193aee992cfb3bc089"
+        },
+        {
+          "path": "feature/inbox/build/intermediates/merged_java_res/release/mergeReleaseJavaResource/feature-inbox.jar",
+          "sha256": "6e3ff392606bb6c037974615e9bcc21d6dfbc396fea370193aee992cfb3bc089"
+        },
+        {
+          "path": "feature/inbox/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar",
+          "sha256": "dbe17f5427212b081bd7a38f592f4d2952754d4b1b99162e75b3f8a55edadb19"
+        },
+        {
+          "path": "feature/inbox/build/intermediates/runtime_library_classes_jar/release/bundleLibRuntimeToJarRelease/classes.jar",
+          "sha256": "dbe17f5427212b081bd7a38f592f4d2952754d4b1b99162e75b3f8a55edadb19"
+        },
+        {
+          "path": "feature/sessions/build/intermediates/aar_main_jar/debug/syncDebugLibJars/classes.jar",
+          "sha256": "1c45d4fac54028ed62da6f9fe68fbf2415d15459d0b68d0a613e91d4763aa67b"
+        },
+        {
+          "path": "feature/sessions/build/intermediates/aar_main_jar/release/syncReleaseLibJars/classes.jar",
+          "sha256": "b3bdbcd2d2fb20f217252e46ecbb09710d23bfa5b3f742f9496fd75462d71569"
+        },
+        {
+          "path": "feature/sessions/build/intermediates/compile_and_runtime_r_class_jar/debugUnitTest/generateDebugUnitTestStubRFile/R.jar",
+          "sha256": "3539d3970757652742ddcaae5c9905f6891bbee476c0a1bc9f68d84294a60226"
+        },
+        {
+          "path": "feature/sessions/build/intermediates/compile_library_classes_jar/debug/bundleLibCompileToJarDebug/classes.jar",
+          "sha256": "281e1ee52ea87bab2ec2ad9ead8a7dc005efcbe25257e628b674f1ef2e54a61b"
+        },
+        {
+          "path": "feature/sessions/build/intermediates/compile_library_classes_jar/release/bundleLibCompileToJarRelease/classes.jar",
+          "sha256": "281e1ee52ea87bab2ec2ad9ead8a7dc005efcbe25257e628b674f1ef2e54a61b"
+        },
+        {
+          "path": "feature/sessions/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar",
+          "sha256": "57fae4d1fd6b3c50e24f25729690816d88795d4cab17e6f7bdd851aa9607613f"
+        },
+        {
+          "path": "feature/sessions/build/intermediates/compile_r_class_jar/release/generateReleaseRFile/R.jar",
+          "sha256": "57fae4d1fd6b3c50e24f25729690816d88795d4cab17e6f7bdd851aa9607613f"
+        },
+        {
+          "path": "feature/sessions/build/intermediates/full_jar/release/createFullJarRelease/full.jar",
+          "sha256": "42cabcd5ce96e4daa8403aaaff14b1759586886d0a2953e3fde689b95f474241"
+        },
+        {
+          "path": "feature/sessions/build/intermediates/merged_java_res/debug/mergeDebugJavaResource/feature-sessions.jar",
+          "sha256": "635a5a7d715ba8e658194d1309904ddbfd418604e7e88cf47e8d9427452649f9"
+        },
+        {
+          "path": "feature/sessions/build/intermediates/merged_java_res/release/mergeReleaseJavaResource/feature-sessions.jar",
+          "sha256": "635a5a7d715ba8e658194d1309904ddbfd418604e7e88cf47e8d9427452649f9"
+        },
+        {
+          "path": "feature/sessions/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar",
+          "sha256": "f0ffaabfa471cc99b0318f11ea450f21c94e6354d1ae5638180c6f9318ee98d7"
+        },
+        {
+          "path": "feature/sessions/build/intermediates/runtime_library_classes_jar/release/bundleLibRuntimeToJarRelease/classes.jar",
+          "sha256": "f0ffaabfa471cc99b0318f11ea450f21c94e6354d1ae5638180c6f9318ee98d7"
+        },
+        {
+          "path": "feature/settings/build/intermediates/aar_main_jar/debug/syncDebugLibJars/classes.jar",
+          "sha256": "a2514d904890615a861ebf07fa3371d643f2ab252d11ad24d593ae3a42c762de"
+        },
+        {
+          "path": "feature/settings/build/intermediates/aar_main_jar/release/syncReleaseLibJars/classes.jar",
+          "sha256": "1949a9c0e1b6ad91e2b906f197cfe94a5b5c84377f0f4c7869cd5dd73afa9004"
+        },
+        {
+          "path": "feature/settings/build/intermediates/compile_and_runtime_r_class_jar/debugUnitTest/generateDebugUnitTestStubRFile/R.jar",
+          "sha256": "db042b2adc80176ebbe4aad31fc8b8dd46b1f6b8c730859068cf54e3f9d93e75"
+        },
+        {
+          "path": "feature/settings/build/intermediates/compile_library_classes_jar/debug/bundleLibCompileToJarDebug/classes.jar",
+          "sha256": "565d80560071df780bc428d25b9e91e9d613151f52a716a94758246c966efcc1"
+        },
+        {
+          "path": "feature/settings/build/intermediates/compile_library_classes_jar/release/bundleLibCompileToJarRelease/classes.jar",
+          "sha256": "565d80560071df780bc428d25b9e91e9d613151f52a716a94758246c966efcc1"
+        },
+        {
+          "path": "feature/settings/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar",
+          "sha256": "78faaf937863cbf2e516b175c4e24ef050a7cd668a55f815956356224cf11e7d"
+        },
+        {
+          "path": "feature/settings/build/intermediates/compile_r_class_jar/release/generateReleaseRFile/R.jar",
+          "sha256": "78faaf937863cbf2e516b175c4e24ef050a7cd668a55f815956356224cf11e7d"
+        },
+        {
+          "path": "feature/settings/build/intermediates/full_jar/release/createFullJarRelease/full.jar",
+          "sha256": "65f6fb96ebca580343a72239d018178eb599166ce6d557f3f1e383c8ddbe556b"
+        },
+        {
+          "path": "feature/settings/build/intermediates/merged_java_res/debug/mergeDebugJavaResource/feature-settings.jar",
+          "sha256": "33c7312ad3e3b48b3ed69a2979bb44c311a26592dc18bc539888c119f49b2c84"
+        },
+        {
+          "path": "feature/settings/build/intermediates/merged_java_res/release/mergeReleaseJavaResource/feature-settings.jar",
+          "sha256": "33c7312ad3e3b48b3ed69a2979bb44c311a26592dc18bc539888c119f49b2c84"
+        },
+        {
+          "path": "feature/settings/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar",
+          "sha256": "dd2b087861133b0c71ebd66b77819efd9e60f5ec6c40e1e03fbe55e1d31ca3db"
+        },
+        {
+          "path": "feature/settings/build/intermediates/runtime_library_classes_jar/release/bundleLibRuntimeToJarRelease/classes.jar",
+          "sha256": "dd2b087861133b0c71ebd66b77819efd9e60f5ec6c40e1e03fbe55e1d31ca3db"
+        }
+      ],
+      "notes": "No deviation: whole-project assemble+test minus lint. Gradle units execute only when DSH_ALLOW_GRADLE=1 (see run-gates.sh header); otherwise the harness classifies the gate BLOCKED so an unbuilt tree never reads as PASS."
+    },
+    {
+      "id": "G03",
+      "title": "contract-drift",
+      "blocking": true,
+      "status": "PASS",
+      "command": "node tools/contract/record.mjs --check",
+      "assertions": {
+        "tests": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "artifacts": [
+        {
+          "path": "acceptance/logs/G03.log",
+          "sha256": "2526d1dc688dd22361846b712c5751be7e2c7ec0ad3a45b8bbadb3079130852f"
+        },
+        {
+          "path": "contract/gateway/v0/approval-asked-and-respond-accepted.json",
+          "sha256": "a2bd72f671bf7641d0a41f5c996c9bbb411a35a750e9734e0fdd8134186266b5"
+        },
+        {
+          "path": "contract/gateway/v0/fs-list.json",
+          "sha256": "2b6886c343a4f6c27d4895a8577070c36e2d77020e4884305cefbe89de91b687"
+        },
+        {
+          "path": "contract/gateway/v0/fs-preview-too-large.json",
+          "sha256": "3dde18a7d5fdb2996d02a7c8bc159d7db39ff462a0d3f0bcb31e2b2172d3dd65"
+        },
+        {
+          "path": "contract/gateway/v0/health-and-capabilities.json",
+          "sha256": "8c3d5a2faee3e11425e313598293c149d01c9c801f6db7ec48fde0b95472cc36"
+        },
+        {
+          "path": "contract/gateway/v0/manifest.json",
+          "sha256": "70d1c0abc339ca32d0789d532b575a430cc65b122226f38bba3baada89cbc350"
+        },
+        {
+          "path": "contract/gateway/v0/poll-baseline-since-zero.json",
+          "sha256": "dbcf8610394c224f259ff36b426ea11b0ecf40c556287e4659e73e51498536b0"
+        },
+        {
+          "path": "contract/gateway/v0/poll-incremental.json",
+          "sha256": "46bbc84756f67dfb9daf534019db54119a93533c66809fb9c59b57ac902f4b28"
+        },
+        {
+          "path": "contract/gateway/v0/poll-truncated-and-reset.json",
+          "sha256": "13b4c9c98f5cbcca384da3273cee4ab46700fd0482f3fa35540440e467da6e43"
+        },
+        {
+          "path": "contract/gateway/v0/prompt-accepted.json",
+          "sha256": "ac040ed562944fba7427d17f5a50fe69cbabec2c2cc02196b193d19f5a72746c"
+        },
+        {
+          "path": "contract/gateway/v0/prompt-operations-receipt.json",
+          "sha256": "5ed539447dee54b0e1a61a8baf03f01ad80ec21045b798b3a15cccf868da112c"
+        },
+        {
+          "path": "contract/gateway/v0/question-toolcall-and-result.json",
+          "sha256": "1246c05b6108438aa657a9d496746a21b04f15b18bb48e6ab0d8f07b157231a4"
+        },
+        {
+          "path": "contract/gateway/v0/session-create-rename.json",
+          "sha256": "bd134bb1f5594a7bfd756e9b2114c93e0789082378bceee207577a8f3772472b"
+        },
+        {
+          "path": "contract/gateway/v0/session-history-page.json",
+          "sha256": "e3b26134fb9be7619e3fe4028a9eadf43f8ed47ee2f899e149e7d204482256f0"
+        },
+        {
+          "path": "contract/gateway/v0/session-list-roster.json",
+          "sha256": "8d2f5d38bcb13d37564f1b57b3886020c4136df0cfcb2edecb268f0e4f391a6b"
+        },
+        {
+          "path": "contract/gateway/v0/SHA256SUMS",
+          "sha256": "51723d76f8f643e64a3431a95fa670dc7e5642334de303a5d92da4a28675fbeb"
+        },
+        {
+          "path": "contract/gateway/v0/unauthorized-401.json",
+          "sha256": "eceb84a04417ad05e3a7fc1307cbc08d7c7a6956b2fc12eb9a7d61652db07ce3"
+        },
+        {
+          "path": "contract/gateway/v0/upload-probe-and-control-offset-mismatch.json",
+          "sha256": "16a73f07815e97769df973f892d54c0337963698b7519d5939798c82aac839bf"
+        }
+      ],
+      "notes": "Recorder at tools/contract/record.mjs is owned by another engineer; when the file is absent the harness reports BLOCKED (prerequisite missing). Exit-code map: 0=PASS, 3=BLOCKED (DSH_REMOTE_HOME unset / fixture missing per D18), other=FAIL."
+    },
+    {
+      "id": "G04",
+      "title": "contract-replay",
+      "blocking": true,
+      "status": "PASS",
+      "command": "./gradlew :core:protocol:test --tests '*ContractReplay*'",
+      "assertions": {
+        "tests": 40,
+        "failures": 0,
+        "skipped": 0
+      },
+      "artifacts": [
+        {
+          "path": "acceptance/logs/G04.log",
+          "sha256": "4f7dc311c4693b34999479e2d1bf94b3a9add8464129713f06e13957cdce6c6a"
+        },
+        {
+          "path": "core/network/build/test-results/testDebugUnitTest/TEST-ai.deepseek.dsh.android.network.GatewayV0ContractReplayTest.xml",
+          "sha256": "85ec1dd3c7d31b98bdce25e6ad3d2272005c0181001707445949fae314b090e8"
+        },
+        {
+          "path": "core/network/build/test-results/testDebugUnitTest/TEST-ai.deepseek.dsh.android.network.GatewayV0FullContractReplayTest.xml",
+          "sha256": "ad322ad8bf27d65830c104eabe4f84930d0a5a7bb211bb3bb5932e23168a1d2c"
+        },
+        {
+          "path": "core/protocol/build/test-results/test/TEST-ai.deepseek.dsh.android.protocol.PollContractReplayTest.xml",
+          "sha256": "e25932a7a51718eef45c54691df04289a0e2ca64e7683ac4c6d58d8cc962338b"
+        }
+      ],
+      "notes": "DEVIATION: ACCEPTANCE names :core:protocol:testDebugUnitTest, but :core:protocol applies the kotlin.jvm plugin (pure JVM) and has no debug variant. Correct task is :core:protocol:test. Reconcile the doc. The gate runs both replay suites: the protocol DTO decoder and the network-level recordings against contract/gateway/v0 (GatewayV0ContractReplayTest, GatewayV0FullContractReplayTest)."
+    },
+    {
+      "id": "G05",
+      "title": "projector-goldens",
+      "blocking": true,
+      "status": "PASS",
+      "command": "./gradlew :core:domain:test",
+      "assertions": {
+        "tests": 255,
+        "failures": 0,
+        "skipped": 0
+      },
+      "artifacts": [
+        {
+          "path": "acceptance/golden-cases-projector.json",
+          "sha256": "054e2d364f76c65aafc59619c406f768f39bbe33a7c05d515a14fb225d0a5e16"
+        },
+        {
+          "path": "acceptance/logs/G05.log",
+          "sha256": "47e6f5c3b2371c0d59abc75672ed22a9605f04747ef9fb49cce9e48237528929"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.CapabilityGateTest.xml",
+          "sha256": "bd515a3f858668840eaaf14c1df8bba63c944aabbdf63c3803dce297349e1bc8"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.CursorInvariantTest.xml",
+          "sha256": "a42b52cd6c103a2e82f68fd8c051f6599c3991e386ccbfc3c28544dc6ac8aa8d"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.DiagnosticsSnapshotTest.xml",
+          "sha256": "a7ebf574e64f354d7255195b718413c072d607c50c895b96e84019f0f3a9c797"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.GapDetectorTest.xml",
+          "sha256": "908f0f0b6bdc932edc9a08b5910a4432324c27fd23c39c977d3e76b2174c06c2"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.IdentityDigestTest.xml",
+          "sha256": "435faf8ca4083d66f019282472e62cace5eaa381111ece829b0549f5a0a54f13"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.IslandsTest.xml",
+          "sha256": "9eea4d15c02529a9ef88e1fa1f6e5e3bdcc518db3535fb7cc2ec9d5dc4197512"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.PendingReducerTest.xml",
+          "sha256": "19a59cdd785a2f1505932db22e6ef1d3e56538a776361ad407ca78266f8412f8"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.PositionsTest.xml",
+          "sha256": "d14fbb2aec6414670b4ed239157bee5ea1dafcae93a7cd1eae1a488872aae4de"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.ProjectorTest.xml",
+          "sha256": "fefc0317a6af3b1ccba74f11a87e783d1c72874467b586dd57a69fb753f9587e"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.ProjectorToolsTest.xml",
+          "sha256": "c23384690c4b0dca2f5a1ec8aae4489f0ba459311da192c0429f9ffa89fe0f7f"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.ProjectorTurnTest.xml",
+          "sha256": "6230a7ef0169762fd081f924043dcd99c57745bca4919aba32c684ecb5787a9e"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.repository.DomainErrorMappingTest.xml",
+          "sha256": "fb5466129a6d5fad3f5c60ba98beade1e34a21d45df2c471a5a7194673ecf581"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.ResetPlannerTest.xml",
+          "sha256": "abdce74bd71a3055cf7ccd56d2e5232b9c770091b98a1cc31b99b727f13620f9"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.ResyncPolicyTest.xml",
+          "sha256": "36f325424890be8a1133b511faa8616d6fff6d4f429ba2b0642b86dd735849a6"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.RosterPlannerTest.xml",
+          "sha256": "306b559f166459367c44e6bf7eb42c236d84436e60c69db6a48eb608d47c6252"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.SyncTuningTest.xml",
+          "sha256": "fb233259c1b6b634bec87e09107f0decc24ba28df0c8f6db49c32e07c5e8ad59"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.usecase.PairingUseCaseTest.xml",
+          "sha256": "bbba9d052d0e229c0430568cb239dd954148259f59083fe496e430e906c34b3f"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.usecase.ResolvePendingUseCaseTest.xml",
+          "sha256": "6e72e1e512b123c16f1be852db5150f6b7dfde1b654996ee202c51d8c8d42abf"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.usecase.SendPromptUseCaseTest.xml",
+          "sha256": "85c2040f27767f64fc044a2ec9bd63035c36833a62106ee7c6dbfd92fb3c6573"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.usecase.SessionWriteUseCasesTest.xml",
+          "sha256": "b43a78d51644c04fb73a2b90e9ff14f4f4fa357c74f477d80e2c5ba1702e8b45"
+        }
+      ],
+      "notes": "DEVIATION: ACCEPTANCE names :core:domain:testDebugUnitTest; :core:domain is kotlin.jvm (pure JVM) so the task is :core:domain:test. Golden-case existence/direction check is corroborated by tools/acceptance/check-golden-cases.sh (also wired under G13)."
+    },
+    {
+      "id": "G06",
+      "title": "cursor-and-reset",
+      "blocking": true,
+      "status": "PASS",
+      "command": "./gradlew :core:domain:test --tests '*Cursor*' --tests '*Reset*'",
+      "assertions": {
+        "tests": 101,
+        "failures": 0,
+        "skipped": 0
+      },
+      "artifacts": [
+        {
+          "path": "acceptance/logs/G06.log",
+          "sha256": "4dad482bc158958e9f3a52bf9bab468ebb700021c9a172e9b1c5533949e878da"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.CursorInvariantTest.xml",
+          "sha256": "0982edddd82f0d8ee94080d9a235e7bd4fd61cc345e7503b46a02441a9622c5d"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.GapDetectorTest.xml",
+          "sha256": "fb03cf7a963ad3b27821424f0ee7d6892b3bae35900a24dbb7f303afdbde8e43"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.IslandsTest.xml",
+          "sha256": "a08661fb9a62239c6eef7f28b66fd3e14f3fa39819ca39f3c964b4ccef82e32f"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.PositionsTest.xml",
+          "sha256": "58c9578a4d9c375674c047b1e8fec074846bb34c630b094d325cc5663cceb88c"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.ResetPlannerTest.xml",
+          "sha256": "40060616bfedb41f0d2c335ae97bb475a9833c6933767a02ad5dc691fb7134cd"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.ResyncPolicyTest.xml",
+          "sha256": "149ac94d4ca73eb3b3201d4e7b082d56b904f721b111c7c6063919184b9ec50f"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.RosterPlannerTest.xml",
+          "sha256": "78f7b96e607a299df8d499dc8d43d80755ebba2f078145ca16afb66cff601337"
+        }
+      ],
+      "notes": "DEVIATION: :core:domain:testDebugUnitTest -> :core:domain:test (pure JVM module)."
+    },
+    {
+      "id": "G07",
+      "title": "pending-state-machine",
+      "blocking": true,
+      "status": "PASS",
+      "command": "./gradlew :core:domain:test --tests '*Pending*'",
+      "assertions": {
+        "tests": 41,
+        "failures": 0,
+        "skipped": 0
+      },
+      "artifacts": [
+        {
+          "path": "acceptance/logs/G07.log",
+          "sha256": "c0e39dab42aaaee3433026245a82af6286c2092e920e5651dc71f478d2ad2f8d"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.PendingReducerTest.xml",
+          "sha256": "116feb1a93b1ab01d46f6f48de78dcd35e4db0e8b80b19c602eee5c3b44bde34"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.ProjectorTurnTest.xml",
+          "sha256": "b931cb749d351a4aba6f293d0c632579b3c7fbfb577b6d6746f65cd0708278f7"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.ResetPlannerTest.xml",
+          "sha256": "c1b0c05d0db36aa109b303535c62846ffbc283e19abebb657028013fba463e5c"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.RosterPlannerTest.xml",
+          "sha256": "ee5a7e0103aa946b9dce6ac7d01c4b480a01e09b9fd4698ccd877d3ce2881234"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.usecase.ResolvePendingUseCaseTest.xml",
+          "sha256": "a8efa86796403bb6f19dcfcfa51728d72bf67899bb9acdc5c0b8a8388a39c6de"
+        }
+      ],
+      "notes": "DEVIATION: :core:domain:testDebugUnitTest -> :core:domain:test (pure JVM module). pending-transitions.txt is a snapshot artifact the domain tests must emit."
+    },
+    {
+      "id": "G08",
+      "title": "capability-matrix",
+      "blocking": true,
+      "status": "PASS",
+      "command": "./gradlew :core:domain:test --tests '*Capability*'",
+      "assertions": {
+        "tests": 7,
+        "failures": 0,
+        "skipped": 0
+      },
+      "artifacts": [
+        {
+          "path": "acceptance/logs/G08.log",
+          "sha256": "e270ffc9fb4050dc26eed9cced882915aff29456ed3e37ba776948a428797b8f"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.CapabilityGateTest.xml",
+          "sha256": "3f056b801acc3c8e6f918560a7c8d05b35354351cd0cbc8ceaca2678f62b53d0"
+        }
+      ],
+      "notes": "DEVIATION: :core:domain:testDebugUnitTest -> :core:domain:test (pure JVM module)."
+    },
+    {
+      "id": "G09",
+      "title": "security-invariants",
+      "blocking": true,
+      "status": "PASS",
+      "command": "bash tools/acceptance/check-source.sh",
+      "assertions": {
+        "tests": 16,
+        "failures": 0,
+        "skipped": 0
+      },
+      "artifacts": [
+        {
+          "path": "acceptance/logs/G09.log",
+          "sha256": "89480c017ad11bfdb9db0f49100ad26793e7f68dae239126f959fb000fab691a"
+        },
+        {
+          "path": "core/data/build/test-results/testDebugUnitTest/TEST-ai.deepseek.dsh.android.data.SecretStoreTest.xml",
+          "sha256": "7920145850e0af2dd95df1da0ccb55baa06fdc72588e8170450856302ac3079c"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.IdentityDigestTest.xml",
+          "sha256": "0e899c7855ae2037b88b16522734fdb86f65c5d586da79a7ec2e288cc9469042"
+        }
+      ],
+      "notes": "G09 is segmented; the harness runs every segment and combines them (any FAIL->FAIL, else any BLOCKED->BLOCKED, else PASS). Segment 3 (this shell gate) is tools/acceptance/check-source.sh. Segments 1/2/4 are gradle unit tests: G09.1 :core:domain:test (pure JVM; doc said testDebugUnitTest - DEVIATION) '*IdentityDigest*', G09.2 :core:data:testDebugUnitTest '*Redaction*' (Android module - correct), G09.4 :core:data:testDebugUnitTest '*SecretStore*'. G09.5 closes the other half of D12: G09.3(e) only forbids literals OUTSIDE SyncTuning.kt, so a field silently absent from docs/TUNING.md, or documented with a stale default, would still pass. check-tuning.sh requires the two to agree name-by-name and value-by-value (it evaluates expressions such as 8L * 1024 * 1024 rather than string-comparing), and refuses to guess on a shape it cannot parse. Negative-tested: stale value, deleted row, renamed row, unparseable default each produce exit 1."
+    },
+    {
+      "id": "G10",
+      "title": "diagnostics-schema",
+      "blocking": true,
+      "status": "PASS",
+      "command": "./gradlew :core:domain:test --tests '*Diagnostics*'",
+      "assertions": {
+        "tests": 6,
+        "failures": 0,
+        "skipped": 0
+      },
+      "artifacts": [
+        {
+          "path": "acceptance/logs/G10.log",
+          "sha256": "3a2ce960952362095e84b92acbe18da16d5f8ead54e288e299a7aacdf35e2089"
+        },
+        {
+          "path": "core/domain/build/test-results/test/TEST-ai.deepseek.dsh.android.domain.DiagnosticsSnapshotTest.xml",
+          "sha256": "bacb5677ff593c7debaac838bc2bcd14f2d88b96160d5bf33ff325bc768c267b"
+        }
+      ],
+      "notes": "DEVIATION: :core:domain:testDebugUnitTest -> :core:domain:test (pure JVM module). Second segment is tools/acceptance/check-diagnostics.sh, owned by another engineer; when absent the harness reports BLOCKED for that segment."
+    },
+    {
+      "id": "G11",
+      "title": "release-artifact",
+      "blocking": true,
+      "status": "PASS",
+      "command": "bash tools/acceptance/check-release-artifact.sh",
+      "assertions": {
+        "tests": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "artifacts": [
+        {
+          "path": "acceptance/logs/G11.log",
+          "sha256": "ed3e95d25a94d673ee55a07b9a6321bcd7d481f91a67e3e49b4495ad2bf1c0d5"
+        },
+        {
+          "path": "app/build/outputs/apk/release/app-release-unsigned.apk",
+          "sha256": "190662e96eb2944b83bdaee2a51b5cffb635d80dfeeabe3ec68f2844776f3f31"
+        },
+        {
+          "path": "app/build/outputs/bundle/release/app-release.aab",
+          "sha256": "e0db0ba61e7926589e30260a08dc69cb5ea87edadaa2fff1ead0e9af198afe51"
+        },
+        {
+          "path": "app/build/outputs/mapping/release/mapping.txt",
+          "sha256": "6ac9b861d4b3a023ae16bcf5b9af6a69c356592c1f3f2a7c2bf332e368f4eb26"
+        }
+      ],
+      "notes": "tools/acceptance/check-release-artifact.sh runs the R8/assemble gradle steps only under DSH_ALLOW_GRADLE=1, then drives apkanalyzer (manifest print + apk summary) and diffs exported components against acceptance/manifest-baseline.txt, enforces the TUNING.md size budgets (AAB <= 12 MiB, APK <= 20 MiB) and the canary-absent check. It prints BLOCKED (exit 3) when the release artifacts are not assembled yet."
+    },
+    {
+      "id": "G12",
+      "title": "paging-and-large-data",
+      "blocking": true,
+      "status": "PASS",
+      "command": "./gradlew :core:data:testDebugUnitTest --tests '*PagingSource*' --tests '*Retention*'",
+      "assertions": {
+        "tests": 13,
+        "failures": 0,
+        "skipped": 0
+      },
+      "artifacts": [
+        {
+          "path": "acceptance/logs/G12.log",
+          "sha256": "b34f27a6f1358ada5f90456132413cab93048e7f569e7919b75963bd3c143827"
+        },
+        {
+          "path": "core/data/build/test-results/testDebugUnitTest/TEST-ai.deepseek.dsh.android.data.EventRetentionTest.xml",
+          "sha256": "15118e1c086f00ea6aa0212342932ec6f6ec094faf7135129c6204a8a68870fd"
+        },
+        {
+          "path": "core/data/build/test-results/testDebugUnitTest/TEST-ai.deepseek.dsh.android.data.RosterKeysetPagingSourceTest.xml",
+          "sha256": "61358a9da1e664f43aad585e9a0d5652a178242690d27a147c28e5d603bbc118"
+        }
+      ],
+      "notes": "No deviation: :core:data is an android.library module so testDebugUnitTest is correct. Per D31 the client does not use androidx.paging, so '*PagingSource*' resolves to RosterKeysetPagingSource (the keyset page source over SessionStore) and '*Retention*' to EventRetention; no PagingSource ever lives in :core:database."
+    },
+    {
+      "id": "G13",
+      "title": "coverage-floor",
+      "blocking": true,
+      "status": "DEGRADED",
+      "command": "bash tools/acceptance/check-golden-cases.sh",
+      "assertions": {
+        "tests": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "artifacts": [
+        {
+          "path": "acceptance/golden-cases-projector.json",
+          "sha256": "054e2d364f76c65aafc59619c406f768f39bbe33a7c05d515a14fb225d0a5e16"
+        },
+        {
+          "path": "acceptance/logs/G13.log",
+          "sha256": "57f5667e12eb54bc956a63c43bb1c4f272e7721631c34f22529e5450ee288fcc"
+        }
+      ],
+      "notes": "Primary intent is ./gradlew koverVerify, but the Kover plugin is not applied in any build.gradle.kts and is unavailable on the mirror, so ACCEPTANCE's documented DEGRADED fallback is used as the registered command: check-golden-cases.sh case existence + per-gate JUnit floor in acceptance/coverage-floor.json. degradedAllowed=true; must carry a DECISIONS reference. References: D03 (mirror repo limits) + D21 (JVM-only test degrade path). Recovery condition: apply Kover and register ./gradlew koverVerify."
+    },
+    {
+      "id": "G14",
+      "title": "i18n-parity",
+      "blocking": true,
+      "status": "PASS",
+      "command": "bash tools/acceptance/check-i18n.sh",
+      "assertions": {
+        "tests": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "artifacts": [
+        {
+          "path": "acceptance/logs/G14.log",
+          "sha256": "98de2c3fdf92a97cabb8bcc94b868d170283d63e8040722d3d58a1a16beafbe4"
+        }
+      ],
+      "notes": "No deviation: pure source/resource scan."
+    },
+    {
+      "id": "G15",
+      "title": "v0-v1-projection-parity",
+      "blocking": true,
+      "status": "PASS",
+      "command": "./gradlew :core:network:testDebugUnitTest --tests '*Parity*'",
+      "assertions": {
+        "tests": 2,
+        "failures": 0,
+        "skipped": 0
+      },
+      "artifacts": [
+        {
+          "path": "acceptance/logs/G15.log",
+          "sha256": "680da95e563a17f6d662a7f8ed5aa26e37a1c8e559dd3e615103ebd52c8eac8a"
+        },
+        {
+          "path": "core/network/build/test-results/testDebugUnitTest/TEST-ai.deepseek.dsh.android.network.V0V1ProjectionParityTest.xml",
+          "sha256": "56eff30f46ea83467cff04040577ade3d59a2e51a7dfb264f35df49a1d9ae9e5"
+        }
+      ],
+      "notes": "DEVIATION: the v0/v1 parity suite compares the two network projections (V0V1ProjectionParityTest), so the gate points at :core:network:testDebugUnitTest instead of :core:domain:test. The subject of the gate is unchanged; only the module that owns the real test moved."
+    },
+    {
+      "id": "G16",
+      "title": "database-schema-migration",
+      "blocking": true,
+      "status": "DEGRADED",
+      "command": "./gradlew :core:database:testDebugUnitTest --tests '*Retirement*'",
+      "assertions": {
+        "tests": 4,
+        "failures": 0,
+        "skipped": 0
+      },
+      "artifacts": [
+        {
+          "path": "acceptance/logs/G16.log",
+          "sha256": "f30de9b4f624816066150d70e4b3947b5579999dbe94bedf743072fa4a8a584a"
+        },
+        {
+          "path": "core/database/build/test-results/testDebugUnitTest/TEST-ai.deepseek.dsh.android.database.RetirementPurgeSqlTest.xml",
+          "sha256": "ab8b4eb9a4526dd659b88a8e79d6f082395a90b85099d3edc7beed3422a6ce6b"
+        }
+      ],
+      "notes": "DEVIATION: ACCEPTANCE names ./gradlew :core:database:exportSchema, but exportSchema is a KSP/Room argument (room.schemaLocation), not a standalone Gradle task; running it as a task would be an unknown-task FAIL. The registered command is the JVM Retirement test (A->B->A idempotency + 7-day boundary) that lives in the same module; schema JSON is emitted by KSP during compilation and diffed via 'git diff --exit-code' in check-release/CI. Robolectric Room migration measurement is subject to D21 -> degradedAllowed=true; recovery condition is a working Robolectric to add real migration runs."
+    },
+    {
+      "id": "G17",
+      "title": "dependency-fence",
+      "blocking": true,
+      "status": "PASS",
+      "command": "bash tools/acceptance/check-modules.sh",
+      "assertions": {
+        "tests": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "artifacts": [
+        {
+          "path": "acceptance/logs/G17.log",
+          "sha256": "152beaf9ea1b408a73ad7d847694d51ab9994d25815a87256f36c93b9a3ad04a"
+        }
+      ],
+      "notes": "No deviation to the command. check-modules.sh implements the task-refined fence: feature/* gradle project deps restricted to :core:model/:core:domain/:core:designsystem; :app is the composition root and MAY declare impl project deps, so the :app fence is enforced at the import level (protocol/database/network imports only under app/**/di/** or DshApplication.kt/AppScope.kt). This differs from ACCEPTANCE's literal ':app 不出现 :core:protocol/network/database 的 project 依赖' wording, which the composition root necessarily violates; reconcile the doc."
+    },
+    {
+      "id": "G18",
+      "title": "worker-handoff-semantics",
+      "blocking": true,
+      "status": "PASS",
+      "command": "./gradlew :core:data:testDebugUnitTest --tests '*SyncOwner*' --tests '*WorkerResult*'",
+      "assertions": {
+        "tests": 16,
+        "failures": 0,
+        "skipped": 0
+      },
+      "artifacts": [
+        {
+          "path": "acceptance/logs/G18.log",
+          "sha256": "6c89054da22269396a451f5420471a8b5e7178542417fe0950b9a196c26de9b7"
+        },
+        {
+          "path": "core/data/build/test-results/testDebugUnitTest/TEST-ai.deepseek.dsh.android.data.SyncOwnerArbiterTest.xml",
+          "sha256": "04dd160697404e3326b4ac81d90d2b6a6a3671ba4c3ea4fbc4519ab3c5f1c25c"
+        },
+        {
+          "path": "core/data/build/test-results/testDebugUnitTest/TEST-ai.deepseek.dsh.android.data.WorkerResultPolicyTest.xml",
+          "sha256": "dbd98c6d32949b01192d10fdb3042db3576ecc2660c07ccc8972e8bfcfe565c8"
+        }
+      ],
+      "notes": "No deviation: :core:data is android.library so testDebugUnitTest is correct. Subject is worker-handoff SEMANTICS (D10 CAS arbitration + SyncAttemptResult -> Success/Retry/Cancel). The WorkManager scheduler itself is not installed this round and the gate does not claim it: see D34, and the device checklist (G20) for real periodic runs."
+    },
+    {
+      "id": "G19",
+      "title": "pairing-flow-invariants",
+      "blocking": true,
+      "status": "PASS",
+      "command": "./gradlew :core:data:testDebugUnitTest --tests '*Pairing*'",
+      "assertions": {
+        "tests": 5,
+        "failures": 0,
+        "skipped": 0
+      },
+      "artifacts": [
+        {
+          "path": "acceptance/logs/G19.log",
+          "sha256": "f52891c06865d9b71a6a732cd530e83789cd0a51656e76d4c21ba40d801f4925"
+        },
+        {
+          "path": "core/data/build/test-results/testDebugUnitTest/TEST-ai.deepseek.dsh.android.data.PairingFlowTest.xml",
+          "sha256": "493704691f11670c679299674f73861bb102776db5d5af9729834ee8c7940780"
+        }
+      ],
+      "notes": "No deviation: :core:data is android.library so testDebugUnitTest is correct."
+    },
+    {
+      "id": "G20",
+      "title": "device-checklist-evidence",
+      "blocking": false,
+      "status": "ADVISORY",
+      "command": "run-gates.sh ::device-checklist",
+      "assertions": {
+        "tests": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "artifacts": [
+        {
+          "path": "docs/DEVICE_CHECKLIST.md",
+          "sha256": "09642a57b46083badaae26ceb8e33cacea3e666af999a3562b0f51b0b1a5a0f7"
+        }
+      ],
+      "notes": "Builtin advisory gate. Verifies docs/DEVICE_CHECKLIST.md exists and every item carries a 状态 field; all items are NOT_RUN this round, so the gate is ADVISORY (never PASS). Instrumented/Compose-UI device automation is NOT_IN_SCOPE per DECISIONS D20 (no emulator, no system images, adb devices empty); this checklist is the human stand-in."
+    }
+  ],
+  "verdict": {
+    "accepted": true,
+    "blockingFailures": 0,
+    "blockedInScope": 0,
+    "degraded": [
+      "G13",
+      "G16"
+    ]
+  }
+}

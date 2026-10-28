@@ -1,0 +1,81 @@
+{
+  "name": "session-list-roster",
+  "gatewayVersion": "0.8.1",
+  "capturedAt": "{{TS_0}}",
+  "steps": [
+    {
+      "method": "POST",
+      "path": "/api/session.list",
+      "requestHeaders": {
+        "authorization": "Bearer {{TOKEN}}",
+        "content-length": "90",
+        "content-type": "application/json",
+        "host": "127.0.0.1:{{PORT}}",
+        "x-dsh-remote-client": "app"
+      },
+      "status": 200,
+      "responseHeaders": {
+        "access-control-allow-headers": "authorization, content-type, x-dsh-remote-client, x-dsh-remote-client-id, x-dsh-remote-inbox-key",
+        "access-control-allow-methods": "GET, POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "600",
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "1216",
+        "content-type": "application/json; charset=utf-8",
+        "date": "{{TS_12}}",
+        "keep-alive": "timeout=65",
+        "vary": "Origin, Accept-Encoding"
+      },
+      "response": {
+        "result": {
+          "ok": true,
+          "value": {
+            "items": [
+              {
+                "cwd": "{{TMP}}/project-one",
+                "projections": {
+                  "asOfSeq": 1,
+                  "values": {
+                    "goal": {
+                      "id": "{{ID_1}}",
+                      "objective": "验证全部用户功能",
+                      "phase": "active",
+                      "revision": 1
+                    },
+                    "title": "真实功能测试会话",
+                    "todos": {
+                      "items": [
+                        {
+                          "content": "发送与接收消息",
+                          "status": "in_progress"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "running": false,
+                "sessionId": "{{SESSION_1}}",
+                "updatedAt": "{{TS_13}}"
+              },
+              {
+                "cwd": "{{TMP}}/project-one",
+                "origin": "subagent",
+                "parentSessionId": "{{SESSION_1}}",
+                "projections": {
+                  "asOfSeq": 1,
+                  "values": {
+                    "title": "内部子代理碎片"
+                  }
+                },
+                "running": true,
+                "sessionId": "{{SESSION_2}}",
+                "updatedAt": "{{TS_14}}"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

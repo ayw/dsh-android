@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="conversation_back">Back</string>
+
+    <string name="conversation_pending_approval_title">A tool requests confirmation</string>
+    <string name="conversation_pending_question_title">A question needs your answer</string>
+
+    <string name="conversation_read_error_title">The timeline did not update</string>
+    <string name="conversation_read_error_detail">Cached entries are still shown; earlier messages may be missing from this list.</string>
+    <string name="conversation_older_error_title">Earlier messages did not load</string>
+    <string name="conversation_action_error_title">The action did not take effect</string>
+
+</resources>

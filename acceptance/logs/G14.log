@@ -1,0 +1,5 @@
+
+---- unit[0] i18n parity (shell) ----
+scanned 12 strings files across 6 modules; 202 Kotlin files
+check-i18n: ALL CHECKS PASS
+---- exit=0  1793154250130..1793154250257 ms ----

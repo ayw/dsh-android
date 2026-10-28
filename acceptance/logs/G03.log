@@ -1,0 +1,24 @@
+
+---- unit[0] record --check (node) ----
+WARN: scenario omitted (not recordable): approval-respond-rejected-accepted-false
+OK    README.md
+OK    SHA256SUMS
+OK    approval-asked-and-respond-accepted.json
+OK    fs-list.json
+OK    fs-preview-too-large.json
+OK    health-and-capabilities.json
+OK    manifest.json
+OK    poll-baseline-since-zero.json
+OK    poll-incremental.json
+OK    poll-truncated-and-reset.json
+OK    prompt-accepted.json
+OK    prompt-operations-receipt.json
+OK    question-toolcall-and-result.json
+OK    session-create-rename.json
+OK    session-history-page.json
+OK    session-list-roster.json
+OK    unauthorized-401.json
+OK    upload-probe-and-control-offset-mismatch.json
+SUMS  OK committed
+CHECK OK: re-recorded bytes match the committed contract
+---- exit=0  1793154235132..1793154240237 ms ----

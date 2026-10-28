@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  English values. The key set must equal values/strings.xml exactly (G14/D15).
+  The session list describes roster facts only; an empty title uses generic copy,
+  never the session id.
+-->
+<resources>
+
+    <string name="sessions_title">Sessions</string>
+    <string name="sessions_subtitle">Sessions cached on this device; paging happens locally.</string>
+    <string name="sessions_refresh">Refresh</string>
+    <string name="sessions_refreshing">Refreshing</string>
+    <string name="sessions_open_inbox">Open inbox</string>
+    <string name="sessions_open_conversation">Open session</string>
+    <string name="sessions_untitled">Untitled session</string>
+    <string name="sessions_time_just_now">Updated just now</string>
+    <string name="sessions_time_minutes">Updated %1$d min ago</string>
+    <string name="sessions_time_hours">Updated %1$d hours ago</string>
+    <string name="sessions_time_days">Updated %1$d days ago</string>
+    <string name="sessions_row_pending">%1$d pending</string>
+
+    <string name="sessions_status_running">Running</string>
+    <string name="sessions_status_archived">Archived</string>
+    <string name="sessions_status_history_unsafe">History cannot be rebuilt</string>
+
+    <string name="sessions_empty_title">No sessions yet</string>
+    <string name="sessions_empty_subtitle">The completeness sweep passed with a zero count, so this empty list is trustworthy.</string>
+    <string name="sessions_unknown_empty_title">Session list cannot be confirmed</string>
+    <string name="sessions_unknown_empty_subtitle">The completeness sweep has not finished, so this device may not have the full list.</string>
+
+    <string name="sessions_counts_error_title">Pending counts are temporarily unavailable</string>
+    <string name="sessions_roster_stale_title">The roster may be out of date</string>
+    <string name="sessions_roster_stale_detail">The full roster is fetched only after it goes stale; refresh to update it now.</string>
+    <string name="sessions_roster_failed_title">Roster sync failed</string>
+    <string name="sessions_roster_failed_detail">Cached sessions are still shown and may be missing new ones.</string>
+    <string name="sessions_load_error_title">The session list did not fully update</string>
+    <string name="sessions_load_error_detail">Sessions already shown still come from the local cache.</string>
+    <string name="sessions_action_error_title">The refresh did not take effect</string>
+
+    <string name="sessions_loading_more">Loading more sessions</string>
+    <string name="sessions_load_more">Load more</string>
+    <string name="sessions_end_of_list">End of list</string>
+
+    <string name="sessions_error_unreachable">Cannot reach the server.</string>
+    <string name="sessions_error_timeout">Timed out waiting for the server.</string>
+    <string name="sessions_error_auth">Credentials expired; pair again.</string>
+    <string name="sessions_error_forbidden">The server rejected the request.</string>
+    <string name="sessions_error_history_incomplete">History may be incomplete; older content may be missing.</string>
+    <string name="sessions_error_conflict">The server reported a write conflict.</string>
+    <string name="sessions_error_rejected">The server did not accept the request.</string>
+    <string name="sessions_error_unavailable">This server does not support that operation.</string>
+    <string name="sessions_error_generic">Something went wrong.</string>
+
+</resources>

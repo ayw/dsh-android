@@ -1,0 +1,77 @@
+{
+  "name": "session-create-rename",
+  "gatewayVersion": "0.8.1",
+  "capturedAt": "{{TS_0}}",
+  "steps": [
+    {
+      "method": "POST",
+      "path": "/api/session.create",
+      "requestHeaders": {
+        "authorization": "Bearer {{TOKEN}}",
+        "content-length": "146",
+        "content-type": "application/json",
+        "host": "127.0.0.1:{{PORT}}",
+        "x-dsh-remote-client": "app"
+      },
+      "status": 200,
+      "responseHeaders": {
+        "access-control-allow-headers": "authorization, content-type, x-dsh-remote-client, x-dsh-remote-client-id, x-dsh-remote-inbox-key",
+        "access-control-allow-methods": "GET, POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "600",
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "93",
+        "content-type": "application/json; charset=utf-8",
+        "date": "{{TS_16}}",
+        "keep-alive": "timeout=65",
+        "vary": "Origin"
+      },
+      "response": {
+        "result": {
+          "ok": true,
+          "value": {
+            "sessionId": "{{SESSION_3}}"
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/session.rename",
+      "requestHeaders": {
+        "authorization": "Bearer {{TOKEN}}",
+        "content-length": "143",
+        "content-type": "application/json",
+        "host": "127.0.0.1:{{PORT}}",
+        "x-dsh-remote-client": "app"
+      },
+      "status": 200,
+      "responseHeaders": {
+        "access-control-allow-headers": "authorization, content-type, x-dsh-remote-client, x-dsh-remote-client-id, x-dsh-remote-inbox-key",
+        "access-control-allow-methods": "GET, POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "600",
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "179",
+        "content-type": "application/json; charset=utf-8",
+        "date": "{{TS_17}}",
+        "keep-alive": "timeout=65",
+        "vary": "Origin"
+      },
+      "response": {
+        "result": {
+          "ok": true,
+          "value": {
+            "accepted": true,
+            "echo": {
+              "sessionId": "{{SESSION_1}}",
+              "title": "Recorder 改名"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

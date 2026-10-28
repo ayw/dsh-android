@@ -1,0 +1,5 @@
+
+---- unit[0] coverage floor (degraded) (shell) ----
+aggregated 57 declared cases across 1 modules from 1 manifest(s)
+check-golden-cases: manifests and test sources agree
+---- exit=0  1793154250052..1793154250089 ms ----

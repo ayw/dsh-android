@@ -1,0 +1,24 @@
+{
+  "epoch": "e-strseq",
+  "since": 0,
+  "latestSeq": 150,
+  "reset": false,
+  "truncated": false,
+  "waitSupported": true,
+  "ok": true,
+  "kind": "mux",
+  "events": [
+    {
+      "seq": null,
+      "ts": 1700000000150,
+      "event": {
+        "rpcId": "r-str",
+        "payload": {
+          "sessionId": "s-1",
+          "type": "session/event",
+          "event": { "type": "turn/start", "seq": 150, "data": { "turn": 1 } }
+        }
+      }
+    }
+  ]
+}

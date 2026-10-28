@@ -1,0 +1,13 @@
+# Android 构建产物忽略
+*/build/
+build/
+.local/
+.kotlin/
+.gradle/
+.idea/
+*.iml
+local.properties
+
+# 验收证据可复算，但构建中间物不入库
+acceptance/.work/
+acceptance/*.log
