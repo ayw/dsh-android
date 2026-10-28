@@ -1,12 +1,14 @@
 pluginManagement {
     repositories {
+        // 插件坐标很小，优先走官方仓库：国内镜像对部分插件（如 KSP）存在缺件，
+        // 而 GitHub Actions 上镜像不可达时会导致 plugin marker 解析失败。
+        google()
+        mavenCentral()
+        gradlePluginPortal()
         maven("https://maven.aliyun.com/repository/gradle-plugin")
         maven("https://maven.aliyun.com/repository/google")
         maven("https://maven.aliyun.com/repository/public")
         maven("https://repo.huaweicloud.com/repository/maven/")
-        gradlePluginPortal()
-        google()
-        mavenCentral()
     }
 }
 
