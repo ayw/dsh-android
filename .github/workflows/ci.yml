@@ -36,7 +36,14 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - uses: android-actions/setup-android@v3
+      # ubuntu-latest 已预装 Android SDK；setup-android@v3 会跑 `sdkmanager tools`，
+      # 新版 SDK 已无该包而直接失败，因此改为只接受 licenses。
+      - name: Android SDK licenses
+        run: |
+          sdkmgr="$(command -v sdkmanager || echo "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager")"
+          yes | "$sdkmgr" --licenses > /dev/null 2>&1 || true
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          ls "$ANDROID_HOME/platforms" || true
 
       - uses: actions/setup-node@v4
         with:
